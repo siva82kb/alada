@@ -1,0 +1,122 @@
+\documentclass[9pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    total={170mm,257mm},
+    left=15mm,
+    right=15mm,
+    top=20mm,
+    bottom=20mm,
+}
+\usepackage{multicol}
+\usepackage[font=small,labelfont=bf]{caption}
+\setlength{\columnsep}{0.25cm}
+\usepackage[inline]{enumitem}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{mathtools} 
+\setlength{\parindent}{0em}
+\setlength{\parsep}{0em}
+\usepackage{tikz}
+\setlength{\parskip}{0em}
+\usetikzlibrary{decorations.pathmorphing,patterns}
+\usepackage[american,cuteinductors]{circuitikz}
+\usetikzlibrary{shapes,arrows,circuits,calc,babel}
+% Definition of blocks:
+\tikzset{%
+  block/.style    = {draw, thick, rectangle, minimum height = 3em,
+    minimum width = 3em},
+  sum/.style      = {draw, circle, node distance = 2cm}, % Adder
+  input/.style    = {coordinate}, % Input
+  output/.style   = {coordinate} % Output
+}
+% Defining string as labels of certain blocks.
+\newcommand{\suma}{\Large$+$}
+\newcommand{\inte}{$\displaystyle \int$}
+\newcommand{\derv}{\huge$\frac{d}{dt}$}
+
+\def\mf{\ensuremath\mathbf}
+\def\mb{\ensuremath\mathbb}
+\def\mc{\ensuremath\mathcal}
+\def\lp{\ensuremath\left(}
+\def\rp{\ensuremath\right)}
+\def\lv{\ensuremath\left\lvert}
+\def\rv{\ensuremath\right\rvert}
+\def\lV{\ensuremath\left\lVert}
+\def\rV{\ensuremath\right\rVert}
+\def\lc{\ensuremath\left\{}
+\def\rc{\ensuremath\right\}}
+\def\ls{\ensuremath\left[}
+\def\rs{\ensuremath\right]}
+\def\bmx{\ensuremath\begin{bmatrix*}[r]}
+\def\emx{\ensuremath\end{bmatrix*}}
+\def\bmxc{\ensuremath\begin{bmatrix*}[c]}
+\def\emxc{\ensuremath\end{bmatrix*}}
+% \def\t{\lp t\rp}
+% \def\k{\ls k\rs}
+
+\newcommand{\demoex}[2]{\onslide<#1->\begin{color}{black!60} #2 \end{color}}
+\newcommand{\demoexc}[3]{\onslide<#1->\begin{color}{#2} #3 \end{color}}
+\newcommand{\anim}[3]{\onslide<#1->{\begin{color}{#2!60} #3 \end{color}}}
+\newcommand{\ct}[1]{\lp #1\rp}
+\newcommand{\dt}[1]{\ls #1\rs}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\begin{document}
+\begin{center}
+\begin{Large}
+\textbf{Linear Systems: Positive Definite Matrices and Matrix Norm Assignment}
+\end{Large}
+\end{center}
+\vspace{0.2cm}
+
+\begin{multicols}{2}
+
+\begin{enumerate}
+    \item Prove that $\mf{A}^T\mf{A}$ is positive semi-definite for any matrix $\mf{A}$. When is $\mf{A}^T\mf{A}$ guaranteed to be positive definite?
+
+    \item If $\mf{A}$ is positive definite, then prove that $\mf{A}^{-1}$ is also positive definite.
+
+    \item Show that a positive definite matrix cannot have a zero or a negative element along its diagonal.
+
+    \item Show that the following statements are true.
+        \begin{enumerate}
+            \item All positive definite matrices are inverstible.
+            \item The only positive definite projection matrix is $\mf{I}$.
+        \end{enumerate}
+
+    \item Is the function $f\lp x_1, x_2, x_3\rp = 12 x_1^2 + x_2^2 + 6x_3^2 + x_1x_2 - 2x_2x_3 + 4x_3x_1$ positive definite?
+
+    \item The $LU$ decomposition for symmetric matrices can be written as $\mf{A} = \mf{L}^T\mf{D}\mf{L}$, where $\mf{D}$ is a diagonal matrix, and $\mf{L}$ is lower triangular with $1$ along its main diagonal. When $\mf{A}$ is postive definite, we can write, $\mf{A} = \mf{C}^T\mf{C} = \mf{L}^T\sqrt{\mf{D}}\sqrt{\mf{D}}\mf{L}$. This is the \textit{Cholesky decomposition}. Find $\mf{C}$ for the following,
+    \begin{enumerate}
+        \item $\bmx 4 & 1\\ 1 & 2\emx$
+        \item $\bmx 4 & 1 & 0\\ 1 & 8 & 0\\0 & 0 & 2\emx$
+    \end{enumerate}
+
+    \item Prove the following for $\mf{A} \in \mb{R}^{m \times n}$:
+    \[ \mf{A} = \bmx \mf{a}_1 & \mf{a}_2 & \ldots & \mf{a}_n\emx = \bmx \tilde{\mf{a}_1^T}\\ \tilde{\mf{a}_1^T} \\ \vdots \\ \tilde{\mf{a}_m^T}\emx \]
+    \begin{enumerate}
+        \item $\lV\mf{A}\rV_1 = \max_{1 \leq i \leq n} \lV\mf{a}_i\rV_1$
+        \item $\lV\mf{A}\rV_\infty = \max_{1 \leq i \leq m} \lV\tilde{\mf{a}}_i\rV_1$
+        \item $\lV\mf{A}\rV_2 = \max_{1 \leq i \leq n} \lv \lambda_i \rv$, where $\lambda_i$ are the eigenvalues of $\mf{A}^T\mf{A}$.
+        \item $\lV\mf{A}\rV_F = trace\lp \mf{A}^T\mf{A}\rp$
+    \end{enumerate}
+
+    \item Prove that the induced norm of a matrix product is bounded: $\lV\mf{A}\mf{B}\rV \leq \lV\mf{A}\rV\lV\mf{B}\rV$.
+
+    \item Verify the following inequalities on vector and matrix norms ($\mf{x} \in \mb{R}^m$ and $\mf{A} \in \mb{R}^{m \times n}$):
+    \begin{enumerate}
+        \item $\lV\mf{x}\rV_\infty \leq \lV\mf{x}\rV_2$
+        \item $\lV\mf{x}\rV_2 \leq \sqrt{m}\lV\mf{x}\rV_\infty$
+        \item $\lV\mf{A}\rV_\infty \leq \sqrt{n}\lV\mf{A}\rV_2$
+        \item $\lV\mf{A}\rV_2 \leq \sqrt{m}\lV\mf{A}\rV_\infty$
+    \end{enumerate}
+
+    \item Find an expression for the induced 2-norm of an outer product, $\mf{A} = \mf{u}\mf{v}^T$, where $\mf{u} \in \mb{R}^m$ and $\mf{v} \in \mb{R}^n$.
+\end{enumerate}
+
+\end{multicols}
+\end{document}

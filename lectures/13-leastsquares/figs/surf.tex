@@ -1,0 +1,19 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.8}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    title={\footnotesize{$J = 14x_1^2+6x_2^2+6x_2+6x_1x_2+6$}}, 
+    xlabel=$x_1$, ylabel=$y_2$,
+    view={230}{40},small,
+]
+\addplot3[
+    surf,
+    domain=-10:10,
+    domain y=-10:10,
+] {(14*x*x)+(6*y*y)+(6*y)+(6*x*y)+6};
+\end{axis}
+\end{tikzpicture}
+\end{document}
+

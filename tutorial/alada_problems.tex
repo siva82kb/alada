@@ -1,0 +1,268 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Arsclassica Article
+% LaTeX Template
+% Version 1.1 (1/8/17)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Lorenzo Pantieri (http://www.lorenzopantieri.net) with extensive modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+11pt, % Main document font size
+a4paper, % Paper type, use 'letterpaper' for US Letter paper
+oneside, % One page layout (no page indentation)
+%twoside, % Two page layout (page indentation for binding and different headers)
+headinclude,footinclude, % Extra spacing for the header and footer
+BCOR5mm, % Binding correction
+]{scrartcl}
+
+\input{structure.tex} % Include the structure.tex file which specified the document structure and layout
+
+\hyphenation{Fortran hy-phen-ation} % Specify custom hyphenation points in words with dashes where you would like hyphenation to occur, or alternatively, don't put any dashes in a word to stop hyphenation altogether
+
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{xcolor}
+
+\def\mf{\ensuremath\mathbf}
+\def\mb{\ensuremath\mathbb}
+\def\lp{\ensuremath\left(}
+\def\rp{\ensuremath\right)}
+\def\lv{\ensuremath\left\lvert}
+\def\rv{\ensuremath\right\rvert}
+\def\lV{\ensuremath\left\lVert}
+\def\rV{\ensuremath\right\rVert}
+\def\lc{\ensuremath\left\{}
+\def\rc{\ensuremath\right\}}
+\def\ls{\ensuremath\left[}
+\def\rs{\ensuremath\right]}
+\def\bmx{\ensuremath\begin{bmatrix*}[r]}
+\def\emx{\ensuremath\end{bmatrix*}}
+\def\bmxc{\ensuremath\begin{bmatrix*}[c]}
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE AND AUTHOR(S)
+%----------------------------------------------------------------------------------------
+
+\title{{Applied Linear Algebra in Data Analysis}} % The article title
+
+\subtitle{{Tutorial}} % Uncomment to display a subtitle
+
+\author{{Sivakumar Balasubramanian}} % The article author(s) - author affiliations need to be specified in the AUTHOR AFFILIATIONS block
+
+\date{} % An optional date to appear under the author(s)
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	HEADERS
+%----------------------------------------------------------------------------------------
+
+\renewcommand{\sectionmark}[1]{\markright{\spacedlowsmallcaps{#1}}} % The header for all pages (oneside) or for even pages (twoside)
+%\renewcommand{\subsectionmark}[1]{\markright{\thesubsection~#1}} % Uncomment when using the twoside option - this modifies the header on odd pages
+\lehead{\mbox{\llap{\small\thepage\kern1em\color{halfgray} \vline}\color{halfgray}\hspace{0.5em}\rightmark\hfil}} % The header style
+
+\pagestyle{scrheadings} % Enable the headers specified in this block
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS & LISTS OF FIGURES AND TABLES
+%----------------------------------------------------------------------------------------
+
+\maketitle % Print the title/author/date block
+
+\setcounter{tocdepth}{2} % Set the depth of the table of contents to show sections and subsections only
+
+\tableofcontents % Print the table of contents
+
+%\listoffigures % Print the list of figures
+
+%\listoftables % Print the list of tables
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+%\section*{Abstract} % This section will not appear in the table of contents due to the star (\section*)
+%
+%\lipsum[1] % Dummy text
+%
+%%----------------------------------------------------------------------------------------
+%%	AUTHOR AFFILIATIONS
+%%----------------------------------------------------------------------------------------
+%
+%\let\thefootnote\relax\footnotetext{* \textit{Department of Biology, University of Examples, London, United Kingdom}}
+%
+%\let\thefootnote\relax\footnotetext{\textsuperscript{1} \textit{Department of Chemistry, University of Examples, London, United Kingdom}}
+
+%----------------------------------------------------------------------------------------
+
+\newpage % Start the article content on the second page, remove this if you have a longer abstract that goes onto the second page
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+% -----
+% CONCEPTS IN VECTOR SPACES
+% -----
+\section{Concepts in Vector Spaces}
+\hrule
+\vspace{0.5cm}
+
+\begin{enumerate}
+
+\item Which of the following sets forms a vector space?
+\begin{enumerate}
+	\item $\left\{ a_1x_1 + a_2 x_2 = 0 \, \vert \, x_1, x_2 \in \mathbb{R} \right\}$, where $a_1, a_2 \in \mathbb{R}$ are fixed constants.
+	\item $\left\{ \mathbf{a}^\top \mathbf{x} = b \, \vert \, \mathbf{x} \in \mathbb{R}^n \right\}$, where $\mathbf{a} \in \mathbb{R}^n$ and $b \in \mathbb{R}$ are fixed constants.
+	\item $\left\{ \mathbf{x}^\top \mathbf{x} = 1 \, \vert \, \mathbf{x} \in \mathbb{R}^n \right\}$.
+	\item $\left\{ a_0 + a_1x + a_2x^2 \, \vert \, a_0, a_1, a_2 \in \mathbb{R} \right\}$, where $x \in \left[0, 1\right]$.
+
+	\textcolor{blue}{(\small{The set of all polynomials of degree 2 or less.})}
+
+	\item $\left\{ \left(x[0], x[1], x[2], \ldots x[N-1]\right) \, \vert \, x[i] \in \mathbb{R}, 0 \leq i < N \right\}$.
+	
+	\textcolor{blue}{(\small{The set of all real-valued time-domain signals of length $N$. $x[i]$ is the value of the signal at time instant $i$.})}
+\end{enumerate}
+
+\item Consider the vector space of polynomials of order $n$ or less.
+\[ \mathcal{P} = \left\{ \sum_{k=0}^n a_k x^k \, \bigg\vert \, a_k \in \mathbb{R} \right\}, \,\, \text{where, } x \in \left[0, 1\right] \]
+Show that polynomails of order strictly lower than $n$ form subspaces of $\mathcal{P}$.
+
+\item Is the following function a valid norm of the vector space $\mathcal{P}$?
+\[ \Vert \mathbf{p}\pp{x} \Vert = \sqrt{\sum_{k=0}^{n} a_k^2 }, \,\, \mathbf{p} = \sum_{k=0}^n a_kx^k \in \mathcal{P} \]
+
+\item Consider the following function, which is often called the \textit{zero-norm} of a vector $\mathbf{x} \in \mathbb{R}^n$.
+\[ \Vert \mathbf{x} \Vert_0 = \sum_{i=1}^n \mathbb{I}\pp{x_i \neq 0}, \,\, \text{where, } \mathbb{I}\pp{A} = \begin{cases} 1 & A \text{is true.} \\ 0 & A \text{is false.}  \end{cases}  \] 
+Is the \textit{zero-norm}, which is often used for quantifying the \textit{sparsity} of a vector, a proper norm?
+
+\item Is the following set of vectors linear independent?
+\[ \left\{ \bmx 1 \\ 0 \\ 0 \\ 0 \emx, \bmx 1 \\ 2 \\ 0 \\ 0 \emx , \bmx 1 \\ 1 \\ -1 \\ 1 \emx , \bmx 1 \\ 2 \\ 0 \\ -1 \emx  \right\} \]
+
+What is the span of this set? Does this set form the basis for its span? Does it form an orthonormal basis?
+
+\end{enumerate}
+
+\newpage
+
+% -----
+% MATRICES
+% -----
+\section{Matrices}
+\hrule
+\vspace{0.5cm}
+
+\begin{enumerate}
+
+\item 
+
+\item Show that the matrix product $\mf{A}\mf{B}\mf{C}$ can be written as a weighted sum  of the outer products of the columns of $\mf{A}$ and rows of $\mf{C}$, with the weights coming from the matrix $\mf{B}$.
+
+\item Prove the following for the matrices $\mf{A}_1, \mf{A}_2, \mf{A}_3, \ldots \mf{A}_n$.
+\[ \lp \mf{A}_1, \mf{A}_2 \mf{A}_3 \ldots \mf{A}_n \rp^\top =  \mf{A}_n^\top \mf{A}_{n-1}^\top \ldots \mf{A}_2^\top \mf{A}_1^\top \]
+
+
+\item Show that two polynomial functions of a square matrix $\mf{A}$ commutate.
+
+\item \textbf{Nilpotent matrices}. Show that a strictly triangular matrix $\mf{A} \in \mb{R}^{n \times n}$, $\mf{A}^n = \mf{0}$.
+
+\item \textbf{Matrix Inversion Lemma}. Consider an invertible matrix $\mf{A}$. The matrix $\mf{A} + \mf{u}\mf{v}^\top$ is invertible if and only if the two vectors $\mf{u}, \mf{v} \neq \mf{0}$, and $\mf{v}^\top\mf{A}^{-1}\mf{u} \neq -1$. Then, the inverse is given by,
+\[ \lp \mf{A} + \mf{u}\mf{v}^\top\rp^{-1} = \mf{A}^{-1} - \frac{\mf{A}^{-1}\mf{u}\mf{v}^\top\mf{A}^{-1}}{1 + \mf{v}^{\top}\mf{A}^{-1}\mf{u}} \]
+
+\item Prove that $tr\lp \mf{A}\mf{B} \rp = tr\lp \mf{B}\mf{A} \rp$, where $\mf{A} \in \mb{R}^{n \times d}$ and $\mf{B} \in \mb{R}^{d \times n}$.
+
+\item Effect of matrix operation on matrix rank. Let $\mf{A} \in \mb{R}^{n \times d}$ and $\mf{B} \in \mb{R}^{d \times n}$, with ranks $a$ and $b$ respectively. What is the rank of the following matrices?
+	\begin{enumerate}
+		\item $\mf{A} + \mf{B}$
+		\item $\mf{A}\mf{B}$
+	\end{enumerate}
+
+\item Show that the $rank\pp{\mf{A}\mf{B}} = rank\pp{\mf{A}}$, when $\mf{B}$ is square and full rank.
+
+\item Let $\mf{A}, \mf{B} \in \mb{R}^{n \times n}$, $\mf{A}\mf{B}$ is non-singular if and only if both $\mf{A}$ and $\mf{B}$ are non-singular.
+
+\item Let $\mf{A}$ is a full rank matrix. Show that the \textit{Gram matrix} of the column space, $\mf{A}^\top\mf{A}$ is invertible.
+
+\end{enumerate}
+
+\newpage
+
+% -----
+% SOLUTION TO LINEAR EQUATIONS
+% -----
+\section{Solution to Linear Equations}
+\hrule
+\vspace{0.5cm}
+
+\begin{enumerate}
+	\item 
+\end{enumerate}
+
+\newpage
+% -----
+% ORTHOGONALITY
+% -----
+\section{Orthogonality}
+\hrule
+\vspace{0.5cm}
+\begin{enumerate}
+	\item If $\mf{A}$ is an orthogonal matrix, show that $\mf{A}^{-1} = \mf{A}^\top$.
+	
+	\item If $\mf{P}_{\mathcal{S}}$ is the orthogonal projection matrix onto the subspace $\mathcal{S}$, then what is the corresponding orthogonal projection matrix onto $\mathcal{S}^{\perp}$ -- the orthogonal complement of $\mathcal{S}$?
+	
+	\item Let $\mf{x}, \mf{y} \in \mathbb{R}^n$. Let $\cc{\mf{u}_1, \mf{u}_2, \ldots \mf{u}_n}$ be an orthonormal basis for $\mathbb{R}^n$. Show that the following holds,
+	\[ \mf{x}^\top\mf{y} = \sum_{i=1}^n \pp{\mf{x}^\top \mf{u_i}} \cdot \pp{\mf{u_i}^\top \mf{y}} \]
+	
+	\item Consider the following set of vectors, $\mathcal{S} = \left\{ \mf{a}_1, \mf{a}_2, \mf{a}_3, \ldots \mf{a}_n \right\}$, where $\mf{a}_i \in \mathbb{R}^n$. The set $\mc{S}$ is linearly indepndent. Find the orthogonal components of a vector $\mf{b} \in \mathbb{R}^n$ in the subspace spanned by the sets of vectors $\mathcal{S}_1 = \left\{ \mf{a}_i \right\}_{i=1}^m$ and $\mathcal{S}_1^\perp$.
+	
+	\item Show that the set of orthogonal matrices $\left\{ \mf{Q} \, \big \vert \, \mf{Q} \in \mb{R}^{n \times n}, \, \mf{Q}^\top\mf{Q} = \mf{Q}\mf{Q}^\top = \mf{I}_n  \right\}$ is closed under matrx multiplication.
+	
+    \item Consider the linear map, $\mf{y} = \mf{Ax}$, such that $\mf{x}, \mf{y} \in \mb{R}^n$ and $\mf{A} \in \mb{R}^{n \times n}$. Let us assume that $\mf{A}$ is full rank. What conditions must $\mf{A}$ satisfy for the following statements to be true,
+    \begin{enumerate}
+        \item $\left\lVert \mf{y}\right\rVert_2 = \left\lVert \mf{x}\right\rVert_2$, for all $\mf{x}, \mf{y}$ such that $\mf{y} = \mf{Ax}$.
+        \item $\mf{y}_1^T\mf{y}_2 = \mf{x}_1^T\mf{x}_2$, for all $\mf{x}_1, \mf{x}_2, \mf{y}_1, \mf{y}_2$ such that $\mf{y}_1 = \mf{A}\mf{x}_1$ and $\mf{y}_2 = \mf{A}\mf{x}_2$. 
+    \end{enumerate}
+    \vspace{-0.1cm}
+    \begin{color}{black!60}\small{\textbf{Note}: A linear map $\mf{A}$ with the aforementioned properties preserves lengths and angle between vectors. Such maps are encountered in rigid body mechanics.}
+    \end{color}
+\end{enumerate}
+
+
+\newpage
+% -----
+% MATRIX INVERSES
+% -----
+\section{Matrix Inverses}
+\hrule
+\vspace{0.5cm}
+
+\begin{enumerate}
+	\item Find a left inverse for the matrix $\mf{A} = \bmx 1 & 1 \\ -1 & 1 \\ 0 & 1\emx$. Find the set of all possible left inverses. 
+	
+	\item Show that if the product of two square $d \times d$ matrices $\mf{A}$ and $\mf{B}$ is the identity matrix $\mf{I}$, then $\mf{B}\mf{A} = \mf{I}$.
+	
+	\item Consider an upper triangular matrix $\mf{R} \in \mb{R}^{n \times n}$. We are interested in solving the following set of $n$ linear equations,
+	\[ \mf{R} \mf{x} = \mf{e}_i \]
+	$\mf{x} = \bmxc x_1 & x_2 & x_3 & \ldots & x_n \emx^\top$ is the solution to the above equation. Show that $x_{i+1} = x_{i+2} = \ldots = x_n = 0$.
+
+	Show that the solution to this equation is equal to the $i^{th}$ column of the inverse of $\mf{R}$.
+
+	\item Find the 
+\end{enumerate}
+
+\end{document}

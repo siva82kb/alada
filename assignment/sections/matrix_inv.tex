@@ -1,0 +1,82 @@
+% -*- root: ../assignment.tex -*-
+\subsection*{Matrix Inverses}
+\begin{enumerate}[resume]
+    \item Consider the following bases for $\mb{R}^3$.
+    \[ A^S = \lc \frac{1}{\sqrt{3}}\bmx1 \\ 1 \\ 1\emx, \frac{1}{\sqrt{6}}\bmx-1 \\ 2 \\ -1\emx, \frac{1}{\sqrt{2}}\bmx1 \\ 0 \\ -1\emx \rc \]
+    \[ B^A = \lc \frac{1}{\sqrt{5}}\bmx2 \\ 1 \\ 0\emx, \frac{1}{\sqrt{5}}\bmx-1 \\ 2 \\ 0\emx, \bmx0 \\ 0 \\ 1\emx \rc \]
+
+    Where,  $X^Y$ is the basis $X$ represented in another basis $Y$; $S$ stands for the standard basis. Let $\mf{b}_X$ stand for the representation of vector in $\mb{R}^3$ in the basis $X$. 
+    \begin{enumerate}
+        \item Consider a vector $\mf{b}_S = \bmx-1\\0\\2\emx$ represented in the standard basis. What is the representation of $\mf{b}_S$ in the other four basis $A$, and $B$?
+
+        \item Consider a vector $\mf{d}_B = \bmx-1\\-1\\0\emx$ represented in the basis $B$. What is the representation of this vector in the standard basis?
+    \end{enumerate}
+
+
+    \item When does the following diagnoal matrix have an inverse?
+    \[ \mf{D} = \begin{bmatrix*}
+    d_1 & 0 & 0 & \ldots & 0\\
+    0 & d_2 & 0 & \ldots & 0\\
+    0 & 0 & d_3 & \ldots & 0\\
+    \vdots & \vdots & \vdots & \ddots & \vdots\\
+    0 & 0 & 0 & \ldots & d_n\\\end{bmatrix*} \]
+    Write down an expression for $D^{-1}$.
+    
+    \item Prove that the inverse of a non-singular upper-triangular matrix is upper-triangular. Using this show that for a lower triangular matrix it is lower-triangular.
+
+    \item Consider a $2 \times 2$ block matrix, $\mf{A} = \bmx \mf{B} & \mf{C}\\\mf{D} & \mf{E}\emx$, where $\mf{A} \in \mb{R}^{m \times m}$. Find an expression for the inverse $\mf{A}^{-1}$ interms of the block components and their inverses (if they exist) of $\mf{A}$. Hint: Consider $\mf{A}^{-1} = \bmx \mf{P} & \mf{Q}\\ \mf{R} & \mf{S}\emx$, and solve $\mf{A}\mf{A}^{-1} = \mf{I}$.
+
+    \item Express the inverse of the following matrix in terms of $\mf{A}$ and $\mf{b}$. 
+    \[ \mf{H} = \begin{bmatrix*}
+    \mf{A} & \mf{b}\\
+    \mathbf{0} & 1\\
+    \end{bmatrix*} \in \mathbb{R}^{\left(n+1\right) \times \left(n+1\right)}
+    \]
+    where, $\mf{A} \in \mathbb{R}^{n \times n}$ and $\mf{b} \in \mathbb{R}^n$. 
+
+    \item Consider a matrix $\mf{A} \in \mathbb{R}^{m \times n}$ with linearly independent columns. Prove that the Gram matrix $\mf{A}^T\mf{A}$ is invertible.
+    
+    \item Find all possible left/right inverses for the following matrices, if they exist.
+    \begin{enumerate}
+        \item $\mf{A} = \bmx 1 & 1 & 1 & 1\\ -1 & -2 & -3 & -4\emx$
+        \item $\mf{A} = \bmx 1 & -1 & 0 & 0 & -2\\ 0 & 0 & 1 & 0 & 3\\0 & 0 & 0 & 1 & -1\emx$
+        \item $\mf{A} = \bmx 1 & 2\\-1 & 0\\-3 & 4\emx$
+        \item $\mf{A} = \bmx 1 & 1 & 1 & 1 & 1\\
+        1 & 2 & 2 & 2 & 2\\
+        1 & 2 & 3 & 3 & 3\\
+        1 & 2 & 3 & 4 & 5\\
+        1 & 2 & 3 & 4 & 5
+        \emx$
+    \end{enumerate}
+    
+    For each of these matrices find the corresponding pseudo-inverse $\mf{A}^{\dagger}$, and verify that the pseudo-inverse has the minimum squared sum of its components.
+
+    \item Prove that the inverse of a non-singular symmetric matrix is symmetric.
+
+    \item Consider the scalar equation, $ax = ay$. Here we can cancel $a$ from the equation when $a \neq 0$. When can we carry out similar cancellations for matrcies?
+    \begin{enumerate}
+        \item $\mf{A}\mf{X} = \mf{A}\mf{Y}$. Prove that here $\mf{X}=\mf{Y}$ only when $\mf{A}$ is left invertible.
+        \item $\mf{X}\mf{A} = \mf{Y}\mf{A}$. Prove that here $\mf{X}=\mf{Y}$ only when $\mf{A}$ is right invertible.
+    \end{enumerate}
+
+    \item Consider two non-singular matrices $\mf{A}, \mf{B} \in \mb{R}^{n \times n}$. Explain whether or not the following matrices are invertible. If they are, then provide an expression for it inverse.
+    \begin{enumerate}
+        \item $\mf{C} = \mf{A} + \mf{B}$
+        \item $\mf{C} = \bmx \mf{A} & \mf{0}\\\mf{0} & \mf{B}\emx$
+        \item $\mf{C} = \bmx \mf{A} & \mf{A} + \mf{B}\\\mf{0} & \mf{B}\emx$
+        \item $\mf{C} = \mf{A}\mf{B}\mf{A}$
+    \end{enumerate}
+
+    \item Consider the matrices $\mf{A} \in \mb{R}^{m \times l_1}$ and $\mf{B} \in \mb{R}^{l_2 \times m}$. Can you find the requirements for matrices $\mf{A}$ and $\mf{B}$, such that $\mf{A}\mf{X}\mf{B} = \mf{I}$, where $\mf{X} \in \mb{R}^{l_1 \times l_2}$? Assuming those conditions are satisfied,  find an expression for $\mf{X}$?
+
+    \item Consider a matrix $\mf{C} = \mf{A}\mf{B}$, where $\mf{A} \in \mf{R}^{m \times n}$ and $\mf{B} \in \mf{R}^{n \times m}$. Explain why $\mf{C}$ is not invertible when $m > n$. Suppose $m < n$, under what conditions is $\mf{C}$ invertible?
+
+    % \item For a non-singular square matrix $\mf{A}$, prove that $\lp\mf{A}^T\rp^{-1} = \lp\mf{A}^{-1}\rp^T$.
+
+    \item For a square matrix $\mf{A}$ with non-signular $\mf{I} - \mf{A}$, prove that $\mf{A}\lp\mf{I} - \mf{A}\rp^{-1} = \lp\mf{I} - \mf{A}\rp^{-1}\mf{A}$.
+
+    \item Consider the non-singular matrices $\mf{A}$, $\mf{B}$ and $\mf{A} + \mf{B}$. Prove that,
+    \[ \mf{A}\lp\mf{A} + \mf{B}\rp^{-1}\mf{B} = \mf{B}\lp\mf{A} + \mf{B}\rp^{-1}\mf{A} = \lp\mf{A}^{-1} + \mf{B}^{-1}\rp^{-1} \]
+
+\end{enumerate}
+% \vfill

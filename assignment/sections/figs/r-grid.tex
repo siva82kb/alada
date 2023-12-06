@@ -1,0 +1,15 @@
+\begin{circuitikz} \draw
+ (0,0) node[anchor=east]{B}
+  to[short, o-*] (1,0)
+  to[R, l=$R$, *-*] (2,2)
+  to[R, l=$R$, *-*] (1,2)
+  to[R, l=$R$, *-*] (1,2)
+  to[R, l=$R$, *-*] (1,2)
+  to[R, l=$R$, *-*] (1,2)
+  to [R, v=$v_x$, l=$10\ohm$] (3,2)
+  to[short] (4,2) to[cI, i=$\frac{\siemens}{5}v_x$, *-*] (4,0)
+  to[short] (3,0) to[R, l=$5\ohm$, *-*] (3,2)
+  (3,0) -- (1,0)
+  (1,2) to[short, *-o] (0,2)
+  node[anchor=east]{A};
+\end{circuitikz}

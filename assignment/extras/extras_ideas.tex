@@ -1,0 +1,155 @@
+\documentclass[9pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    total={170mm,257mm},
+    left=15mm,
+    right=15mm,
+    top=20mm,
+    bottom=20mm,
+}
+\usepackage{multicol}
+\usepackage[font=small,labelfont=bf]{caption}
+\setlength{\columnsep}{0.5cm}
+\usepackage[inline]{enumitem}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{mathtools} 
+\setlength{\parindent}{0em}
+\setlength{\parsep}{0em}
+\usepackage{tikz}
+\setlength{\parskip}{0em}
+\usetikzlibrary{decorations.pathmorphing,patterns}
+\usepackage[american,cuteinductors]{circuitikz}
+\usetikzlibrary{shapes,arrows,circuits,calc,babel}
+% Definition of blocks:
+\tikzset{%
+  block/.style    = {draw, thick, rectangle, minimum height = 3em,
+    minimum width = 3em},
+  sum/.style      = {draw, circle, node distance = 2cm}, % Adder
+  input/.style    = {coordinate}, % Input
+  output/.style   = {coordinate} % Output
+}
+% Defining string as labels of certain blocks.
+\newcommand{\suma}{\Large$+$}
+\newcommand{\inte}{$\displaystyle \int$}
+\newcommand{\derv}{\huge$\frac{d}{dt}$}
+
+\def\mf{\ensuremath\mathbf}
+\def\mb{\ensuremath\mathbb}
+\def\lp{\ensuremath\left(}
+\def\rp{\ensuremath\right)}
+\def\lv{\ensuremath\left\lvert}
+\def\rv{\ensuremath\right\rvert}
+\def\lV{\ensuremath\left\lVert}
+\def\rV{\ensuremath\right\rVert}
+\def\lc{\ensuremath\left\{}
+\def\rc{\ensuremath\right\}}
+\def\ls{\ensuremath\left[}
+\def\rs{\ensuremath\right]}
+\def\bmx{\ensuremath\begin{bmatrix*}[r]}
+\def\emx{\ensuremath\end{bmatrix*}}
+\def\bmxc{\ensuremath\begin{bmatrix*}[c]}
+\def\emxc{\ensuremath\end{bmatrix*}}
+% \def\t{\lp t\rp}
+% \def\k{\ls k\rs}
+
+\newcommand{\demoex}[2]{\onslide<#1->\begin{color}{black!60} #2 \end{color}}
+\newcommand{\demoexc}[3]{\onslide<#1->\begin{color}{#2} #3 \end{color}}
+\newcommand{\anim}[3]{\onslide<#1->{\begin{color}{#2!60} #3 \end{color}}}
+\newcommand{\ct}[1]{\lp #1\rp}
+\newcommand{\dt}[1]{\ls #1\rs}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+
+\begin{document}
+\begin{center}
+\begin{Large}
+\textbf{Linear Systems: Extras}
+\end{Large}
+\end{center}
+\vspace{0.2cm}
+
+\begin{multicols}{2}
+
+\section*{Matrices}
+\begin{enumerate}[resume]
+    \item If the augmented matrix $\bmx \mf{A} \vert \mf{b}\emx$ is reduced to the matrix $\bmx \mf{E} \vert \mf{c} \emx$.
+    \begin{enumerate}
+        \item Is $\bmx \mf{E} \vert \mf{c} \emx$ in row echelon form if $\mf{E}$ is?
+        \item If $\bmx \mf{E} \vert \mf{c} \emx$ is in row echelon form, is $\mf{E}$ also in row echelon form? 
+    \end{enumerate}
+
+    \item Reducing a matrix $\mf{A}$ to its reduced row echelon through row operations form reveals the relationship between the different columns of $\mf{A}$. Explain why the row operations on $\mf{A}$ leave the relationship between its columns unaffected.
+
+    \item Consider the following reduced row echelon form.
+    \[ \mf{E_A} = \bmx
+        1 & 0 & 0 & 0 & 0 & 1\\
+        0 & 1 & 2 & 0 & 3 & 0\\
+        0 & 0 & 0 & 1 & -1 & 1\\
+        0 & 0 & 0 & 0 & 0 & 0
+    \emx \]
+    Is $\mf{A}$ unique? If it is, then find $\mf{A}$. If it is not unique,
+    \begin{enumerate*}
+        \item Explain why $\mf{A}$ is not ; and 
+        \item What additional information would you need to uniquely determine $\mf{A}$?
+    \end{enumerate*}
+
+    \item Can a parabola $y = \alpha_0 + \alpha_1x + \alpha_2x^2$ pass through the points: $\lc \ct{0, 1}, \ct{1, 4}, \ct{2, 11}, \ct{-1, 2}\rc$?
+
+    \item Explain why the system $\mf{A}\mf{x} = \mf{b}$ cannot be inconsistent if $rank\ct{\mf{A}} < n$.
+
+    \item Consider a homogeneous system of equations which has $n$ unknowns and $l$ free variables. What is rank of $\mf{A}$?
+
+    \item Can a linear system $\mf{A}\mf{x} = \mf{b}$ have exactly 2 solutions? Explain you answer.
+
+    \item Consider a augmented matrix $\bmx \mf{A} \vert \mf{b}\emx$ of a consistent system, with the number of equations greater than the number of unknowns, i.e. $m \geq n$. What will $\mf{E_A}$ look like for a consistent system?
+
+    \item Explain how the $\mf{LU}$ factors of a matrix $\mf{A}$ can be used to determine $\mf{A}^{-1}$.
+
+    \item Consider two matrices $\mf{A} \in \mb{R}^{m \times p}$ and $\mf{B} \in \mb{R}^{m \times n}$. Prove that,
+    \[ C\ct{\bmx \mf{A} \vert \mf{B} \emx} = C\ct{\mf{A}} + C\ct{\mf{B}} \]
+
+    \item Are the following statements true? Explain your answer.
+    \begin{enumerate}
+        \item $C\ct{\mf{AB}} \subseteq C\ct{\mf{A}}$
+        \item $N\ct{\mf{AB}} \supseteq C\ct{\mf{B}}$
+    \end{enumerate}
+
+    \item Consider a set of vector $B = \lc \mf{b}_1, \mf{b}_2, \ldots, \mf{b}_n\rc$. Prove that the set $\mf{A}\ct{B} = \lc \mf{A}\mf{b}_1, \mf{A}\mf{b}_2, \ldots, \mf{A}\mf{b}_n\rc$ spans $C\ct{\mf{AB}}$.
+
+    \item Consider a consistent set of linear equations, $\mf{A}\mf{x} = \mf{b}$, and let $\mf{a} \in C\ct{\mf{A}^T}$. Prove that $\mf{a}^T\mf{x}$ is constant for a all solutions $x$ of the equation $\mf{A}\mf{x} = \mf{b}$.
+
+    \item If $\mf{A} = \bmx \mf{A}_1 \\ \mf{A}_2 \emx$ is a square matrix, with $N\ct{\mf{A}_1} = C\ct{\mf{A}_2^T}$. Then prove that $\mf{A}$ is non-singular.
+
+    \item Prove that the rank of a matrix $\mf{A}$ is invariant under multiplication by a non-singular matrix.
+\end{enumerate}
+
+\section*{Miscellaneous}
+\begin{enumerate}[resume]
+    \item 
+
+    \item Prove that $\mf{A}^T\mf{A}$ is symmetric positive definite, if the columns of the $\mf{A}$ are independent.
+
+    \item Demonstrate that a full rank, symmetric matrix $\mf{A}$ can be expressed as a sum of a series of simple rank one matrices of the form,
+    \[ \mf{A} = \sum_{i=1}^n\mf{l}_id_i\mf{l}_i^T \]
+
+    \item Show that the quadratic form $\mf{x}^T\mf{A}\mf{x}$ can be reduced to the form $\mf{x}^T\tilde{\mf{A}}\mf{x}$, where $\tilde{\mf{A}} = \hat{\mf{A}}^T$.
+
+    \item Prove that $\mf{x}^T\mf{A}\mf{x} = 0$ when $\mf{A}$ is skew symmetric.
+
+    \item Consider a matrix $\mf{A}$ with $m$ rows, $\mf{A} = \begin{bmatrix*}\tilde{\mf{a}}_1^T\\\tilde{\mf{a}}_2^T\\\vdots\\\tilde{\mf{a}}_m^T\end{bmatrix*}$, where $\tilde{\mf{a}}_i \in \mathbb{R}^n$.
+    If a new row $\tilde{\mf{a}}_{m+1}^T$ is added to $\mf{A}$, how does $\mf{A}^T\mf{A}$ change?
+\end{enumerate}
+
+% \newpage
+% \begin{thebibliography}{50}
+% \bibitem{strang} G. Strang \textsl{Introduction to linear algebra}.
+% Wellesley-Cambridge Press Wellesley, MA, USA, 1993
+% \end{thebibliography}
+
+\end{multicols}
+\end{document}

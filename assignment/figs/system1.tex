@@ -1,0 +1,51 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.12}
+\begin{document}
+
+\begin{tikzpicture}[scale=0.5, transform shape, thick, node distance=2cm]
+\draw
+    node [input, name=input1] {} 
+    node [sum, right of=input1] (suma1) {\suma}
+    node [block, right of=suma1] (inte1) {{\huge $\frac{1}{s}$}}
+    node [output, right of=inte1, name=output1] {}    
+    node [block, above of=inte1] (scale11) {{\Large $1$}}
+    node [input, right of=scale11, name=temp11] {}
+    node [output, above of=suma1, name=temp12] {}
+
+    node [block, below of=inte1] (scale12) {{\Large $2$}}
+    node [input, left of=scale12, name=temp31] {}
+    node [input, right of=scale12, name=temp32] {}
+
+    node [sum, below of=temp31] (suma2) {\suma}
+    node [input, left of=suma2, name=input2] {}
+    node [block, right of=suma2] (inte2) {{\huge $\frac{1}{s}$}}
+    node [output, right of=inte2, name=output2] {}    
+    node [block, below of=inte2] (scale22) {{\Large $2$}}
+    node [input, right of=scale22, name=temp21] {}
+    node [output, below of=suma2, name=temp22] {};
+
+    % \draw[-latex](input1) -- node {}(suma1);
+    \draw[-latex](suma1) -- node {} (inte1);
+    \draw[-](inte1) -- node [above] {{\Large $x_1\ct{t}$}}(output1);
+    \draw[-](output1) -- node {}(temp11);
+    \draw[-latex](temp11) -- node {}(scale11);
+    \draw[-](scale11) -- node {}(temp12);
+    \draw[-latex](temp12) -- node {}(suma1);
+
+    % \draw[-latex](input2) -- node {}(suma2);
+    \draw[-latex](suma2) -- node {} (inte2);
+    \draw[-](inte2) -- node [above] {{\Large $x_2\ct{t}$}}(output2);
+    \draw[-](output2) -- node {}(temp21);
+    \draw[-latex](temp21) -- node {}(scale22);
+    \draw[-](scale22) -- node {}(temp22);
+    \draw[-latex](temp22) -- node {}(suma2);
+    % \draw[-](output) -- node {}(suma1);
+
+    \draw[-](output2) -- node {}(temp32);
+    \draw[-latex](temp32) -- node {}(scale12);
+    \draw[-](scale12) -- node {}(temp31);
+    \draw[-latex](temp31) -- node {}(suma1);
+\end{tikzpicture}
+
+\end{document} 

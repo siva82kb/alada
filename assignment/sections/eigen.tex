@@ -1,0 +1,65 @@
+% -*- root: ../assignment.tex -*-
+\subsection*{Eigenvalues and Eigenvectors}
+\begin{enumerate}[resume]
+    \item Explain why an eigenvector cannot be associated with two eigenvalues.
+
+    \item What are the eigenspaces associated with the diagonal matrix $\mf{D} = \mathrm{diag}\lp d_1, d_2, \ldots d_n\rp$?
+
+    \item If a matrix $\mf{A}$ has zero as one of its eigenvalues, explain why $\mf{A}$ must be singular.
+
+    \item For a matrix $\mf{A}$ with eigenvalues $\lc\lambda_i\rc_{i=1}^{n}$, verify for the following matrices that $\Pi_{i=1}^n\lambda_i = \det \lp\mf{A}\rp$ and $\sum_{i=1}^n \lambda_i = trace\lp\mf{A}\rp$.
+    \begin{enumerate}
+        \item $\bmx 1 & 1 \\ 2 & 1\emx$
+        \item $\bmx 1 & 0 & -1 \\ -1 & 1 & 0 \\ 2 & 1 & 1\emx$
+        \item $\bmx 1 & 1 \\ 0 & 1\emx$
+        \item $\frac{1}{5}\bmx 1 \\ 0 \\ 2 \emx \bmx 1 & 0 & 2\emx$
+    \end{enumerate}
+
+    \item Let $\lc\lambda_i, \mf{v}_i\rc_{i=1}^n$ be the eigenpairs of a matrix $\mf{A}$. Then prove that,
+    \begin{enumerate}
+        \item $\lc\lambda_i^k, \mf{v}_i\rc_{i=1}^n$ are the eigenpairs of $\mf{A}^k$. 
+        \item $\lc p\lp\lambda_i\rp, \mf{v}_i\rc_{i=1}^n$ are the eigenpairs of $p\lp\mf{A}\rp$, where $p\lp \mf{A}\rp = \alpha_0\mf{I} + \alpha_1\mf{A} + \ldots + \alpha_k\mf{A}^k$.
+    \end{enumerate}
+
+    \item Prove that if $\lc\lambda_i, \mf{v}_i\rc_{i=1}^n$ are the eigenpairs of a matrix $\mf{A}$, then the eigenpairs of $\mf{A}^k$ are $\lc\lambda_i^k, \mf{v}_i\rc_{i=1}^n$. 
+
+    \item Consider the matrices $\mf{A} = \bmx 1 & 1\\ 0 & 1 \emx$, $\mf{B} = \bmx 2 & 0 \\ 1 & 1\emx$. Are the eigenvalues of $\mf{A}\mf{B}$ equal the eigenvalues of $\mf{B}\mf{A}$?
+
+    \item Consider the matrices $\mf{A}$ and $\mf{B}$. If $\mf{v}$ is an eigenvector $\mf{B}$, underwhat condition will $\mf{v}$ also be the eignevector of $\mf{A}\mf{B}$. Under these conditions, what will be corresponding eigenvalue of $\mf{v}$? How do your answers change in the case of $\mf{BA}$?
+
+    \item Let $\lc \lambda_i, \mf{v}_i\rc_{i=1}^n$ are the eignepairs of a matrix $\mf{A}$. What are the eigenpairs of the folliowing?
+    \begin{enumerate}
+         \item $2\mf{A}$
+         \item $\mf{A} - 2\mf{I}$
+         \item $\mf{I} - \mf{A}$
+     \end{enumerate}
+
+     \item Let $\mf{A} = \bmx 0.6 & 0.2\\ 0.4 & 0.8\emx$. What is the value of:
+     \begin{enumerate*}
+         \item $A^2$
+         \item $A^{100}$
+         \item $A^\infty$
+     \end{enumerate*}?
+
+     \item Show that $\mf{u} \in \mb{R}^2$ is an eigenvector of $\mf{A} = \mf{u}\mf{v}^T$. What are the two eigenvalues of $\mf{A}$?
+
+     \item Consider two similar matrices $\mf{A}$ and $\mf{B}$. Prove that the eigenvalues of $\mf{A}$ and $\mf{B}$ are the same. How are the eigenvectors of $\mf{A}$ and $\mf{B}$ related to each of other for a given eigenvalue?
+
+     \item Find the eigenvectors of the following permutation matrix $\mf{A} = \bmx 0 & 1 & 0\\ 1 & 0 & 0 \\ 0 & 0 & 1\emx$.
+
+     \item \textbf{Left eigenvectors}: Consider a matrix $\mf{A}$ with eigenpairs $\lc \lambda_1, \mf{v}_i\rc_{i=1}^n$. The left eigenvectors of the matrix $\mf{A}$ are the vectors that satisfy the equation, $\mf{A}^T\mf{w} = \mu \mf{w}$ (or $\mf{w}^T\mf{A} = \mu \mf{w}^T$), and let $\lc \mu_i, \mf{w}_i\rc_{i=1}^n$ be the left eigenpairs of $\mf{A}$. Show the following,
+     \begin{enumerate}
+         \item The eigenvalues of both $\mf{A}$ and $\mf{A}^T$ are the same.
+         \item $\mf{v}_i^T\mf{w}_j = 0$. The eigenvector $\mf{v}_i$ corresponding to the eigenvalue $\lambda_i$ and the left eigvenvector $\mf{w}_j$ corresponding to the eigenvalue $\lambda_j$ are orthogonal, when $\lambda_i \neq \lambda_j$.
+         \item The matrix $A$ can be expressed as a sum of rank-one matrices,
+         \[ \mf{A} = \lambda_1\mf{v}_1\mf{w}_1^T + \lambda_2\mf{v}_2\mf{w}_2^T + \ldots + \lambda_n\mf{v}_n\mf{w}_n^T\]
+     \end{enumerate}
+
+     \item Prove that $\mf{A}\mf{A}^T$ has real and positive eigenvalues, and that the eigenvectors corresponding to distinct eigenvalues of $\mf{A}\mf{A}^T$ are orthogonal.
+
+     \item If $\lc \lambda_i, \mf{v}_i\rc_{i=1}^n$ are the eigenpairs of a non-singular matrix $\mf{A}$, the prove that $\lc \lambda_i^{-1}, \mf{v}_i\rc_{i=1}^n$ are the eigenpairs of $\mf{A}^{-1}$.
+
+     \item A matrix $\mf{A}$ is called \textit{nilpotent} if $\mf{A}^k = \mf{0}$ for some finite positive integer $k$. Prove that the $trace\lp \mf{A}\rp = 0$ for a nilpotent matrix $\mf{A}$. What are all the eigenvalues of such a matrix?
+
+\end{enumerate}
+% \vfill

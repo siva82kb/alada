@@ -1,0 +1,57 @@
+% -*- root: ../proofs.tex -*-
+
+% -----
+% ORTHOGONALITY
+% -----
+\section{Orthogonality}
+\hrule
+\vspace{0.5cm}
+\subsection{Product of orthogonal matrices}
+
+\thrm{Show that the product of a set of orthogonal matrices is orthogonal.
+\[ \mf{Q} = \mf{Q}_1\mf{Q}_2 \cdots \mf{Q}_l ^\top \]
+where, $\mf{Q}_i \in \mb{R}^{n \times n}$ and $\mf{Q}_i ^\top \mf{Q}_i = \mf{I}$.}{
+    The matrix $\mf{Q}$ is orthogonal if and only if $\mf{Q}^\top\mf{Q} = \mf{Q}\mf{Q}^\top = \mf{I}$.
+    
+    We know that,
+    \begin{align}
+    \mf{Q}^\top &= \left(\mf{Q}_1\mf{Q}_2 \cdots \mf{Q}_l \right)^\top = \mf{Q}_l^\top \mf{Q}_{l-1}^\top \cdots \mf{Q}_2^\top \mf{Q}_1^\top \nonumber \\
+    \implies \mf{Q}^\top\mf{Q} &= \mf{Q}_l^\top \mf{Q}_{l-1}^\top \cdots \mf{Q}_2^\top \mf{Q}_1^\top \mf{Q}_1\mf{Q}_2 \cdots \mf{Q}_{l-1} \mf{Q}_l \nonumber
+    \end{align}
+    
+    Since, $\mf{Q}_i^\top \mf{Q}_i = \mf{I}$, we have,
+    \[ \mf{Q}^\top\mf{Q} = \mf{I} \]
+    
+    We can similarly show that $\mf{Q}\mf{Q}^\top = \mf{I}$.
+    Thus, the product of a set of orthogonal matrices is orthogonal.
+}
+
+
+\subsection{Orthogonal projections of vectors}
+\thrm{Let $\mf{u} \in \mf{R}^n$ be a unit vector. Show that the orthogonal projections on $x$ -- $\mf{x}_{\mf{u}} = \pp{\mf{u}\mf{u}^\top}\mf{x}$ and $\mf{x}_{\mf{u}^\perp} = \pp{\mf{I} - \mf{u}\mf{u}^\top}\mf{x}$ -- are orthogonal complements.}{
+    The orthogonal projection matrices $\mf{u}\mf{u}^\top$ and $\mf{I} - \mf{u}\mf{u}^\top$ project any vector onto the $span{\lc \mf{u} \rc}$ and the orthogonal complement of $span{\lc \mf{u} \rc}$ respectively.
+
+    Its easy that $\mf{x}_{\mf{u}}$ and $\mf{x}_{\mf{u}^\perp}$ are complementary components of $\mf{x}$,
+    \[ 
+        \mf{x} = \mf{x}_{\mf{u}} + \mf{x}_{\mf{u}^\perp} = \pp{\mf{u}\mf{u}^\top}\mf{x} + \pp{\mf{I} - \mf{u}\mf{u}^\top}\mf{x}
+    \]
+
+    They are also orthogonal complements because of the following,
+    \[ 
+        \begin{split}
+        \mf{x}_{\mf{u}}^\top \mf{x}_{\mf{u}^\perp} &= \pp{\mf{uu^\top x}}^\top\pp{\pp{\mf{I - uu^\top}}\mf{x}} \\
+        &= \mf{x^\top uu^\top}\pp{\mf{I - uu^\top}}\mf{x} \\
+        &= \mf{x^\top uu^\top x} - \mf{x^\top u\pp{u^\top u}u^\top x} \\
+        &= \mf{x^\top uu^\top x} - \mf{x^\top uu^\top x} \\
+        &= 0
+        \end{split}
+    \]
+    Using the fact that, $\mf{u^\top u} = 1$,
+    \[ 
+        \mf{x}_{\mf{u}}^\top \mf{x}_{\mf{u}^\perp}  = \mf{x^\top uu^\top x} - \mf{x^\top uu^\top x} = 0 
+    \]
+    Thus,  $\mf{x}_{\mf{u}}$ and $\mf{x}_{\mf{u}^\perp}$ are orthogonal to each other.
+}
+
+
+\newpage

@@ -1,0 +1,595 @@
+\documentclass[aspectratio=169]{beamer}
+
+\setbeamersize{text margin left=5mm, text margin right=5mm}
+
+\defbeamertemplate{headline}{my header}{%
+\vskip1pt%
+\makebox[0pt][l]{\,\insertshortauthor}%
+\hspace*{\fill}\insertshorttitle/\insertshortsubtitle\hspace*{\fill}%
+\llap{\insertpagenumber/\insertpresentationendpage\,}
+}
+\setbeamertemplate{headline}[my header]
+
+\let\olditem\item
+\renewcommand{\item}{\setlength{\itemsep}{\fill}\olditem}
+
+\usepackage{caption}
+\usepackage{soul}
+\usepackage{tkz-euclide}
+\usetikzlibrary{calc}
+\usepackage[]{algorithm2e}
+\usepackage{changepage}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage{tkz-euclide}
+\usepackage{circuitikz}
+\usepackage{mleftright}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.8}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows.meta, decorations.pathreplacing, positioning, shapes.geometric}
+
+%% Fonts
+\usefonttheme{professionalfonts}
+\usefonttheme{serif}
+
+\DeclareCaptionLabelFormat{blank}{}
+\captionsetup[figure]{labelformat=blank}
+
+%% Math definitions
+\def\mf{\ensuremath\mathbf}
+\def\mb{\ensuremath\mathbb}
+\def\mc{\ensuremath\mathcal}
+\def\lp{\ensuremath\left(}
+\def\rp{\ensuremath\right)}
+\def\lv{\ensuremath\left\lvert}
+\def\rv{\ensuremath\right\rvert}
+\def\lV{\ensuremath\left\lVert}
+\def\rV{\ensuremath\right\rVert}
+\def\lc{\ensuremath\left\{}
+\def\rc{\ensuremath\right\}}
+\def\ls{\ensuremath\left[}
+\def\rs{\ensuremath\right]}
+\def\bmx{\ensuremath\begin{bmatrix*}[r]}
+\def\emx{\ensuremath\end{bmatrix*}}
+\def\bmxc{\ensuremath\begin{bmatrix*}[c]}
+\def\t{\lp t\rp}
+\def\k{\ls k\rs}
+
+\newcommand{\demoex}[2]{\onslide<#1->\begin{color}{black!60} #2 \end{color}}
+\newcommand{\demoexc}[3]{\onslide<#1->\begin{color}{#2} #3 \end{color}}
+\newcommand{\anim}[3]{\onslide<#1->{\begin{color}{#2!60} #3 \end{color}}}
+\newcommand{\ct}[1]{\lp #1\rp}
+\newcommand{\dt}[1]{\ls #1\rs}
+\newcommand{\cols}[2]{\begin{columns}[#1] #2 \end{columns}}
+\newcommand{\col}[2]{\begin{column}{#1} #2 \end{column}}
+
+%% Mycolors
+\definecolor{myred}{RGB}{192,0,0}
+\definecolor{mygray}{RGB}{100,100,100}
+
+%% Custom beamer color
+\setbeamercolor{title}{fg=myred}
+\setbeamercolor{subtitle}{fg=myred}
+\setbeamerfont{title}{series=\bfseries}
+% \setbeamercolor{frametitle}{bg=myred, fg=white}
+\setbeamercolor{frametitle}{bg=mygray!10!, fg=myred}
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamercolor{item}{fg=mygray}
+\setbeamercolor{title in head/foot}{fg=myred}
+
+% Move header to footer
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}{
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,center]{footline}
+    \inserttitle\hfill\insertauthor\hfill\insertdate\hfill\insertframenumber{}
+  \end{beamercolorbox}
+}
+
+
+\title{Applied Linear Algebra for Data Analysis}
+
+% A subtitle is optional and this may be deleted
+\subtitle{Application: Dimensionality reduction and PCA}
+
+\author{Sivakumar Balasubramanian}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Christian Medical College] % (optional, but mostly needed)
+{
+  \inst{}%
+  Department of Bioengineering\\
+  Christian Medical College, Bagayam\\
+  Vellore 632002
+}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date{}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{Lecture notes on linear systems}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+% Let's get started
+\begin{document}
+
+\pgfplotsset{
+  compat=1.8,
+  colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
+}
+
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\begin{frame}[t]{High dimensional data}
+\begin{itemize}
+    \item High dimensional data is encounted in in many applications, e.g. imaging, genomics, neural time series, wearable sensors, etc.
+    \item Digital health care is a prime example of high dimensional with heterogeneous variables.
+    \item This data can be organized in a rectangular form -- a matrix -- $\mf{D} \in \mb{R}^{m \times n}$ with $m$ samples and $n$ features (variables, dimensions, etc.) .
+    \item Some examples:
+    \begin{itemize}
+      \item A set of grayscale images $\lc I_j\rc_{j=1}^m$ of size $p \times q$ pixels. This set can be put in a matrix $\mf{D} \in \mb{R}^{m \times pq}$.
+      \item Neural firing rates of $n$ neurons recorded for $m$ time points.
+      \item Digital health data of $m$ patients with $n$ variables.
+      \item $\ldots$ 
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[t]{Data often lies in a low dimensional manifold}
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      Although, $n$ can be large the data often lies in a low dimensional manifold with a lower dimension $k$.
+      \vspace{0.2cm}
+
+      Representations of such data only requires $k$ variables, and not $n$. E.g. \textit{You only need longitude and latitude to represent a location on the earth's surface, not the full 3D coordinates.}
+    \end{column}
+    \begin{column}{0.575\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width = 0.85\textwidth]{../../analysis/dimsionreduction/output/2dmanifold.pdf}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}[t]{Data often lies in a low dimensional manifold}
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      Identifying the low dimensional structure of the data is useful for multiple reasons:
+      \begin{enumerate}
+        \item Data compression
+        \item Visualization
+        \item Noise reduction
+        \item Modelling the generative process
+      \end{enumerate}
+      
+    \end{column}
+    \begin{column}{0.575\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width = 0.85\textwidth]{../../analysis/dimsionreduction/output/2dmanifold.pdf}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}[t]{Dimensionality reduction}
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      Dimensionality reduction methods help identify the low dimensional manifold in which the data lies.
+      \vspace{0.2cm}
+
+      The oldest of these methods is the principal component analysis (PCA), which help identiy low dimensional subspace on which the data lies.
+    \end{column}
+    \begin{column}{0.575\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width = 0.85\textwidth]{../../analysis/dimsionreduction/output/2dmanifold.pdf}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}[t]{Principal Component Analysis (PCA)}
+  Change of variables can often show the low dimensional structure of the data.
+  \begin{center}
+    \begin{tikzpicture}
+      % Include the image
+      \node[anchor=south west, inner sep=0] (image) at (0,0) {\includegraphics[width=0.8\textwidth]{../../analysis/dimsionreduction/output/circle_dimred.pdf}};
+      
+      % Add floating text
+      \node[align=center, fill=gray!10!, text=black, opacity=0.9, text width=6cm, rounded corners] at (9.5, 1.0) {\large
+        \underbar{{\textbf{Nonlinear transformation}}}\\
+        \vspace{0.1cm}
+        \textcolor{blue}{$\theta = \mathrm{atan2}\ct{x_2, x_1}$} \\
+        \vspace{0.2cm}
+        \textcolor{blue}{$r = \sqrt{x_1^2 + x_2^2}$}
+      };
+    \end{tikzpicture}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[t]{Principal Component Analysis (PCA)}
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      If the data lies in an low dimensional subspace (hyperplane), then a linear transformation could be used to identify 
+      \vspace{0.2cm}
+
+      PCA helps identify the low dimensional subspace on which the data lies.
+      \vspace{0.2cm}
+
+      The output of PCA is an orthonormal basis, along with the variance of the data along each of the basis vectors.
+    \end{column}
+    \begin{column}{0.575\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width = 0.9\textwidth]{../../analysis/dimsionreduction/output/2dsubspace.pdf}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}[t]{Principal Component Analysis (PCA)}
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      If the data lies in an low dimensional subspace (hyperplane), then a linear transformation could be used to identify 
+      \vspace{0.2cm}
+
+      PCA helps identify the low dimensional subspace on which the data lies.
+      \vspace{0.2cm}
+
+      The output of PCA is an orthonormal basis for $\mb{R}^n$, called the principal components. The principal components are arragned in the order of decreasing variance along their respective directions.
+    \end{column}
+    \begin{column}{0.575\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width = 0.9\textwidth]{../../analysis/dimsionreduction/output/2dsubspace.pdf}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}[t]{Principal Component Analysis (PCA)}
+  \begin{columns}
+    \begin{column}{0.55\textwidth}
+      {\small
+      Consider the height and weight data of $m=1000$ individuals. The scatter plot of the data is shown on the right.
+      \vspace{0.2cm}
+
+      This data is stored in an array $\mf{X} \in \mb{R}^{m \times 2}$, where the rows are the measurements from each individual, and the first column is the height and the second column is the weight.
+      \[ \mf{X} = \bmxc \mf{x}_{1} & \mf{x}_{2} \emx = \bmxc \tilde{\mf{x}}_{1}^\top \\ \tilde{\mf{x}}_{2}^\top \\ \vdots \\ \tilde{\mf{x}}_{m}^\top \emx = \bmxc x_{11} & x_{12} \\ x_{21} & x_{22} \\ \vdots & \vdots \\ x_{m1} & x_{m2}\emx\]
+
+      The spread of points appears to be lage in particular direction.
+      }
+    \end{column}
+    \begin{column}{0.425\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width = \textwidth]{../../analysis/dimsionreduction/output/height_weight.pdf}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}[t]{Principal Component Analysis (PCA)}
+  \begin{columns}
+    \begin{column}{0.55\textwidth}
+      {\small
+      We pose the following problem: what is the direction along which the spread of points from $\mf{X}$ is the largest?
+      
+      We first \textbf{remove the mean} from the data points, i.e. move it to the origin.
+      \[ \overline{\mf{X}} = \bmx \mf{x}_1 - \overline{x}_1 \mf{1} & \mf{x}_2 -  \overline{x}_2 \mf{1} \emx, \,\, \overline{x}_i = \frac{1}{m}\sum_{j=1}^m x_{ji} \]
+      From this point forward, we assume $\mf{X}$ is centered, i.e. has zero mean. 
+
+      We define the spead of points from $\mf{X}$ along a direction $\mf{w}_1 \in \mb{R}^2$ as the sum of squared norms of the orthogonal projections of the points onto the subspace spanned by $\mf{w}_1$.
+      \[ V\ct{\mf{w}_1} = \sum_{i=1}^m \lVert \mf{w}_1\mf{w}_1^\top \tilde{\mf{x}}_i \rVert_2^2 \]
+      }
+    \end{column}
+    \begin{column}{0.425\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width = \textwidth]{../../analysis/dimsionreduction/output/height_weight_womean.pdf}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}[t]{Principal Component Analysis (PCA)}
+  \begin{columns}
+    \begin{column}{0.525\textwidth}
+      The variance is now a function of $\mf{w}_1$, and the problem is to find the direction $\mf{w}_1$ that maximizes $V\ct{\mf{w}_1}$, i.e.
+      \begin{align*}
+        \arg\underset{\mf{w}_1}{\max} \quad & \sum_{i=1}^m \lVert \mf{w}_1^\top\tilde{\mf{x}}_i \rVert_2^2 \\
+          \text{subject to} \quad & \lVert \mf{w}_1 \rVert_2 = 1
+      \end{align*}
+      Note that this is equivalent to the following minimization problem:
+      \begin{align*}
+        \arg\underset{\mf{w}_1}{\min} \quad & \sum_{i=1}^m \lVert \tilde{\mf{x}}_i - \mf{w}_1\mf{w}_1^\top\tilde{\mf{x}}_i \rVert_2^2 \\
+          \text{subject to} \quad & \lVert \mf{w}_1 \rVert_2 = 1
+      \end{align*}
+    \end{column}
+    \begin{column}{0.425\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width = 0.9\textwidth]{../../analysis/dimsionreduction/output/maxproj_demo.pdf}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}[t]{Principal Component Analysis (PCA)}
+  \begin{columns}
+    \begin{column}{0.55\textwidth}
+      Let the solution to the previous optimization problem be $\mf{p}_1$. This direction is referred to as the \textit{first principal component}.
+      \vspace{0.2cm}
+      
+      Once we've identied $\mf{p}_1$, we can then search for the next direction $\mf{w}_2$ that is orthogonal to $\mf{w}_1$ and maximizes the variance of the data its direction.
+      \vspace{0.2cm}
+      
+      In $\mb{R}^2$, once we find $\mf{p}_1$, we know $\mf{p}_2$ (the \textit{second principal component}) as well. Why?
+    \end{column}
+    \begin{column}{0.425\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width = 0.9\textwidth]{../../analysis/dimsionreduction/output/height_weight_pcs.pdf}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}[t]{Principal Component Analysis (PCA)}
+  \begin{columns}
+    \begin{column}{0.55\textwidth}
+      The two vectors $\mf{p}_1$ and $\mf{p}_2$ form an orthonormal basis for $\mb{R}^2$, and are called the \textit{principal components} of the data $\mf{X}$.
+      \vspace{0.2cm}
+      
+      Every point can be represented as a linear combination of the principal components.
+    \end{column}
+    \begin{column}{0.425\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width = 0.9\textwidth]{../../analysis/dimsionreduction/output/height_weight_pcs.pdf}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}[t]{Principal Component Analysis (PCA)}
+\begin{itemize}
+  \item We can now extend this to $\mb{R}^n$. $\mf{X} \in \mb{R}^{m \times n}$ and $\tilde{\mf{x}}_i \in \mb{R}^n$.
+  
+  We can search for the principal components $\mf{p}_1, \mf{p}_2, \ldots, \mf{p}_n \in \mf{R}^n$, one after the other, by maximizing the variance of the data along a single direction, which is orthogonal to the previously identified directions.
+
+  \item The $j^{th}$ principal component is the solution to the following optimization problem:
+  \begin{align*}
+    \arg\underset{\mf{w}_j}{\max} \quad & \sum_{i=1}^m \lVert \mf{w}_j^\top\tilde{\mf{x}}_i \rVert_2^2 \\
+      \text{subject to} \quad & \lVert \mf{w}_j \rVert_2 = 1 \\
+      & \mf{w}_j^\top\mf{w}_k = 0, \,\, 1 \leq k < j
+  \end{align*}
+  
+  \item This is the iterative method for obtaining the principal components.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[t]{Principal Component Analysis (PCA)}
+\begin{itemize}
+  \item We can also pose this as a combined problem as the following, where, $\mf{W} = \bmx \mf{w}_1 & \mf{w}_1 & \cdots & \mf{w}_n\emx$ 
+  \begin{align*}
+    \arg\underset{\mf{W}}{\max}  \quad & \sum_{j=1}^n \sum_{i=1}^m \lVert \mf{w}_j^\top\tilde{\mf{x}}_i \rVert_2^2 \\
+      \text{subject to} \quad & \mf{W}^\top\mf{W} = \mf{I}\\
+      & \mf{W}^\top\mf{X}^\top\mf{X}\mf{W} \text{ is diagonal.} 
+  \end{align*}
+
+  This optimization problem will result in the same solution as the iterative method discussed earlier..
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[t]{Principal Component Analysis (PCA)}
+\begin{itemize}
+  \item The principal components are the eigenvectors of the covariance matrix $\mf{X}\mf{X}^\top$.
+  
+  \item The principal components form an orthonormal basis in which the data points are decorrelated.
+  
+  \item The total variance in the data is the sum of the variances along each of the principal components.
+  \[ \mf{X}^\top\mf{X} = \mf{P} \mf{D} \mf{P}^\top \implies trace\lp \mf{X}^\top\mf{X} \rp = trace\lp \mf{D} \rp = \sum_{i=1}^n d_{ii} \]
+  
+  $d_{ii} \geq 0$, why? 
+  
+  $d_{ii}$ is the variance of the data along the $i^{th}$ principal component.
+
+  We will arrange the eigenvectors in $\mf{P}$ such that, $d_{11} \geq d_{22} \geq \cdots \geq d_{nn} \geq 0$.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[t]{Principal Component Analysis (PCA)}
+\begin{itemize}
+  \item The PCA allows us to uncover a linear structure in the data. 
+  
+  \item Let's assume that the data that we measure or observe is generated by the following process,
+  \[ \tilde{\mf{x}} = \mf{A} \tilde{\mf{z}} + \overline{\mf{x}}^\top, \quad \tilde{\mf{x}}, \tilde{\mf{z}}, \overline{\mf{x}} \in \mb{R}^n \]
+  where, 
+  \begin{itemize}
+    \item $\tilde{\mf{z}}$ is a data point from the latent space, such that $\frac{1}{m}\mf{Z}^\top\mf{Z} = \mf{I}, \,\, \mf{Z} \in \mb{R}^{m \times n}$.
+    \item $\mf{A} \in \mb{R}^{n \times n}$ is matrix that transforms the latent space to the observation space.
+    \item $\overline{\mf{x}} \in \mb{R}^n$ is the mean of the data.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[t]{Where is SVD in all this?}
+  \[ \mf{X} = \bmxc \mf{x}_{1} & \mf{x}_{2} & \cdots & \mf{x}_n \emx = \bmxc \tilde{\mf{x}}_{1}^\top \\ \tilde{\mf{x}}_{2}^\top \\ \vdots \\ \tilde{\mf{x}}_{m}^\top \emx \longrightarrow \mf{X}^\top\mf{X} = \mf{P}\mf{D}\mf{P}^\top \]
+
+  We could have obtained $\mf{P}$ and $\mf{D}$ using the SVD of $\mf{X}$!
+
+  \[ \mf{X} = \mf{U}\bm{\Sigma}\mf{V}^\top \implies \mf{X}^\top\mf{X} = \mf{V}\bm{\Sigma}^\top\mf{U}^\top\mf{U}\bm{\Sigma}\mf{V}^\top = \mf{V}\bm{\Sigma}^2\mf{V}^\top \]
+
+  \[ \mf{P} = \mf{V} \quad \text{and} \quad \mf{D} = \bm{\Sigma} \]
+\end{frame}
+
+
+\begin{frame}[t]{Dimensionsality Reduction with PCA}
+  \begin{itemize}
+  \item PCA allows us to reduce the dimensionality of the data by projecting the data onto a lower dimensional subspace.
+  \[ \mf{X}^\top \mf{X} = \mf{P}\mf{D}\mf{P}^\top = \sum_{i=1}^n d_{ii} \mf{p}_i\mf{p}_i^\top \]
+  
+  Let's assume that none of the eigenvalues are zero, i.e. $d_{ii} > 0, \,\, \forall i$.
+
+  \item We can obtain the latent space representation of the data through the following transformation,
+  \[ \mf{Z}^\top = \mf{D}^{-\frac{1}{2}}\mf{P}^{\top}\mf{X}^{\top} \implies \mf{X}^\top = \mf{P}\mf{D}^{\frac{1}{2}}\mf{Z}^{\top} \]
+
+  \item If some of the $d_{ii}$s are small, the we can get an approximation of the observed data $\mf{X}$ by using only the first $k < n$ principal components,
+  \[ \hat{\mf{X}}^\top = \mf{P}_{n \times k}\mf{D}_{k \times k}^{\frac{1}{2}}\mf{Z}_{k \times m}^{\top} \]
+  
+  For each data point $\tilde{\mf{x}}_i$ we only keep the first $k$ elements of $\tilde{\mf{z}}_i$.
+  
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[t]{Dimensionsality Reduction with PCA}
+  \begin{columns}
+    \begin{column}{0.45\textwidth}
+      We get a good approximation of $\mf{X}$ ($2N$ numbers), by retaining only the projections onto the first principal component, which requires only $N$ numbers.
+      \[ \hat{\mf{X}} = \mf{p}_1\mf{p}_1^\top\mf{X} \]
+      
+      \vspace{0.5cm}
+      
+      How much information did we loose with $\hat{\mf{X}}$? Or how much did we incur?
+      \[ \text{Variance lost} = \text{Approx. Error} = d_{22} \]
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width = 0.8\textwidth]{../../analysis/dimsionreduction/output/pca_lowdim.pdf}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}[t]{Dimensionsality Reduction with PCA}
+  \begin{columns}
+    \begin{column}{0.45\textwidth}
+      In general, if we approximate with the first $k$ principal components,
+      \[ \text{Variance lost} = \text{Approx. Error} = \sum_{i=k+1}^{n} d_{ii} \]
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width = 0.8\textwidth]{../../analysis/dimsionreduction/output/pca_lowdim.pdf}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}[t]{Generative view of PCA}
+  \textbf{Generating new data points}
+  \begin{figure}
+    \centering
+    \includegraphics[width = 0.8\textwidth]{../../analysis/dimsionreduction/output/genmodel.pdf}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}[t]{Meaning of the PCs}
+  \textbf{Changing PC 1}
+  \begin{figure}
+    \centering
+    \includegraphics[width = 0.9\textwidth]{../../analysis/dimsionreduction/output/pc_1_faces.pdf}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}[t]{Meaning of the PCs}
+  \textbf{Changing PC 2}
+  \begin{figure}
+    \centering
+    \includegraphics[width = 0.9\textwidth]{../../analysis/dimsionreduction/output/pc_2_faces.pdf}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}[t]{Meaning of the PCs}
+  \textbf{Changing PC 3}
+  \begin{figure}
+    \centering
+    \includegraphics[width = 0.9\textwidth]{../../analysis/dimsionreduction/output/pc_3_faces.pdf}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}[t]{Meaning of the PCs}
+  \textbf{Changing PC 4}
+  \begin{figure}
+    \centering
+    \includegraphics[width = 0.9\textwidth]{../../analysis/dimsionreduction/output/pc_4_faces.pdf}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}[t]{Image Compression with SVD}
+  \textbf{Image Size: } $ 1208  \times 1880$ numbers
+  \begin{figure}
+    \centering
+    \includegraphics[width = 0.65\textwidth]{../../analysis/dimsionreduction/output/original.pdf}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}[t]{Image Compression with SVD}
+  \textbf{Rank $k$ Reconstruction} $\lp n + m + 1 \rp \times k$ numbers
+  \begin{figure}
+    \centering
+    \includegraphics[width = 1.0\textwidth]{../../analysis/dimsionreduction/output/rank_reconst.pdf}
+  \end{figure}
+\end{frame}
+
+\end{document}
