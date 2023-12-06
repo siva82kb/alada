@@ -1,2 +1,2 @@
-# alada
-Applied Linear Algebra for Data Analysis (ALADA)
+# ALADA
+Applied Linear Algebra in Data Analysis (ALADA) course material.
