@@ -385,7 +385,7 @@ c_{p1} & c_{n2} & \ldots & c_{nm} \\
 \[ \mf{C} = \mf{A}\mf{B}, \,\,\, \mf{A} \in \mathbb{R}^{n \times p}, \, \mf{B} \in \mathbb{R}^{p \times m}, \, \mf{C} \in \mathbb{R}^{n \times m} \]
 \begin{itemize}
 \item $ij^{th}$ element of $\mf{C}$ is the inner product of the $i^{th}$ row of $\mf{A}$ and the $j^{th}$ column of $\mf{B}$.
- \[ c_{ij} = \sum_{k=1}^{m} a_{ik} b_{kj} = \tilde{\mf{a}}_i^{\top}\mf{b}_j \]
+ \[ c_{ij} = \sum_{k=1}^{p} a_{ik} b_{kj} = \tilde{\mf{a}}_i^{\top}\mf{b}_j \]
  where, $i \in \left\{1 \ldots n\right\}, j \in \left\{1 \ldots m\right\}$
 \end{itemize}
 \end{frame}
@@ -512,7 +512,7 @@ The product of two matrices might not alwasys be defined. When it is defined, $\
   
   \item Column Rank is always equal to the row rank.
   
-  \item Rank tells us the number of independent columns/row in the matrix.
+  \item Rank tells us the number of independent columns/rows in the matrix.
   
   \item \textbf{Full rank matrix } $\mf{A}$: $rank\lp \mf{A} \rp  = \min\lp n, m\rp$\\
         \textbf{Rank deficient matrix } $\mf{A}$: $rank\lp \mf{A} \rp  < \min\lp n, m\rp$
