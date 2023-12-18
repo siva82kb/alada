@@ -1,14 +1,14 @@
-\documentclass[9pt]{article}
+\documentclass[12pt]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
 \geometry{
     a4paper,
     total={170mm,257mm},
-    left=15mm,
-    right=15mm,
-    top=20mm,
-    bottom=20mm,
+    left=25mm,
+    right=25mm,
+    top=25mm,
+    bottom=25mm,
 }
 \usepackage{multicol}
 \usepackage[font=small,labelfont=bf]{caption}
@@ -63,129 +63,129 @@
 \newcommand{\ct}[1]{\lp #1\rp}
 \newcommand{\dt}[1]{\ls #1\rs}
 
-\renewcommand{\familydefault}{\sfdefault}
+% \renewcommand{\familydefault}{\sfdefault}
 
 \begin{document}
 \begin{center}
 \begin{Large}
-\textbf{Linear Systems: Vectors Assignment}
+\textbf{Applied Linear Algebra in Data Analaysis}\\
+\vspace{0.1cm}
+\textbf{Vectors Assignment}
 \end{Large}
 \end{center}
+\hrule
+
 \vspace{0.2cm}
 
-\begin{multicols}{2}
+\begin{enumerate}
+    \item Is this set of vectors $\left\{\begin{bmatrix}2 \\ 1 \\ 1\end{bmatrix}, \begin{bmatrix}0 \\ 0\\ 0\end{bmatrix}, \begin{bmatrix}0 \\ 1 \\ 0\end{bmatrix}\right\}$ independent? Explain your answer.
 
-  \subsection*{Vectors}
-  \begin{enumerate}
-      \item Is this set of vectors $\left\{\begin{bmatrix}2 \\ 1 \\ 1\end{bmatrix}, \begin{bmatrix}0 \\ 0\\ 0\end{bmatrix}, \begin{bmatrix}0 \\ 1 \\ 0\end{bmatrix}\right\}$ independent? Explain your answer.
-  
-      \item Consider a set of finite duration discrete-time real signals $X_N = \lc x\dt{n} \big\vert x\dt{n} \in \mb{R}, \,\forall 0 \leq n \leq N-1\rc$. Does this set form a vector space? Explain your answer. Would $X_N$ still be a vector spaces if the signals were binary signals? i.e. $x\dt{n} \in \mb{B}$, where $\mb{B} = \lc 0, 1\rc$ with the binary addition and multiplication operations defined as the following,
-  
-      \begin{minipage}[h]{.45\textwidth}
-          \centering
-          \begin{tabular}{|c|c|c|c|}
-          \hline
-          $a$ & $b$ & $a+b$ & $a \times b$ \\ \hline
-          0 & 0 & 0   & 0     \\ \hline
-          0 & 1 & 1   & 0     \\ \hline
-          1 & 0 & 1   & 0     \\ \hline
-          1 & 1 & 0   & 1     \\ \hline
-          \end{tabular}\\
-          \captionof{table}{\small{Addition and Multiplication operation for binary numbers.}}
-      \end{minipage}
-  
-      \item Prove the following for $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$
-      \begin{enumerate}
-          \item {\small \textbf{Triangle Inequality}}:
-          $$\left\lVert \mathbf{x} + \mathbf{y}\right\rVert \leq \left\lVert \mathbf{x}\right\rVert + \left\lVert \mathbf{y}\right\rVert$$
-          \item {\small \textbf{Backward Triangle Inequality}}:
-          $$\left\lVert \mathbf{x} - \mathbf{y}\right\rVert  \geq \left\lvert \left\lVert \mathbf{x}\right\rVert - \left\lVert \mathbf{y}\right\rVert \right\rvert$$
-          \item {\small \textbf{Parallelogram Identity}}:
-          $$\frac{1}{2} \left(\left\lVert \mathbf{x} + \mathbf{y}\right\rVert^2 + \left\lVert \mathbf{x} - \mathbf{y}\right\rVert^2 \right) = \left\lVert \mathbf{x}\right\rVert^2 + \left\lVert \mathbf{y}\right\rVert^2$$
-      \end{enumerate}
-  
-      \item Consider a set of vectors $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$. When is $\left\lVert \mathbf{x} - \mathbf{y} \right\rVert = \left\lVert \mathbf{x} + \mathbf{y}\right\rVert$? What can you say about the geometry of the vectors $\mathbf{x},\,\mathbf{y},\,\mathbf{x} - \mathbf{y}$ and $\mathbf{x} + \mathbf{y}$?
-      
-      \item If $S_1, S_2 \subseteq V$ are subspaces of $V$, the is $S_1 \cap S_2$ a subspace? Demonstrate your answer.
-  
-      \item Consider two sets of vectors $V = \lc \mf{v}_1, \mf{v}_2, \ldots \mf{v}_n\rc$ and $W = \lc \mf{w}_1, \mf{w}_2, \ldots, \mf{w}_n, \mf{u}\rc$. Prove that if $span\ct{V} = span\ct{W}$, then $\mf{u} \in span\ct{V}$.
-      
-      \item Prove that the sum of two subspaces $S_1, S_2 \subseteq V$ is a subspace.
-      
-      \item Consider a vector $\mathbf{v} = \begin{bmatrix*}v_1\\v_2\\\vdots\\v_n\end{bmatrix*}$. Express the following in-terms of inner product between a constant vector $\mathbf{u}$ and the given vector $\mathbf{v}$, and in each case specify the vector $\mathbf{u}$.
-      \begin{enumerate}
-          \item $\sum_{i=1}^nv_i$
-          \item $\frac{1}{n}\sum_{i=1}^nv_i$
-          \item $\sum_{i=1}^nv_ia^{\left(n - i\right)}$, where $a \in \mathbb{R}$
-          \item $\frac{1}{n-1}\sum_{i=1}^n\left(v_i - \frac{1}{n}\sum_{i=1}^nv_i \right)^2$
-          \item $\frac{1}{5}\sum_{i=3}^5 v_i$
-          \item $\sum_{i=1}^{n-1} \left(v_{i+1} - v_i\right)$
-      \end{enumerate}
-      
-      \item Which of the following are linear functions of $\left\{x_1, x_2, \ldots,x_n\right\}$?
-      \begin{enumerate}
-          \item $\min_i \left\{x_i\right\}_{i=1}^{n}$
-          \item $\left(\sum_{i=1}^n x_i^2\right)^{1/2}$
-          \item $x_6$
-      \end{enumerate}
-      
-      \item Consider a linear function $f: \mathbb{R}^n \rightarrow \mathbb{R}$. Prove that every linear function of this form can be represented in the following form.
-      \[ y = f\left(\mathbf{x}\right) = \mathbf{w}^T\mathbf{x} = \sum_{i=1}^{n}w_ix_i, \,\,\,\,\, \mathbf{x}, \mathbf{w} \in \mathbb{R}^n \]
-  
-      \item An \textit{affine} function $f$ is defined as the sum of a linear function and a constant. It can in general be represented in the form, 
-      \[ y = f\left(\mathbf{x}\right) = \mathbf{w}^T\mathbf{x} + \beta, \,\,\,\,\, \mathbf{x}, \mathbf{w} \in \mathbb{R}^n, \, \beta \in \mathbb{R} \]
-      Prove that affine functions are not linear. Prove that any affine function can be represented in the form $\mathbf{w}^T\mathbf{x} + \beta$.
-  
-      \item Consider a function $f: \mathbb{R}^3 \rightarrow \mathbb{R}$, such that,
-      \[ f\left(\begin{bmatrix*}[r]1\\0\\0\end{bmatrix*}\right) = 2; \,\,
-      f\left(\begin{bmatrix*}[r]0\\1\\0\end{bmatrix*}\right) = -3; \,\,
-      f\left(\begin{bmatrix*}[r]0\\0\\1\end{bmatrix*}\right) = 1; \,\,\]
-      Can you determine the following values of $f\left(\mathbf{x}\right)$, if you are told that $f$ is linear?
-      \[ f\left(\begin{bmatrix*}[r]2\\2\\-2\end{bmatrix*}\right) = ?; \,\,\,
-       f\left(\begin{bmatrix*}[r]-1\\2\\0\end{bmatrix*}\right) = ?; \,\,\,
-       f\left(\begin{bmatrix*}[r]0.5\\0.6\\-0.1\end{bmatrix*}\right) = ?; \,\,\,\]
-       Can you find out these values if you are told that $f$ is affine?
-      
-      \item For the previous question, (a) assume that $f$ is linear and find out $w \in \mathbb{R}^3$, such that $f\left(\mathbf{x}\right) = \mathbf{w}^T\mathbf{x}$; and (b) assume $f$ is affine and find out $\mathbf{w}, \beta$ such that $f\left(\mathbf{x}\right) = \mathbf{w}^T\mathbf{x} + \beta$.
-  
-      \item Consider the weighted norm of vector $\mathbf{v}$, defined as,
-      \[ \left\lVert \mathbf{v}\right\rVert_{\mathbf{w}}^2 = \sum_{i=1}^{n}w_iv_i^2; \,\,\,\,\, \mathbf{w}=\begin{bmatrix*}w_1\\w_2\\\vdots\\w_n\end{bmatrix*} \]
-      Is this a valid norm?\\
-  
-      \item Prove that the following modified version of the Cauchy-Bunyakovski-Schwartx Inequality is true.
-      \[ \left\lvert \sum_{i=1}^{n} u_iv_iw_i \right\rvert \leq \left\lVert \mathbf{u}\right\rVert_\mathbf{w} \left\lVert \mathbf{v}\right\rVert_\mathbf{w} \]
-  
-      \item Consider a basis $B = \left\{\mathbf{b}_i\right\}_{i=1}^{n}$ of $R^n$. Let the vector $\mathbf{x}$ with the following representations in the standard and $B$ basis.
-      \[ \mathbf{x} = \begin{bmatrix*}x_1\\x_2\\\vdots\\x_n\end{bmatrix*} = \sum_{i=1}^{n}x_i\mathbf{e}_i \,\,\,\,\, \text{and} \,\,\,\,\, \mathbf{x}_b =  \begin{bmatrix*}x_{b1}\\x_{b2}\\\vdots\\x_{bn}\end{bmatrix*} = \sum_{i=1}^{n}x_{bi}\mathbf{b}_i \]
-  
-      Evaluate the $\left\lVert \mathbf{x}\right\rVert_2^2$ and $\left\lVert \mathbf{x}_b\right\rVert_2^2$. Determined what happens to $\left\lVert \mathbf{x}_b\right\rVert_2^2$ under the following conditions on the basis vectors:
-      \begin{enumerate}
-          \item $\left\lVert \mathbf{b}_i\right\rVert = 1, \forall i$
-          \item $\left\lVert \mathbf{b}_i^T\mathbf{b}_j\right\rVert = \begin{cases}
-          1 & i = j\\
-          0 & i \neq j
-          \end{cases}$
-      \end{enumerate}
-  
-      \item Consider a set of measurements made from adult male subjects, where their height, weight and BMI (body moass index) were recorded as stored as vectors of length three; the first element is the height in $cm$, second is the weight in $Kg$, and the alst the the BMI. Consider the following four subjects,
-      \[ \mathbf{s}_1 =  \begin{bmatrix*}[r]167\\102\\36.6\end{bmatrix*}; \,\,
-      \mathbf{s}_2 =  \begin{bmatrix*}[r]180\\87\\26.9\end{bmatrix*} \]
-      \[ \mathbf{s}_3 =  \begin{bmatrix*}[r]177\\78\\24.9\end{bmatrix*}; \,\,
-      \mathbf{s}_4 =  \begin{bmatrix*}[r]152\\76\\32.9\end{bmatrix*} \]
-  
-      You can use the distance between these vectors $\left\lVert \mathbf{s}_i - \mathbf{s}_j\right\rVert_2$ as a measure of the similiarity between the the four subjects. Generate a $4 \times 4$ table comparing the distance of each subject with respect to another subject; the diagonal elements of this table will be zero, and it will be symmetric about the main diagonal. 
-  
-      (a) Based on this table, how do the different subjects compare to each other?
-  
-      (b) How do the similarities change if the height had been measured in $m$ instead of $cm$? Can you explain this difference?
-  
-      (c) Is there a way to fix this problem? Consider the weighted norm presented in one of the earlier problems.
-      \[ \left\lVert x \right\rVert_\mathbf{w} = \left(w_1x_1^2 + w_2x_2^2 + \ldots + w_nx_n^2\right)^{\frac{1}{2}} \]
-  
-      (d) What would be a good choice for $\mathbf{w}$ to address the problems with comparing distance between vectors due to change in units?
-  
-      (e) Can the angle between two vectors be used as a measure of similarity between vectors? Does this suffer from the problem of $\left\lVert \mathbf{x} \right\rVert_2$?
-  \end{enumerate}
+    \item Consider a set of finite duration discrete-time real signals 
+    \[ X_N = \lc x\dt{n} \big\vert x\dt{n} \in \mb{R}, \,\forall 0 \leq n \leq N-1\rc \]
+    
+    Does this set form a vector space? Explain your answer. Would $X_N$ still be a vector spaces if the signals were binary signals? i.e. $x\dt{n} \in \mb{B}$, where $\mb{B} = \lc 0, 1\rc$ with the binary addition and multiplication operations defined as the following,
 
-\end{multicols}
+    \begin{center}
+        \begin{minipage}[h]{.45\textwidth}
+            \centering
+            \begin{tabular}{|c|c|c|c|}
+                \hline
+                $a$ & $b$ & $a+b$ & $a \times b$ \\ \hline
+                0 & 0 & 0   & 0     \\ \hline
+                0 & 1 & 1   & 0     \\ \hline
+                1 & 0 & 1   & 0     \\ \hline
+                1 & 1 & 0   & 1     \\ \hline
+            \end{tabular}\\
+            \captionof{table}{\small{Addition and Multiplication operation for binary numbers.}}
+        \end{minipage}
+    \end{center}
+        
+    \item Prove the following for $\mf{x}, \mf{y} \in \mathbb{R}^n$,
+    \begin{enumerate}
+        \item {\small \textbf{Triangle Inequality}}:
+        \[ \left\lVert \mf{x} + \mf{y}\right\rVert \leq \left\lVert \mf{x}\right\rVert + \left\lVert \mf{y}\right\rVert \]
+        \item {\small \textbf{Backward Triangle Inequality}}:
+        \[ \left\lVert \mf{x} - \mf{y}\right\rVert  \geq \left\lvert \left\lVert \mf{x}\right\rVert - \left\lVert \mf{y}\right\rVert \right\rvert \]
+        \item {\small \textbf{Parallelogram Identity}}:
+        \[ \frac{1}{2} \left(\left\lVert \mf{x} + \mf{y}\right\rVert^2 + \left\lVert \mf{x} - \mf{y}\right\rVert^2 \right) = \left\lVert \mf{x}\right\rVert^2 + \left\lVert \mf{y}\right\rVert^2 \]
+    \end{enumerate}
+
+    \item Consider a set of vectors $\mf{x}, \mf{y} \in \mathbb{R}^n$. When is $\left\lVert \mf{x} - \mf{y} \right\rVert = \left\lVert \mf{x} + \mf{y}\right\rVert$? What can you say about the geometry of the vectors $\mf{x},\,\mf{y},\,\mf{x} - \mf{y}$ and $\mf{x} + \mf{y}$?
+    
+    \item If $S_1, S_2 \subseteq V$ are subspaces of $V$, the is $S_1 \cap S_2$ a subspace? Demonstrate your answer.
+    
+    \item Prove that the sum of two subspaces $S_1, S_2 \subseteq V$ is a subspace.
+    
+    \item Consider a vector $\mf{v} = \begin{bmatrix*}v_1 & v_2 & \cdots & v_n\end{bmatrix*}^\top$. Express the following in-terms of inner product between a constant vector $\mf{u}$ and the given vector $\mf{v}$, and in each case specify the vector $\mf{u}$.
+    \begin{enumerate}
+        \item $\sum_{i=1}^n v_i$
+        \item $\frac{1}{n}\sum_{i=1}^n v_i$
+        \item $\frac{1}{5}\sum_{i=3}^5 v_i$
+    \end{enumerate} 
+    
+    \item Which of the following are linear functions of $\left\{x_1, x_2, \ldots,x_n\right\}$?
+    \begin{enumerate}
+        \item $\min_i \left\{x_i\right\}_{i=1}^{n}$
+        \item $\left(\sum_{i=1}^n x_i^2\right)^{1/2}$
+        \item $x_6$
+    \end{enumerate}
+    
+    \item Consider a linear function $f: \mathbb{R}^n \rightarrow \mathbb{R}$. Prove that every linear function of this form can be represented in the following form.
+    \[ y = f\left(\mf{x}\right) = \mf{w}^\top\mf{x} = \sum_{i=1}^{n}w_ix_i, \,\,\,\,\, \mf{x}, \mf{w} \in \mathbb{R}^n \]
+
+    \item An \textit{affine} function $f$ is defined as the sum of a linear function and a constant. It can in general be represented in the form, 
+    \[ y = f\left(\mf{x}\right) = \mf{w}^\top\mf{x} + \beta, \,\,\,\,\, \mf{x}, \mf{w} \in \mathbb{R}^n, \, \beta \in \mathbb{R} \]
+    Prove that affine functions are not linear. Prove that any affine function can be represented in the form $\mf{w}^\top\mf{x} + \beta$.
+
+    % \item Consider a function $f: \mathbb{R}^3 \rightarrow \mathbb{R}$, such that,
+    % \[ f\left(\begin{bmatrix*}[r]1\\0\\0\end{bmatrix*}\right) = 2; \,\,
+    % f\left(\begin{bmatrix*}[r]0\\1\\0\end{bmatrix*}\right) = -3; \,\,
+    % f\left(\begin{bmatrix*}[r]0\\0\\1\end{bmatrix*}\right) = 1; \,\,\]
+    % Can you determine the following values of $f\left(\mf{x}\right)$, if you are told that $f$ is linear?
+    % \[ f\left(\begin{bmatrix*}[r]2\\2\\-2\end{bmatrix*}\right) = ?; \,\,\,
+    % f\left(\begin{bmatrix*}[r]-1\\2\\0\end{bmatrix*}\right) = ?; \,\,\,
+    % f\left(\begin{bmatrix*}[r]0.5\\0.6\\-0.1\end{bmatrix*}\right) = ?; \,\,\,\]
+    % Can you find out these values if you are told that $f$ is affine?
+    
+    % \item For the previous question, (a) assume that $f$ is linear and find out $\mf{w} \in \mathbb{R}^3$, such that $f\left(\mf{x}\right) = \mf{w}^\top\mf{x}$; and (b) assume $f$ is affine and find out $\mf{w}, \beta$ such that $f\left(\mf{x}\right) = \mf{w}^\top\mf{x} + \beta$.
+
+    % \item Consider the weighted norm of vector $\mf{v}$, defined as,
+    % \[ \lVert \mf{v} \rVert_{\mf{w}}^2 = \sum_{i=1}^{n}w_iv_i^2; \quad \mf{w}=\begin{bmatrix*} w_1 & w_2 & \cdots & w_n\end{bmatrix*}^\top, w_i > 0 \,\, \forall i \]
+    % Is this a valid norm?\\
+
+    % \item Prove that the following modified version of the Cauchy-Bunyakovski-Schwartx Inequality is true.
+    % \[ \left\lvert \sum_{i=1}^{n} u_i v_i w_i \right\rvert \leq \left\lVert \mf{u}\right\rVert_\mf{w} \left\lVert \mf{v}\right\rVert_\mf{w} \]
+
+    \item Consider a basis $B = \left\{\mf{b}_i\right\}_{i=1}^{n}$ of $\mb{R}^n$. Let the vector $\mf{x}$ with the following representations in the standard and $B$ basis.
+    \[ \mf{x} = \begin{bmatrix*}x_1\\x_2\\\vdots\\x_n\end{bmatrix*} = \sum_{i=1}^{n}x_i\mf{e}_i \,\,\,\,\, \text{and} \,\,\,\,\, \mf{x}_b =  \begin{bmatrix*}x_{b1}\\x_{b2}\\\vdots\\x_{bn}\end{bmatrix*} = \sum_{i=1}^{n}x_{bi}\mf{b}_i \]
+
+    Evaluate the $\left\lVert \mf{x}\right\rVert_2^2$ and $\left\lVert \mf{x}_b\right\rVert_2^2$. Determined what happens to $\left\lVert \mf{x}_b\right\rVert_2^2$ under the following conditions on the basis vectors:
+    \begin{enumerate}
+        \item $\left\lVert \mf{b}_i\right\rVert = 1, \forall i$
+        \item $\left\lVert \mf{b}_i^\top\mf{b}_j\right\rVert = \begin{cases}
+        1 & i = j\\
+        0 & i \neq j
+        \end{cases}$
+    \end{enumerate}
+
+    \item Consider a set of measurements made from adult male subjects, where their height, weight and BMI (body moass index) were recorded as stored as vectors of length three; the first element is the height in $cm$, second is the weight in $Kg$, and the alst the the BMI. Consider the following four subjects,
+    \[ \mf{s}_1 =  \begin{bmatrix*}[r]167\\102\\36.6\end{bmatrix*}; \,\,
+    \mf{s}_2 =  \begin{bmatrix*}[r]180\\87\\26.9\end{bmatrix*} \]
+    \[ \mf{s}_3 =  \begin{bmatrix*}[r]177\\78\\24.9\end{bmatrix*}; \,\,
+    \mf{s}_4 =  \begin{bmatrix*}[r]152\\76\\32.9\end{bmatrix*} \]
+
+    You can use the distance between these vectors $\left\lVert \mf{s}_i - \mf{s}_j\right\rVert_2$ as a measure of the similiarity between the the four subjects. Generate a $4 \times 4$ table comparing the distance of each subject with respect to another subject; the diagonal elements of this table will be zero, and it will be symmetric about the main diagonal. 
+
+    (a) Based on this table, how do the different subjects compare to each other?
+
+    (b) How do the similarities change if the height had been measured in $m$ instead of $cm$? Can you explain this difference?
+
+    (c) Is there a way to fix this problem? Consider the weighted norm presented in one of the earlier problems.
+    \[ \left\lVert x \right\rVert_\mf{w} = \left(w_1x_1^2 + w_2x_2^2 + \ldots + w_nx_n^2\right)^{\frac{1}{2}} \]
+
+    (d) What would be a good choice for $\mf{w}$ to address the problems with comparing distance between vectors due to change in units?
+
+    (e) Can the angle between two vectors be used as a measure of similarity between vectors? Does this suffer from the problem of $\left\lVert \mf{x} \right\rVert_2$?
+\end{enumerate}
+
 \end{document}

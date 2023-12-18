@@ -308,3 +308,4 @@ TSWLatexianTemp*
 *.zip
 output/
 data/
+private/
