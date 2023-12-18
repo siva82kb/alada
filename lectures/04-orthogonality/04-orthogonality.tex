@@ -159,7 +159,7 @@
 \end{center}
 
 \item The set of non-zero vectors, $V = \left\{\mf{v}_1, \mf{v}_2, \mf{v}_3, \ldots, \mf{v}_r\right\}$ is a set of mutually orthogonal vectors, if and only if,
-$$\mf{v}_i^\top\mf{v}_j = 0, \,\,\, 1 \leq i, j \leq r \text{ and } i \neq j$$
+\[ \mf{v}_i^\top\mf{v}_j = 0, \,\,\, 1 \leq i, j \leq r \text{ and } i \neq j \]
 
 \item $V$ is also a linearly independent set of vectors. Why?
 
@@ -258,10 +258,10 @@ $\left\lVert \mf{e}\right\rVert$ is the distance of the point $\mf{b}$ from the 
 \begin{frame}[t]{Relationship between the Four Fundamental Subspaces of $\mf{A}$}
 \begin{itemize}
     \item $\mc{C}\lp\mf{A}\rp, \mc{N}\lp\mf{A}^\top\rp \subseteq \mb{R}^m$ are orthogonal complements.
-    $$\mc{C}\lp\mf{A}\rp \perp \mc{N}\lp\mf{A}^\top\rp \implies \mc{C}\lp\mf{A}\rp + \mc{N}\lp\mf{A}^\top\rp = \mb{R}^m$$
+    \[ \mc{C}\lp\mf{A}\rp \perp \mc{N}\lp\mf{A}^\top\rp \implies \mc{C}\lp\mf{A}\rp + \mc{N}\lp\mf{A}^\top\rp = \mb{R}^m \]
 
     \item $\mc{C}\lp\mf{A}^\top\rp, \mc{N}\lp\mf{A}\rp \subseteq \mb{R}^n$ are orthogonal complements.
-    $$\mc{C}\lp\mf{A}^\top\rp \perp \mc{N}\lp\mf{A}\rp \implies \mc{C}\lp\mf{A}^\top\rp + \mc{N}\lp\mf{A}\rp = \mb{R}^n$$
+    \[ \mc{C}\lp\mf{A}^\top\rp \perp \mc{N}\lp\mf{A}\rp \implies \mc{C}\lp\mf{A}^\top\rp + \mc{N}\lp\mf{A}\rp = \mb{R}^n  \]
 \end{itemize}
 \end{frame}
 
@@ -392,7 +392,7 @@ $\left\lVert \mf{e}\right\rVert$ is the distance of the point $\mf{b}$ from the 
 
 
 \begin{frame}[t]{$\mf{QR}$ Decomposition}
-$$\mf{A} = \mf{QR}; \,\,\, \mf{A}, \mf{Q} \in \mb{R}^{m \times n},\,\, \mf{R} \in \mb{R}^{n \times n}$$
+\[ \mf{A} = \mf{QR}; \,\,\, \mf{A}, \mf{Q} \in \mb{R}^{m \times n},\,\, \mf{R} \in \mb{R}^{n \times n} \]
 \begin{itemize}
     \item The columns of $\mf{Q}$ form an orthonormal basis for $\mc{C}\lp \mf{A}\rp$, and $\mf{R}$ is upper-triangular.
     \item $\mf{A} = \mf{QR}$ can be used for used to solve $\mf{Ax} = \mf{b}$.
