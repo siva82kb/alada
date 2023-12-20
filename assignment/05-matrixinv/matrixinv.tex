@@ -1,14 +1,14 @@
-\documentclass[9pt]{article}
+\documentclass[12pt]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
 \geometry{
     a4paper,
     total={170mm,257mm},
-    left=15mm,
-    right=15mm,
-    top=20mm,
-    bottom=20mm,
+    left=25mm,
+    right=25mm,
+    top=25mm,
+    bottom=25mm,
 }
 \usepackage{multicol}
 \usepackage[font=small,labelfont=bf]{caption}
@@ -63,19 +63,20 @@
 \newcommand{\ct}[1]{\lp #1\rp}
 \newcommand{\dt}[1]{\ls #1\rs}
 
-\renewcommand{\familydefault}{\sfdefault}
+% \renewcommand{\familydefault}{\sfdefault}
 
 \begin{document}
 \begin{center}
 \begin{Large}
-\textbf{Linear Systems: Matrix Inverse Assignment}
+\textbf{Applied Linear Algebra in Data Analaysis}\\
+\vspace{0.1cm}
+\textbf{Matris Inverses Assignment}
 \end{Large}
 \end{center}
+\hrule
 \vspace{0.2cm}
 
-\begin{multicols}{2}
-
-\begin{enumerate}[resume]
+\begin{enumerate}
     \item Consider the following bases for $\mb{R}^3$.
     \[ A^S = \lc \frac{1}{\sqrt{3}}\bmx1 \\ 1 \\ 1\emx, \frac{1}{\sqrt{6}}\bmx-1 \\ 2 \\ -1\emx, \frac{1}{\sqrt{2}}\bmx1 \\ 0 \\ -1\emx \rc \]
     \[ B^A = \lc \frac{1}{\sqrt{5}}\bmx2 \\ 1 \\ 0\emx, \frac{1}{\sqrt{5}}\bmx-1 \\ 2 \\ 0\emx, \bmx0 \\ 0 \\ 1\emx \rc \]
@@ -90,11 +91,10 @@
 
     \item When does the following diagnoal matrix have an inverse?
     \[ \mf{D} = \begin{bmatrix*}
-    d_1 & 0 & 0 & \ldots & 0\\
-    0 & d_2 & 0 & \ldots & 0\\
-    0 & 0 & d_3 & \ldots & 0\\
-    \vdots & \vdots & \vdots & \ddots & \vdots\\
-    0 & 0 & 0 & \ldots & d_n\\\end{bmatrix*} \]
+    d_1 & 0 & \cdots & 0\\
+    0 & d_2 & \cdots & 0\\
+    \vdots & \vdots & \ddots & \vdots\\
+    0 & 0 & \cdots & d_n\\\end{bmatrix*} \]
     Write down an expression for $D^{-1}$.
     
     \item Prove that the inverse of a non-singular upper-triangular matrix is upper-triangular. Using this show that for a lower triangular matrix it is lower-triangular.
@@ -146,15 +146,11 @@
 
     \item Consider a matrix $\mf{C} = \mf{A}\mf{B}$, where $\mf{A} \in \mf{R}^{m \times n}$ and $\mf{B} \in \mf{R}^{n \times m}$. Explain why $\mf{C}$ is not invertible when $m > n$. Suppose $m < n$, under what conditions is $\mf{C}$ invertible?
 
-    % \item For a non-singular square matrix $\mf{A}$, prove that $\lp\mf{A}^T\rp^{-1} = \lp\mf{A}^{-1}\rp^T$.
-
-    \item For a square matrix $\mf{A}$ with non-signular $\mf{I} - \mf{A}$, prove that $\mf{A}\lp\mf{I} - \mf{A}\rp^{-1} = \lp\mf{I} - \mf{A}\rp^{-1}\mf{A}$.
+    \item For a square matrix $\mf{A}$ with non-signular $\mf{I} - \mf{A}$, prove that,
+    \[ \mf{A}\lp\mf{I} - \mf{A}\rp^{-1} = \lp\mf{I} - \mf{A}\rp^{-1}\mf{A} \]
 
     \item Consider the non-singular matrices $\mf{A}$, $\mf{B}$ and $\mf{A} + \mf{B}$. Prove that,
     \[ \mf{A}\lp\mf{A} + \mf{B}\rp^{-1}\mf{B} = \mf{B}\lp\mf{A} + \mf{B}\rp^{-1}\mf{A} = \lp\mf{A}^{-1} + \mf{B}^{-1}\rp^{-1} \]
-
 \end{enumerate}
 
-
-\end{multicols}
 \end{document}
