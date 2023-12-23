@@ -67,20 +67,25 @@
 
 \begin{document}
 \begin{center}
-\begin{Large}
+\begin{large}
 \textbf{Applied Linear Algebra in Data Analaysis}\\
 \vspace{0.1cm}
+\end{large}
 \textbf{Vectors Assignment}
-\end{Large}
 \end{center}
 \hrule
+\vspace{1em}
 
-\vspace{0.2cm}
+\begin{large}
+    \textbf{Marks: 32}
+\end{large}
 
 \begin{enumerate}
-    \item Is this set of vectors $\left\{\begin{bmatrix}2 \\ 1 \\ 1\end{bmatrix}, \begin{bmatrix}0 \\ 0\\ 0\end{bmatrix}, \begin{bmatrix}0 \\ 1 \\ 0\end{bmatrix}\right\}$ independent? Explain your answer.
+    \item Is this set of vectors $\left\{\begin{bmatrix}2 \\ 1 \\ 1\end{bmatrix}, \begin{bmatrix}0 \\ 0\\ 0\end{bmatrix}, \begin{bmatrix}0 \\ 1 \\ 0\end{bmatrix}\right\}$ independent? 
+    
+    Explain your answer. \textbf{[Marks: 2]}
 
-    \item Consider a set of finite duration discrete-time real signals 
+    \item Consider a set of finite duration discrete-time real signals \textbf{[Marks: 2]}
     \[ X_N = \lc x\dt{n} \big\vert x\dt{n} \in \mb{R}, \,\forall 0 \leq n \leq N-1\rc \]
     
     Does this set form a vector space? Explain your answer. Would $X_N$ still be a vector spaces if the signals were binary signals? i.e. $x\dt{n} \in \mb{B}$, where $\mb{B} = \lc 0, 1\rc$ with the binary addition and multiplication operations defined as the following,
@@ -102,40 +107,40 @@
         
     \item Prove the following for $\mf{x}, \mf{y} \in \mathbb{R}^n$,
     \begin{enumerate}
-        \item {\small \textbf{Triangle Inequality}}:
+        \item {\small \textbf{Triangle Inequality}}: \textbf{[Marks: 1]}
         \[ \left\lVert \mf{x} + \mf{y}\right\rVert \leq \left\lVert \mf{x}\right\rVert + \left\lVert \mf{y}\right\rVert \]
-        \item {\small \textbf{Backward Triangle Inequality}}:
+        \item {\small \textbf{Backward Triangle Inequality}}: \textbf{[Marks: 1]}
         \[ \left\lVert \mf{x} - \mf{y}\right\rVert  \geq \left\lvert \left\lVert \mf{x}\right\rVert - \left\lVert \mf{y}\right\rVert \right\rvert \]
-        \item {\small \textbf{Parallelogram Identity}}:
+        \item {\small \textbf{Parallelogram Identity}}: \textbf{[Marks: 1]}
         \[ \frac{1}{2} \left(\left\lVert \mf{x} + \mf{y}\right\rVert^2 + \left\lVert \mf{x} - \mf{y}\right\rVert^2 \right) = \left\lVert \mf{x}\right\rVert^2 + \left\lVert \mf{y}\right\rVert^2 \]
     \end{enumerate}
 
-    \item Consider a set of vectors $\mf{x}, \mf{y} \in \mathbb{R}^n$. When is $\left\lVert \mf{x} - \mf{y} \right\rVert = \left\lVert \mf{x} + \mf{y}\right\rVert$? What can you say about the geometry of the vectors $\mf{x},\,\mf{y},\,\mf{x} - \mf{y}$ and $\mf{x} + \mf{y}$?
+    \item Consider a set of vectors $\mf{x}, \mf{y} \in \mathbb{R}^n$. When is $\left\lVert \mf{x} - \mf{y} \right\rVert = \left\lVert \mf{x} + \mf{y}\right\rVert$? What can you say about the geometry of the vectors $\mf{x},\,\mf{y},\,\mf{x} - \mf{y}$ and $\mf{x} + \mf{y}$? \textbf{[Marks: 2]}
     
-    \item If $S_1, S_2 \subseteq V$ are subspaces of $V$, the is $S_1 \cap S_2$ a subspace? Demonstrate your answer.
+    \item If $S_1, S_2 \subseteq V$ are subspaces of $V$, the is $S_1 \cap S_2$ a subspace? Demonstrate your answer. \textbf{[Marks: 2]}
     
-    \item Prove that the sum of two subspaces $S_1, S_2 \subseteq V$ is a subspace.
+    \item Prove that the sum of two subspaces $S_1, S_2 \subseteq V$ is a subspace. \textbf{[Marks: 1]}
     
-    \item Consider a vector $\mf{v} = \begin{bmatrix*}v_1 & v_2 & \cdots & v_n\end{bmatrix*}^\top$. Express the following in-terms of inner product between a constant vector $\mf{u}$ and the given vector $\mf{v}$, and in each case specify the vector $\mf{u}$.
+    \item Consider a vector $\mf{v} = \begin{bmatrix*}v_1 & v_2 & \cdots & v_n\end{bmatrix*}^\top$. Express the following in-terms of inner product between a constant vector $\mf{u}$ and the given vector $\mf{v}$, and in each case specify the vector $\mf{u}$. \textbf{[Marks: 3]}
     \begin{enumerate}
         \item $\sum_{i=1}^n v_i$
         \item $\frac{1}{n}\sum_{i=1}^n v_i$
         \item $\frac{1}{5}\sum_{i=3}^5 v_i$
     \end{enumerate} 
     
-    \item Which of the following are linear functions of $\left\{x_1, x_2, \ldots,x_n\right\}$?
+    \item Which of the following are linear functions of $\left\{x_1, x_2, \ldots,x_n\right\}$? \textbf{[Marks: 3]}
     \begin{enumerate}
         \item $\min_i \left\{x_i\right\}_{i=1}^{n}$
         \item $\left(\sum_{i=1}^n x_i^2\right)^{1/2}$
         \item $x_6$
     \end{enumerate}
     
-    \item Consider a linear function $f: \mathbb{R}^n \rightarrow \mathbb{R}$. Prove that every linear function of this form can be represented in the following form.
+    \item Consider a linear function $f: \mathbb{R}^n \rightarrow \mathbb{R}$. Prove that every linear function of this form can be represented in the following form. \textbf{[Marks: 2]}
     \[ y = f\left(\mf{x}\right) = \mf{w}^\top\mf{x} = \sum_{i=1}^{n}w_ix_i, \,\,\,\,\, \mf{x}, \mf{w} \in \mathbb{R}^n \]
 
     \item An \textit{affine} function $f$ is defined as the sum of a linear function and a constant. It can in general be represented in the form, 
     \[ y = f\left(\mf{x}\right) = \mf{w}^\top\mf{x} + \beta, \,\,\,\,\, \mf{x}, \mf{w} \in \mathbb{R}^n, \, \beta \in \mathbb{R} \]
-    Prove that affine functions are not linear. Prove that any affine function can be represented in the form $\mf{w}^\top\mf{x} + \beta$.
+    Prove that affine functions are not linear. Prove that any affine function can be represented in the form $\mf{w}^\top\mf{x} + \beta$. \textbf{[Marks: 2]}
 
     % \item Consider a function $f: \mathbb{R}^3 \rightarrow \mathbb{R}$, such that,
     % \[ f\left(\begin{bmatrix*}[r]1\\0\\0\end{bmatrix*}\right) = 2; \,\,
@@ -156,10 +161,10 @@
     % \item Prove that the following modified version of the Cauchy-Bunyakovski-Schwartx Inequality is true.
     % \[ \left\lvert \sum_{i=1}^{n} u_i v_i w_i \right\rvert \leq \left\lVert \mf{u}\right\rVert_\mf{w} \left\lVert \mf{v}\right\rVert_\mf{w} \]
 
-    \item Consider a basis $B = \left\{\mf{b}_i\right\}_{i=1}^{n}$ of $\mb{R}^n$. Let the vector $\mf{x}$ with the following representations in the standard and $B$ basis.
+    \item Consider a basis $B = \left\{\mf{b}_i\right\}_{i=1}^{n}$ of $\mb{R}^n$. Let the vector $\mf{x}$ with the following representations in the standard and $B$ basis. 
     \[ \mf{x} = \begin{bmatrix*}x_1\\x_2\\\vdots\\x_n\end{bmatrix*} = \sum_{i=1}^{n}x_i\mf{e}_i \,\,\,\,\, \text{and} \,\,\,\,\, \mf{x}_b =  \begin{bmatrix*}x_{b1}\\x_{b2}\\\vdots\\x_{bn}\end{bmatrix*} = \sum_{i=1}^{n}x_{bi}\mf{b}_i \]
 
-    Evaluate the $\left\lVert \mf{x}\right\rVert_2^2$ and $\left\lVert \mf{x}_b\right\rVert_2^2$. Determined what happens to $\left\lVert \mf{x}_b\right\rVert_2^2$ under the following conditions on the basis vectors:
+    Evaluate the $\left\lVert \mf{x}\right\rVert_2^2$ and $\left\lVert \mf{x}_b\right\rVert_2^2$. Determined what happens to $\left\lVert \mf{x}_b\right\rVert_2^2$ under the following conditions on the basis vectors: \textbf{[Marks: 2]}
     \begin{enumerate}
         \item $\left\lVert \mf{b}_i\right\rVert = 1, \forall i$
         \item $\left\lVert \mf{b}_i^\top\mf{b}_j\right\rVert = \begin{cases}
@@ -168,7 +173,7 @@
         \end{cases}$
     \end{enumerate}
 
-    \item Consider a set of measurements made from adult male subjects, where their height, weight and BMI (body moass index) were recorded as stored as vectors of length three; the first element is the height in $cm$, second is the weight in $Kg$, and the alst the the BMI. Consider the following four subjects,
+    \item \textcolor{blue}{\textbf{[Programming]}} Consider a set of measurements made from adult male subjects, where their height, weight and BMI (body moass index) were recorded as stored as vectors of length three; the first element is the height in $cm$, second is the weight in $Kg$, and the alst the the BMI. Consider the following four subjects,
     \[ \mf{s}_1 =  \begin{bmatrix*}[r]167\\102\\36.6\end{bmatrix*}; \,\,
     \mf{s}_2 =  \begin{bmatrix*}[r]180\\87\\26.9\end{bmatrix*} \]
     \[ \mf{s}_3 =  \begin{bmatrix*}[r]177\\78\\24.9\end{bmatrix*}; \,\,
@@ -176,16 +181,16 @@
 
     You can use the distance between these vectors $\left\lVert \mf{s}_i - \mf{s}_j\right\rVert_2$ as a measure of the similiarity between the the four subjects. Generate a $4 \times 4$ table comparing the distance of each subject with respect to another subject; the diagonal elements of this table will be zero, and it will be symmetric about the main diagonal. 
 
-    (a) Based on this table, how do the different subjects compare to each other?
+    (a) Based on this table, how do the different subjects compare to each other?  \textbf{[Marks: 1]}
 
-    (b) How do the similarities change if the height had been measured in $m$ instead of $cm$? Can you explain this difference?
+    (b) How do the similarities change if the height had been measured in $m$ instead of $cm$? Can you explain this difference?  \textbf{[Marks: 1]}
 
-    (c) Is there a way to fix this problem? Consider the weighted norm presented in one of the earlier problems.
-    \[ \left\lVert x \right\rVert_\mf{w} = \left(w_1x_1^2 + w_2x_2^2 + \ldots + w_nx_n^2\right)^{\frac{1}{2}} \]
+    (c) Is there a way to fix this problem? Consider the weighted norm presented in one of the earlier problems.  \textbf{[Marks: 1]}
+    \[ \left\lVert x \right\rVert_\mf{w} = \left(w_1 x_1^2 + w_2 x_2^2 + \cdots + w_n x_n^2\right)^{\frac{1}{2}} \]
 
-    (d) What would be a good choice for $\mf{w}$ to address the problems with comparing distance between vectors due to change in units?
+    (d) What would be a good choice for $\mf{w}$ to address the problems with comparing distance between vectors due to change in units? \textbf{[Marks: 2]}
 
-    (e) Can the angle between two vectors be used as a measure of similarity between vectors? Does this suffer from the problem of $\left\lVert \mf{x} \right\rVert_2$?
+    (e) Can the angle between two vectors be used as a measure of similarity between vectors? Does this suffer from the problem of $\left\lVert \mf{x} \right\rVert_2$?  \textbf{[Marks: 2]}
 \end{enumerate}
 
 \end{document}

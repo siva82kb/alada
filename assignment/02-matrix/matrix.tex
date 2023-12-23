@@ -67,91 +67,96 @@
 
 \begin{document}
 \begin{center}
-\begin{Large}
-\textbf{Applied Linear Algebra in Data Analaysis}\\
-\vspace{0.1cm}
-\textbf{Matrices Assignment}
-\end{Large}
+    \begin{large}
+        \textbf{Applied Linear Algebra in Data Analaysis}\\
+        \vspace{0.1cm}
+    \end{large}
+    \textbf{Matrices Assignment}
 \end{center}
 \hrule
-\vspace{0.2cm}
+\vspace{1em}
+
+\begin{large}
+    \textbf{Marks: 29}
+\end{large}
 
 \begin{enumerate}
-\item Elements of the matrix $\mf{C} \in \mb{R}^{m \times n}$ obtained as the product of two matrices $\mf{A} \in \mb{R}^{m \times p}$ and $\mf{B} \in \mb{R}^{p \times n}$ is given by,
-\[ c_{ij} = \sum_{k=1}^{p}a_{ik}b_{kj} \]
-We had discussed four different ways to think of matrix multiplication. By algebraically manipulating the previous equation arrive at these four views (inner product view, column view, row view and outer product view)? 
+    \item Elements of the matrix $\mf{C} \in \mb{R}^{m \times n}$ obtained as the product of two matrices $\mf{A} \in \mb{R}^{m \times p}$ and $\mf{B} \in \mb{R}^{p \times n}$ is given by,
+    \[ c_{ij} = \sum_{k=1}^{p}a_{ik}b_{kj} \]
+    We had discussed four different ways to think of matrix multiplication. By algebraically manipulating the previous equation arrive at these four views (inner product view, column view, row view and outer product view)?  \textbf{[Marks: 4]}
+    
+    \item \textbf{Computational cost of different operations.} What is computational cost of the following matrix operations? Computational cost refers to the number of arithmetic operations  required to carry out a particular matrix operation. Computational cost is a measure of the efficiency of an algorithm. For example, the consider the operation of vector addition, $\mf{a} + \mf{b}$, where $\mf{a}, \mf{b} \in \mb{R}^n$. This requires $n$ addition/subtraction operations and zero multiplication/division operations.
+    \begin{enumerate}
+        \item Matrix multiplication: $\mf{AB}$, where $\mf{A}, \mf{B} \in \mb{R}^{n \times n}$
+        \item Inner product: $\mf{u}^T\mf{v}$
+    \end{enumerate} 
+    Report the counts for the addition/subtraction and multiplication/division operations separately. \textbf{[Marks: 2]}
+    
+    \item Prove $\ct{\mf{A}\mf{B}}^T = \mf{B}^T\mf{A}^T$.  \textbf{[Marks: 1]}
+    
+    \item Derive the inverse of the matrix $\mf{A} = \begin{bmatrix}a & b\\c & d\end{bmatrix}$.  \textbf{[Marks: 1]}
+    
+    \item Consider the following matrix,
+    \[ \mf{A} = \bmx \frac{\sqrt{3}}{2} & -\frac{1}{2}\\\frac{1}{2} & \frac{\sqrt{3}}{2} \emx \bmx 0.1 & 0\\0 & 0.9 \emx \bmx \frac{\sqrt{3}}{2} & \frac{1}{2}\\-\frac{1}{2} & \frac{\sqrt{3}}{2} \emx \]
+    Find out the expression for $\mf{A}_n = \mf{A}^n$. What is $\mf{A}_\infty = \lim_{n\to\infty} \mf{A}^n$?  \textbf{[Marks: 2]}
 
-\item \textbf{Computational cost of different operations.} What is computational cost of the following matrix operations? Computational cost refers to the number of arithmetic operations  required to carry out a particular matrix operation. Computational cost is a measure of the efficiency of an algorithm. For example, the consider the operation of vector addition, $\mf{a} + \mf{b}$, where $\mf{a}, \mf{b} \in \mb{R}^n$. This requires $n$ addition/subtraction operations and zero multiplication/division operations.
-\begin{enumerate}
-    \item Matrix multiplication: $\mf{AB}$, where $\mf{A}, \mf{B} \in \mb{R}^{n \times n}$
-    \item Inner product: $\mf{u}^T\mf{v}$
-\end{enumerate} 
-Report the counts for the addition/subtraction and multiplication/division operations separately. 
+    \item Prove that a matrix $\mf{M} \in \mathbb{R}^{n \times n}$ can always be written as a sum a symmetric matrix $\mf{S}$ and a skew-symmetric matrix $\mf{A}$.
+    \[ \mf{M} = \mf{S} + \mf{A}, \,\,\, \mf{S}^T = \mf{S} \, \text{ and } \, \mf{A}^T = -\mf{A} \]
 
-\item Prove $\ct{\mf{A}\mf{B}}^T = \mf{B}^T\mf{A}^T$.
+    Does this property also hold for a complex matrix $\mf{M} \in \mb{C}^{n \times n}$?  \textbf{[Marks: 1]}
 
-\item Consider the following matrix,
-\[ \mf{A} = \bmx \frac{\sqrt{3}}{2} & -\frac{1}{2}\\\frac{1}{2} & \frac{\sqrt{3}}{2} \emx \bmx 0.1 & 0\\0 & 0.9 \emx \bmx \frac{\sqrt{3}}{2} & \frac{1}{2}\\-\frac{1}{2} & \frac{\sqrt{3}}{2} \emx \]
-Find out the expression for $\mf{A}_n = \mf{A}^n$. What is $\mf{A}_\infty = \lim_{n\to\infty} \mf{A}^n$?
+    \item The trace of a matrix $\mf{A} \in \mb{R}^{n \times n}$ is defined as, $trace\left(\mf{A}\right) = \sum_{i=1}^{n}a_{ii}$. Prove the following,  \textbf{[Marks: 3]}
+    \begin{enumerate}
+        \item $trace\left(\mf{A}\right)$ is a linear function of $\mf{A}$.
+        \item $trace\left(\mf{AB}\right) = trace\left(\mf{BA}\right)$
+        \item $trace\left(\mf{A}^T\mf{A}\right) = 0 \implies \mf{A} = 0$
+    \end{enumerate}
 
-\item Prove that a matrix $\mf{M} \in \mathbb{R}^{n \times n}$ can always be written as a sum a symmetric matrix $\mf{S}$ and a skew-symmetric matrix $\mf{A}$.
-\[ \mf{M} = \mf{S} + \mf{A}, \,\,\, \mf{S}^T = \mf{S} \, \text{ and } \, \mf{A}^T = -\mf{A} \]
+    \item Prove that the rank of an outer product $\mf{x}\mf{y}^T$ is 1, where $\mf{x},\mf{y} \in \mb{R}^n$ and $\mf{x}, \mf{y} \neq \mf{0}$.  \textbf{[Marks: 1]}
 
-Does this property also hold for a complex matrix $\mf{M} \in \mb{C}^{n \times n}$?
-\item The trace of a matrix $\mf{A} \in \mb{R}^{n \times n}$ is defined as, $trace\left(\mf{A}\right) = \sum_{i=1}^{n}a_{ii}$. Prove the following,
-\begin{enumerate}
-    \item $trace\left(\mf{A}\right)$ is a linear function of $\mf{A}$.
-    \item $trace\left(\mf{AB}\right) = trace\left(\mf{BA}\right)$
-    \item $trace\left(\mf{A}^T\mf{A}\right) = 0 \implies \mf{A} = 0$
-\end{enumerate}
+    % \item Is there a relationship between the space of solutions to the following two equations? 
+    % \[ \mf{y}^T\mf{A} = \mf{c}^T \,\,\,\, \text{ and } \,\,\,\,\, \mf{A}\mf{x} = \mf{b} \]
+    % If so, how are they related?
 
-\item Prove that the rank of an outer product $\mf{x}\mf{y}^T$ is 1, where $\mf{x},\mf{y} \in \mb{R}^n$ and $\mf{x}, \mf{y} \neq \mf{0}$.
+    \item Consider an upper triangular and lower triangular matrices $\mf{U}$ and $\mf{L}$, respectively.   \textbf{[Marks: 3]}
+    \begin{enumerate}
+        \item Is the product of two upper triangular matrices $\mf{U}_1\mf{U}_2$ upper triangular?
+        \item Is the product of two lower triangular matrices $\mf{L}_1\mf{L}_2$ upper triangular?
+        \item What is the $trace\lp \mf{L}\mf{U} \rp$?
+    \end{enumerate}
 
-\item Is there a relationship between the space of solutions to the following two equations? 
-\[ \mf{y}^T\mf{A} = \mf{c}^T \,\,\,\, \text{ and } \,\,\,\,\, \mf{A}\mf{x} = \mf{b} \]
-If so, how are they related?
+    \item For a $n \times n$ square matrix $\mf{A}$, prove that if $\mf{A}\mf{X} = \mf{I}$, then $\mf{X}\mf{A} = \mf{I}$ and $\mf{X} = \mf{A}^{-1}$.  \textbf{[Marks: 1]}
 
-\item Consider an upper triangular and lower triangular matrices $\mf{U}$ and $\mf{L}$, respectively. 
-\begin{enumerate}
-    \item Is the product of two upper triangular matrices $\mf{U}_1\mf{U}_2$ upper triangular?
-    \item Is the product of two lower triangular matrices $\mf{L}_1\mf{L}_2$ upper triangular?
-    \item What is the $trace\lp \mf{L}\mf{U} \rp$?
-\end{enumerate}
+    \item Prove the following for the non-singular square matrices $\mf{A}$ and $\mf{B}$:  \textbf{[Marks: 4]}
+    \begin{enumerate}
+        \item $\mf{A}\mf{B}$ is non-singular.
+        \item $\ct{\mf{A}^{-1}}^{-1} = \mf{A}$.
+        \item $\ct{\mf{A}\mf{B}}^{-1} = \mf{B}^{-1}\mf{A}^{-1}$
+        \item $\ct{\mf{A}^T}^{-1} = \ct{\mf{A}^{-1}}^T$
+    \end{enumerate}
 
-\item For a $n \times n$ square matrix $\mf{A}$, prove that if $\mf{A}\mf{X} = \mf{I}$, then $\mf{X}\mf{A} = \mf{I}$ and $\mf{X} = \mf{A}^{-1}$.
+    \item Consider the following upper-triangular matrix, 
+    \[ U = \begin{bmatrix}
+    u_{11} & u_{12} & u_{13} & \cdots & u_{1n}\\
+    0 & u_{22} & u_{23} & \cdots & u_{2n}\\
+    0 & 0 & u_{33} & \cdots & u_{3n}\\
+    \vdots & \vdots & \vdots & \ddots & \vdots\\
+    0 & 0 & 0 & \cdots & u_{nn}\\\end{bmatrix} \]
+    where, $u_{ii} \neq 0, \,\,\, 1 \leq i \leq n$. Do the columns of this matrix form a linearly independent set? Explain your answer.  \textbf{[Marks: 2]}
 
-\item Prove the following for the non-singular square matrices $\mf{A}$ and $\mf{B}$:
-\begin{enumerate}
-    \item $\mf{A}\mf{B}$ is non-singular.
-    \item $\ct{\mf{A}^{-1}}^{-1} = \mf{A}$.
-    \item $\ct{\mf{A}\mf{B}}^{-1} = \mf{B}^{-1}\mf{A}^{-1}$
-    \item $\ct{\mf{A}^T}^{-1} = \ct{\mf{A}^{-1}}^T$
-\end{enumerate}
+    \item Verify that $\mf{A}$ and $\mf{B}$ are inverses of each other,  \textbf{[Marks: 4]}
+    \begin{enumerate}
+        \item $\mf{A} = \mf{I} - \mf{u}\mf{v}^T$ and $\mf{B} = \mf{I} + \mf{u}\mf{v}^T / \lp 1 - \mf{v}^T\mf{u} \rp$
+        \item $\mf{A} = \mf{C} - \mf{u}\mf{v}^T$ and $\mf{B} = \mf{C}^{-1} + \mf{C}^{-1}\mf{u}\mf{v}^T\mf{C}^{-1} / \lp 1 - \mf{v}^T\mf{C}^{-1}\mf{u} \rp$
+        \item $\mf{A} = \mf{I} - \mf{U}\mf{V}$ and $\mf{B} = \mf{I}_{n} + \mf{U}\lp \mf{I}_m - \mf{V}\mf{U}\rp^{-1}\mf{V}$
+        \item $\mf{A} = \mf{C} - \mf{U}\mf{D}^{-1}\mf{V}$ and $\mf{B} = \mf{A}^{-1} + \mf{A}^{-1}\mf{U}\lp \mf{D} - \mf{V}\mf{A}^{-1}\mf{U}\rp^{-1}\mf{V}\mf{A}^{-1}$
+    \end{enumerate}
+    where, $\mf{A}, \mf{B} \in \mb{R}^{n \times n}$, $\mf{u}, \mf{v} \in \mb{R}^n$, $\mf{U} \in \mb{R}^{n \times m}$, $\mf{V} \in \mb{R}^{m \times n}$ and $\mf{D} \in \mb{R}^{m \times m}$.
 
-\item Derive the inverse of the matrix $\mf{A} = \begin{bmatrix}a & b\\c & d\end{bmatrix}$.
-
-\item Consider the following upper-triangular matrix, 
-$$U = \begin{bmatrix}
-u_{11} & u_{12} & u_{13} & \cdots & u_{1n}\\
-0 & u_{22} & u_{23} & \cdots & u_{2n}\\
-0 & 0 & u_{33} & \cdots & u_{3n}\\
-\vdots & \vdots & \vdots & \ddots & \vdots\\
-0 & 0 & 0 & \cdots & u_{nn}\\\end{bmatrix}$$
-where, $u_{ii} \neq 0, \,\,\, 1 \leq i \leq n$. Do the columns of this matrix form a linearly independent set? Explain your answer.
-
-\item Verify that $\mf{A}$ and $\mf{B}$ are inverses of each other,
-\begin{enumerate}
-    \item $\mf{A} = \mf{I} - \mf{u}\mf{v}^T$ and $\mf{B} = \mf{I} + \mf{u}\mf{v}^T / \lp 1 - \mf{v}^T\mf{u} \rp$
-    \item $\mf{A} = \mf{C} - \mf{u}\mf{v}^T$ and $\mf{B} = \mf{C}^{-1} + \mf{C}^{-1}\mf{u}\mf{v}^T\mf{C}^{-1} / \lp 1 - \mf{v}^T\mf{C}^{-1}\mf{u} \rp$
-    \item $\mf{A} = \mf{I} - \mf{U}\mf{V}$ and $\mf{B} = \mf{I}_{n} + \mf{U}\lp \mf{I}_m - \mf{V}\mf{U}\rp^{-1}\mf{V}$
-    \item $\mf{A} = \mf{C} - \mf{U}\mf{D}^{-1}\mf{V}$ and $\mf{B} = \mf{A}^{-1} + \mf{A}^{-1}\mf{U}\lp \mf{D} - \mf{V}\mf{A}^{-1}\mf{U}\rp^{-1}\mf{V}\mf{A}^{-1}$
-\end{enumerate}
-where, $\mf{A}, \mf{B} \in \mb{R}^{n \times n}$, $\mf{u}, \mf{v} \in \mb{R}^n$, $\mf{U} \in \mb{R}^{n \times m}$, $\mf{V} \in \mb{R}^{m \times n}$ and $\mf{D} \in \mb{R}^{m \times m}$.
-
-\item Consider the matrices $\mf{A} \in \mb{R}^{m \times m}$, $\mf{B} \in \mb{R}^{n \times n}$ and $\mf{C} \in \mb{R}^{m \times n}$. Verify the following,
-\begin{enumerate}
-    \item $\bmx \mf{A} & \mf{0} \\ \mf{0} & \mf{B}\emx^{-1} = \bmx \mf{A}^{-1} & \mf{0} \\ \mf{0} & \mf{B}^{-1}\emx$
-\end{enumerate}
+    % \item Consider the matrices $\mf{A} \in \mb{R}^{m \times m}$, $\mf{B} \in \mb{R}^{n \times n}$ and $\mf{C} \in \mb{R}^{m \times n}$. Verify the following,
+    % \begin{enumerate}
+    %     \item $\bmx \mf{A} & \mf{0} \\ \mf{0} & \mf{B}\emx^{-1} = \bmx \mf{A}^{-1} & \mf{0} \\ \mf{0} & \mf{B}^{-1}\emx$
+    % \end{enumerate}
 \end{enumerate}
 
 \end{document}

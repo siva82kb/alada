@@ -67,14 +67,21 @@
 
 \begin{document}
 \begin{center}
-\begin{Large}
+\begin{large}
 \textbf{Applied Linear Algebra in Data Analaysis}\\
 \vspace{0.1cm}
+\end{large}
 \textbf{Solutions to Linear Equations Assignment}
-\end{Large}
 \end{center}
 \hrule
+\vspace{1em}
+
+\begin{large}
+    \textbf{Marks: 31}
+\end{large}
 \vspace{0.2cm}
+
+\textbf{Note}: The questions you need to answer are written down in red for clarity for some of the problems.
 
 \begin{enumerate}
 \item Derive force and displacement relationship for a series of $n+1$ springs (with spring constants $k_i$) connected in a line. There are $n$ nodes, with $f_i$ and $x_i$ representing the force applied and resulting displacement at the $i^{th}$ node. 
@@ -119,12 +126,14 @@
         \draw[thick] (5.4,-0.34) -- (5.4,0.34);
     \end{tikzpicture}
 \end{center}
+\textcolor{red}{
 \begin{enumerate}
-    \item Represent the relationship in the following form,
+    \item Represent the relationship in the following form, \textbf{[Marks: 2]}
     \[ \mf{f} = \mf{Kx}; \,\,\, \mf{f} = \begin{bmatrix}f_1\\ f_2\\ \vdots\\ f_n\end{bmatrix}; \,\,\, \mf{x} = \begin{bmatrix}x_1 \\ x_2 \\ \vdots \\ x_n\end{bmatrix}\]
-    \item What kind of a pattern does $\mf{K}$ have?
-    \item Consider a specific case where $n = 4$ and $k = 1.5 N.m^{-1}$. What should be forces applied at the four nodes in order to displace the spring $\mf{x} = \begin{bmatrix*} 0.5 \\ -0.5 \\ 0 \\ 0 \end{bmatrix*}m$. 
+    \item What kind of a pattern does $\mf{K}$ have? \textbf{[Marks: 1]}
+    \item \textcolor{blue}{\textbf{[Programming]}} Consider a specific case where $n = 4$ and $k = 1.5 N.m^{-1}$. What should be forces applied at the four nodes in order to displace the spring $\mf{x} = \begin{bmatrix*} 0.5 \\ -0.5 \\ 0 \\ 0 \end{bmatrix*}m$. \textbf{[Marks: 4]} 
 \end{enumerate}
+}
 
 \item Consider the following electrical circuit with rectangular grid of resistors $R$. The input to this grid is a set of current injected at the top node as shown in the figure, such that $\sum_{k=1}^5i_k = 0$.
 \vspace{-0.25cm}
@@ -152,14 +161,15 @@
 \end{circuitikz}
 \end{center}
 
-Express the relationship between the voltages at the different nodes (represented by $\bullet$ in the figure) and the net current flowing in/out of the node in the following form, $\mf{G}\mf{v} = \mf{i}$. Where, $\mf{G}$ is the conductance matrix, $\mf{v}$ is the vector of node voltages, and $\mf{i}$ is the vector representing the net current flow in/out of the different node.
+\textcolor{red}{Express the relationship between the voltages at the different nodes (represented by $\bullet$ in the figure) and the net current flowing in/out of the node in the following form, $\mf{G}\mf{v} = \mf{i}$. Where, $\mf{G}$ is the conductance matrix, $\mf{v}$ is the vector of node voltages, and $\mf{i}$ is the vector representing the net current flow in/out of the different node. \textbf{[Marks: 3]}}
 
-\item Consider the system of equation, $\mf{Ax} = \mf{b}$, such that a matrix $\mf{A} \in \mb{R}^{m \times n}$, $\mf{x}, \mf{b} \in \mb{R}^n$. Are the following statements true? Explain your answer.
+\item Consider the system of equation, $\mf{Ax} = \mf{b}$, such that a matrix $\mf{A} \in \mb{R}^{m \times n}$, $\mf{x}, \mf{b} \in \mb{R}^n$. \textcolor{red}{Are the following statements true? Explain your answer. \textbf{[Marks: 3]}
 \begin{enumerate}
     \item $rank \lp \mf{A} \rp \leq \min \lp m, n \rp$
     \item The system is consistent if $\,rank\lp \mf{A} \rp = m$.
     \item The system has a unique solution if $\,rank \lp \mf{A} \rp = n$.
 \end{enumerate}
+}
 
 \item \textbf{Two point boundary problem.} $\mf{A}\mf{x} = \mf{b}$ is often encountered in many practical applications. One such application is the numerical solution of differential equations of the following form,
 \[ \sum_{i=0}^M a_{i}\ct{x}y^{\ct{i}}\ct{x} = f\ct{x} \]
@@ -174,45 +184,82 @@ where, $x_i = a + i\Delta x, \,\, 0 \leq i \leq N+1$, and $b - a = \ct{N+1} \Del
 
 Replacing the derivatives of $y\ct{x}$ by the above approximations and evaluating the equation at the different nodes $x_i$s, we arrive a set of $N$ linear equations with $N$ unknowns $y\ct{x_1}, y\ct{x_2}, \ldots y\ct{x_N}$. 
 
-Using this approach, compute an approximate solution for $y\ct{x}$ for the following differential equations over the interval $x \in \dt{0, 1}$. 
+\textcolor{red}{Using this approach, compute an approximate solution for $y\ct{x}$ for the following differential equations over the interval $x \in \dt{0, 1}$.
 \begin{enumerate}
         \item $y''\ct{x} = -x$
         \item $y''\ct{x} + y'\ct{x} = x$
 \end{enumerate}
-Solve these equations for different values of $\Delta x$, and compare the resulting approximate solution for $y\ct{x}$ with the exact solution.   Present your results as a plot the solution $y\ct{x_i}$ versus $x_i$.
+\textcolor{blue}{\textbf{[Programming]}} Solve these equations for different values of $\Delta x$, and compare the resulting approximate solution for $y\ct{x}$ with the exact solution.   Present your results as a plot the solution $y\ct{x_i}$ versus $x_i$. \textbf{[Marks: 4]}}
 
-Comment on the dependence of the solution $\ct{x}$ on $\Delta x$. What is the best value for $\Delta x$ to use in solving these equations?
+\textcolor{red}{Comment on the dependence of the solution $\ct{x}$ on $\Delta x$. What is the best value for $\Delta x$ to use in solving these equations? \textbf{[Marks: 2]}}
 
-\item \label{matrices:uncertain} \textbf{Ill-conditioned systems.} A system $\mf{A}\mf{x} = \mf{b}$ is said to be ill-conditioned when small changes in the components of $\mf{A}$ or $\mf{b}$ can produce large changes in the solution $\mf{x}$. Consider the following system,
+\item \textbf{Ill-conditioned systems.} A system $\mf{A}\mf{x} = \mf{b}$ is said to be ill-conditioned when small changes in the components of $\mf{A}$ or $\mf{b}$ can produce large changes in the solution $\mf{x}$. Consider the following system,
 \begin{align}
 x - y &= 100 \nonumber \\
 10 + \ct{9 + \Delta}y &= 0 \nonumber
 \end{align}
-Find the solutions of the system for different values of $\Delta = -2, -1, 0, 1, 2$. How do the solutions change with $\Delta$. Now consider the following system,
+\textcolor{red}{\textcolor{blue}{\textbf{[Programming]}} Find the solutions of the system for different values of $\Delta = -2, -1, 0, 1, 2$. How do the solutions change with $\Delta$. \textbf{[Marks: 2]}} 
+
+Now consider the following system,
 \begin{align}
 x - y &= 100 \nonumber \\
 10 - \ct{9 + \Delta}y &= 0 \nonumber
 \end{align}
-The second system is an example of an ill-conditioned system. What can you say about the geometries of these two systems?
+\textcolor{red}{\textcolor{blue}{\textbf{[Programming]}} Find the solutions of the system for different values of $\Delta = -2, -1, 0, 1, 2$. How do the solutions change with $\Delta$. \textbf{[Marks: 2]}} 
 
-\item \textbf{Connectivity matrices.} Another common application of matrices is in graph theory. A graph is a set of vertices or nodes connected by edges, as show in the following figure. $A$-$F$ are the nodes of the graph, and the lines with the arrows are the edges that convey information about the connections or relationships between the nodes.
-\begin{center}
-    \includegraphics[width=0.5\columnwidth]{../figs/graph.png}
-\end{center}
-The above graph can be thought as a representation of different places in a city (represented by the nodes), and the lines with the arrows represent the roads connecting these different places. A line with two arrows allow two-way traffic, while line with single arrow only allow one way traffic. The connectivity between the different places can be summarized though the connectivity matrix $\mf{C} \in \mb{R}^{n \times n}$, where $n$ is the number of nodes in the graph. The elements of this connectivity matrix  represents whether or not there is a direct path between two places.
-\[ 
-c_{ij} = \begin{cases}
-    1 & \text{there is a direct road between places } i \, \& \,j. \\
-    0 & \text{otherwise.}
-\end{cases}
-\]
-The diagonal element of $\mf{C}$ are zero, $c_{ii} = 0$.
+The second system is an example of an ill-conditioned system. What can you say about the geometries of these two systems? \textbf{[Marks: 2]}
 
-Write down the connectivity matrix $\mf{C}$ for the graph shown above. How can we use the matrix $\mf{C}$ to answer the following questions? Explain exact matrix operation you would perform to answer these questions (Hint: Consider higher power of $\mf{C}$).
-\begin{enumerate}
-    \item Is there a path between two places $i$ and $j$ that goes via one other place? For example, we can go from $A$ to $D$ via $B$.
-    \item How many paths are there between places $i$ and $j$ that goes via three other places?
-\end{enumerate}
+% \item \textbf{Connectivity matrices.} Another common application of matrices is in graph theory. A graph is a set of vertices or nodes connected by edges, as show in the following figure. $A$-$F$ are the nodes of the graph, and the lines with the arrows are the edges that convey information about the connections or relationships between the nodes.
+% \begin{center}
+%     \includegraphics[width=0.5\columnwidth]{../figs/graph.png}
+% \end{center}
+% The above graph can be thought as a representation of different places in a city (represented by the nodes), and the lines with the arrows represent the roads connecting these different places. A line with two arrows allow two-way traffic, while line with single arrow only allow one way traffic. The connectivity between the different places can be summarized though the connectivity matrix $\mf{C} \in \mb{R}^{n \times n}$, where $n$ is the number of nodes in the graph. The elements of this connectivity matrix  represents whether or not there is a direct path between two places.
+% \[ 
+% c_{ij} = \begin{cases}
+%     1 & \text{there is a direct road between places } i \, \& \,j. \\
+%     0 & \text{otherwise.}
+% \end{cases}
+% \]
+% The diagonal element of $\mf{C}$ are zero, $c_{ii} = 0$.
+
+% Write down the connectivity matrix $\mf{C}$ for the graph shown above. How can we use the matrix $\mf{C}$ to answer the following questions? Explain exact matrix operation you would perform to answer these questions (Hint: Consider higher power of $\mf{C}$).
+% \begin{enumerate}
+%     \item Is there a path between two places $i$ and $j$ that goes via one other place? For example, we can go from $A$ to $D$ via $B$.
+%     \item How many paths are there between places $i$ and $j$ that goes via three other places?
+% \end{enumerate}
+
+\item \textbf{Computed Tomography} (CT) is a medical imaging technique that is used to reconstruct the internal structure of an object from a set of X-ray measurements. The object is placed between an X-ray source and a detector. The X-ray source and the detector are rotated around the object, and the X-ray measurements are recorded at different angles. The X-ray measurements are then used to reconstruct the internal structure of the object.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = 0.6\textwidth]{../../analysis/imaging/output/ct_setup_full.pdf}
+    \caption{A simplified CT set-up with a single X-ray source and a single detector, that are located diametrically opposite to each other and can rotate to any scan angle $\phi$. The object is placed between the X-ray source and the detector, which is depicted by the gray square of side $l$. The x-ray originates from the green triangle (x-ray source), passes through the object, and is detected by the red triangle (detector). The x-ray undergoes attenuation as it passes through the object. Different points in the objects are most likely to have different attentuation coefficients, and the goal of CT is toe reconstruct of spatial map of the attentuation within the object, which provides a measure of the internal structure of the object.}
+    \label{fig:ct}
+\end{figure}
+
+The x-ray attentuation equation is given by,
+\[ I_o = I_i \exp\lp -\mu l \rp \]
+where, $I_i$ is the intensity of the x-ray entering an object with fixed attentuation coefficient $\mu$, $I_o$ is the intensity of the x-ray existing the object, and $l$ is the path length of the x-ray in the object. 
+
+In general, the attenuation coefficient is a function of the position within the object, $\mu = \mu\ct{x,y}$. The goal of CT is to reconstruct the spatial map of the attenuation coefficient $\mu\ct{x,y}$.
+
+Let $L$ represent the line segment of the x-ray within the object as shown in Figure~\ref{fig:ct}, and the attentuation outside the object is assumed to be zero. If $I_s$ is the intensity of the x-ray leaving the source, the intensity of the x-ray reaching the detector $I_d$ is given by,
+\[ I_d = I_s \exp\lp - \int_L \mu \ct{x, y} dl \rp \]
+where, $dl$ is the differential length along the line segment $L$, which is a function of $x, y$. The integral in the above equation is the line integral of the attenuation coefficient $\mu\ct{x,y}$ along the line segment $L$.
+
+We wish to solve this problem using a computer by posing it as a set of linear equations relating the attenuation coefficient $\mu\ct{x,y}$ to the x-ray intensity measurements $I_d$. For simplicity, we will assume $I_s = 1$. First, we simplify the above integration equation by taking the log on both sides, which results in,
+\[ \ln I_d = - \int_L \mu \ct{x, y} dl \]
+\textcolor{red}{Explain the why above step is valid. Do we need to worry about the case where $I_d = 0$? \textbf{[Marks: 2]}}
+
+Discretize the object into $n \times n$ grid of pixels, and assume that attentuation coefficient within each pixel to be constant. For any given scan angle $\phi$ you need to find out the pixels the line segment $L$ passes through, along with the path length of the x-ray line segment within each pixel. \textcolor{red}{Derive the discrete expression relating the x-ray intensity measurements $I_d$ to the attenuation coefficient $\mu\ct{x,y}$ for a given scan angle $\phi$, assuming a discretized object $n \times n$. Write down the above expression in the following form \textbf{[Marks: 3]},
+\[ \tilde{\mf{a}}\ct{\phi}^\top \mf{x} = y\ct{\phi} \]}
+where, $\mf{x} \in \mb{R}^{n^2}$ is the vector of unknown attenuation coefficients of the pixels in the image, $\tilde{\mf{a}}\ct{\phi} \in \mb{R}^{n^2}$ is the vector relating the attentuation coefficients to the detector measurement for the given source-detector angle $\phi$ and $y\ct{\phi} \mb{R}$ is the log of the x-ray intensity measured by the detector. 
+
+If we make a set of such measurements for $m$ different angles $\phi_1, \phi_2, \cdots \phi_m$, we can write the above equation in the following matrix form,
+\[ \mf{A}\mf{x} = \mf{y} \]
+\[ \mf{A} = \bmxc \tilde{\mf{a}}_1 & \tilde{\mf{a}}_2 & \cdots & \tilde{\mf{a}}_m\emx^\top \in \mb{R}^{m \times n^2}\quad \mf{y} = \bmxc y_1 & y_2 & \cdots & y_m\emx^\top \in \mb{R}^{m} \]
+where, $\tilde{\mf{a}}_i$ is the vector relating the attentuation coefficients to the detector measurement for the source-detector angle $\phi_i$ and $y_i$ is the log of the x-ray intensity measured by the detector for the angle $\phi_i$.
+
+\textbf{Forward problem for CT}. Once you've derived the above matrix linear equation, we can use it to simulate a CT scan by computing $\mf{y}$ for a given $\mf{x}$ and scan angle $\phi$, we can compute intensity of the x-ray that will be measured by the detector. \textcolor{red}{\textcolor{blue}{\textbf{[Programming]}} Write a python function that will compute the measured detector intensities $\mf{y}$ for a given $\mf{x}$ and a given set of scan angles $\lc \phi_i \rc_{i=0}^{N-1}$.} You will be provided with a iPython notebook template for this purpose where you will only need to focus on writing the function that computes $\mf{y}$. After completing this, you need to use the data given to you to compute the measured detector intensities $\mf{y}$ for a given set of $\mf{x}$ and scan angles $\lc \phi_i \rc_{i=0}^{N-1}$. \textbf{[Marks: 6]}
 
 \end{enumerate}
 

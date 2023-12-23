@@ -1,0 +1,138 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    total={170mm,257mm},
+    left=25mm,
+    right=25mm,
+    top=25mm,
+    bottom=25mm,
+}
+\usepackage{multicol}
+\usepackage[font=small,labelfont=bf]{caption}
+\setlength{\columnsep}{0.25cm}
+\usepackage[inline]{enumitem}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{mathtools} 
+\setlength{\parindent}{0em}
+\setlength{\parsep}{0em}
+\usepackage{tikz}
+\setlength{\parskip}{0em}
+\usetikzlibrary{decorations.pathmorphing,patterns}
+\usepackage[american,cuteinductors]{circuitikz}
+\usetikzlibrary{shapes,arrows,circuits,calc,babel}
+% Definition of blocks:
+\tikzset{%
+  block/.style    = {draw, thick, rectangle, minimum height = 3em,
+    minimum width = 3em},
+  sum/.style      = {draw, circle, node distance = 2cm}, % Adder
+  input/.style    = {coordinate}, % Input
+  output/.style   = {coordinate} % Output
+}
+% Defining string as labels of certain blocks.
+\newcommand{\suma}{\Large$+$}
+\newcommand{\inte}{$\displaystyle \int$}
+\newcommand{\derv}{\huge$\frac{d}{dt}$}
+
+\def\mf{\ensuremath\mathbf}
+\def\mb{\ensuremath\mathbb}
+\def\mc{\ensuremath\mathcal}
+\def\lp{\ensuremath\left(}
+\def\rp{\ensuremath\right)}
+\def\lv{\ensuremath\left\lvert}
+\def\rv{\ensuremath\right\rvert}
+\def\lV{\ensuremath\left\lVert}
+\def\rV{\ensuremath\right\rVert}
+\def\lc{\ensuremath\left\{}
+\def\rc{\ensuremath\right\}}
+\def\ls{\ensuremath\left[}
+\def\rs{\ensuremath\right]}
+\def\bmx{\ensuremath\begin{bmatrix*}[r]}
+\def\emx{\ensuremath\end{bmatrix*}}
+\def\bmxc{\ensuremath\begin{bmatrix*}[c]}
+\def\emxc{\ensuremath\end{bmatrix*}}
+% \def\t{\lp t\rp}
+% \def\k{\ls k\rs}
+
+\newcommand{\demoex}[2]{\onslide<#1->\begin{color}{black!60} #2 \end{color}}
+\newcommand{\demoexc}[3]{\onslide<#1->\begin{color}{#2} #3 \end{color}}
+\newcommand{\anim}[3]{\onslide<#1->{\begin{color}{#2!60} #3 \end{color}}}
+\newcommand{\ct}[1]{\lp #1\rp}
+\newcommand{\dt}[1]{\ls #1\rs}
+
+% \renewcommand{\familydefault}{\sfdefault}
+
+\begin{document}
+\begin{center}
+\begin{large}
+\textbf{Applied Linear Algebra in Data Analaysis}\\
+\vspace{0.1cm}
+\end{large}
+\textbf{Signal Processing \& Eigenvalues/Eigenvectors Assignment}
+\end{center}
+\hrule
+\vspace{1em}
+
+\begin{large}
+    \textbf{Marks: 27}
+\end{large}
+
+\begin{enumerate}
+    \item Prove that the Fourier and the Haar basis are orthogonal for the space $\mb{R}^{2^{n}}$.\textbf{[Marks: 2]}
+     
+    \item \textcolor{blue}{\textbf{[Programming]}} Write a python function to that will return the $i^{th}$ Haar wavelet basis vector for a the given space $\mb{R}^{2^n}$. \textbf{[Marks: 2]}
+    
+    \item Explain why an eigenvector cannot be associated with two eigenvalues. \textbf{[Marks: 1]}
+
+    \item What are the eigenspaces associated with the diagonal matrix $\mf{D}$? \textbf{[Marks: 1]}
+    \[ \mf{D} = \mathrm{diag}\lp d_1, d_2, \ldots d_n\rp \]
+
+    \item If a matrix $\mf{A}$ has zero as one of its eigenvalues, explain why $\mf{A}$ must be singular. \textbf{[Marks: 1]}
+
+    \item For a matrix $\mf{A}$ with eigenvalues $\lc\lambda_i\rc_{i=1}^{n}$, verify for the following matrices that $\Pi_{i=1}^n\lambda_i = \det \lp\mf{A}\rp$ and $\sum_{i=1}^n \lambda_i = trace\lp\mf{A}\rp$. \textbf{[Marks: 2]}
+    \begin{enumerate}
+        \item $\bmx 1 & 1 \\ 2 & 1\emx$
+        \item $\frac{1}{5}\bmx 1 \\ 0 \\ 2 \emx \bmx 1 & 0 & 2\emx$
+    \end{enumerate}
+
+    \item Let $\lc\lambda_i, \mf{v}_i\rc_{i=1}^n$ be the eigenpairs of a matrix $\mf{A}$. Then prove that, \textbf{[Marks: 2]}
+    \begin{enumerate}
+        \item $\lc\lambda_i^k, \mf{v}_i\rc_{i=1}^n$ are the eigenpairs of $\mf{A}^k$. 
+        \item $\lc p\lp\lambda_i\rp, \mf{v}_i\rc_{i=1}^n$ are the eigenpairs of $p\lp\mf{A}\rp$, where $p\lp \mf{A}\rp = \alpha_0\mf{I} + \alpha_1\mf{A} + \cdots + \alpha_k\mf{A}^k$.
+    \end{enumerate}
+
+    \item Consider the matrices $\mf{A}$ and $\mf{B}$. If $\mf{v}$ is an eigenvector $\mf{B}$, underwhat condition will $\mf{v}$ also be the eignevector of $\mf{A}\mf{B}$. Under these conditions, what will be corresponding eigenvalue of $\mf{v}$? How do your answers change in the case of $\mf{BA}$? \textbf{[Marks: 2]}
+
+    \item Let $\lc \lambda_i, \mf{v}_i\rc_{i=1}^n$ are the eignepairs of a matrix $\mf{A}$. What are the eigenpairs of the folliowing? \textbf{[Marks: 3]}
+    \begin{enumerate}
+         \item $2\mf{A}$
+         \item $\mf{A} - 2\mf{I}$
+         \item $\mf{I} - \mf{A}$
+     \end{enumerate}
+
+     \item Let $\mf{A} = \bmx 0.6 & 0.2\\ 0.4 & 0.8\emx$. What is the value of: \textbf{[Marks: 3 ]}
+     \begin{enumerate*}
+         \item $A^2$
+         \item $A^{100}$
+         \item $A^\infty$
+     \end{enumerate*}?
+
+     \item Show that $\mf{u} \in \mb{R}^2$ is an eigenvector of $\mf{A} = \mf{u}\mf{v}^T$. What are the two eigenvalues of $\mf{A}$? \textbf{[Marks: 2]}
+
+     \item \textbf{Left eigenvectors}: Consider a matrix $\mf{A}$ with eigenpairs $\lc \lambda_1, \mf{v}_i\rc_{i=1}^n$. The left eigenvectors of the matrix $\mf{A}$ are the vectors that satisfy the equation, $\mf{A}^T\mf{w} = \mu \mf{w}$ (or $\mf{w}^T\mf{A} = \mu \mf{w}^T$), and let $\lc \mu_i, \mf{w}_i\rc_{i=1}^n$ be the left eigenpairs of $\mf{A}$. Show the following, \textbf{[Marks: 3]}
+     \begin{enumerate}
+         \item The eigenvalues of both $\mf{A}$ and $\mf{A}^T$ are the same.
+         \item $\mf{v}_i^T\mf{w}_j = 0$. The eigenvector $\mf{v}_i$ corresponding to the eigenvalue $\lambda_i$ and the left eigvenvector $\mf{w}_j$ corresponding to the eigenvalue $\lambda_j$ are orthogonal, when $\lambda_i \neq \lambda_j$.
+         \item The matrix $A$ can be expressed as a sum of rank-one matrices,
+         \[ \mf{A} = \lambda_1\mf{v}_1\mf{w}_1^T + \lambda_2\mf{v}_2\mf{w}_2^T + \cdots + \lambda_n\mf{v}_n\mf{w}_n^T\]
+     \end{enumerate}
+
+     \item Prove that $\mf{A}\mf{A}^T$ has real and positive eigenvalues, and that the eigenvectors corresponding to distinct eigenvalues of $\mf{A}\mf{A}^T$ are orthogonal. \textbf{[Marks: 2]}
+
+     \item If $\lc \lambda_i, \mf{v}_i\rc_{i=1}^n$ are the eigenpairs of a non-singular matrix $\mf{A}$, the prove that the eigen pairs of $\mf{A}^{-1}$ are $\lc \lambda_i^{-1}, \mf{v}_i\rc_{i=1}^n$. \textbf{[Marks: 1]}
+\end{enumerate}
+
+\end{document}
