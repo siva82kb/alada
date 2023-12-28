@@ -1,14 +1,14 @@
-\documentclass[9pt]{article}
+\documentclass[12pt]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
 \geometry{
     a4paper,
     total={170mm,257mm},
-    left=15mm,
-    right=15mm,
-    top=20mm,
-    bottom=20mm,
+    left=25mm,
+    right=25mm,
+    top=25mm,
+    bottom=25mm,
 }
 \usepackage{multicol}
 \usepackage[font=small,labelfont=bf]{caption}
@@ -63,20 +63,25 @@
 \newcommand{\ct}[1]{\lp #1\rp}
 \newcommand{\dt}[1]{\ls #1\rs}
 
-\renewcommand{\familydefault}{\sfdefault}
+% \renewcommand{\familydefault}{\sfdefault}
 
 \begin{document}
 \begin{center}
-\begin{Large}
-\textbf{Linear Systems: State Space View Assignment}
-\end{Large}
+\begin{large}
+\textbf{Applied Linear Algebra in Data Analaysis}\\
+\vspace{0.1cm}
+\end{large}
+\textbf{Linear Dynamical Systems \& Positive Definite Matrices Assignment}
 \end{center}
-\vspace{0.2cm}
+\hrule
+\vspace{1em}
 
-\begin{multicols}{2}
+\begin{large}
+    \textbf{Marks: 26}
+\end{large}
 
-\begin{enumerate}[resume]
-    \item Derive the state and measurement equations for the following composite systems, assuming the system $H_i$ to have the parameters $\ct{\mf{A}_i, \mf{B}_i, \mf{C}_i, \mf{D}_i}$.
+\begin{enumerate}
+    \item Derive the state and measurement equations for the following composite systems, assuming the system $H_i$ to have the parameters $\ct{\mf{A}_i, \mf{B}_i, \mf{C}_i, \mf{D}_i}$. \textbf{[Marks: 6]}
     \begin{center}
         \begin{tikzpicture}[scale=0.75, transform shape, thick, node distance=2cm]
         \draw
@@ -135,96 +140,10 @@
             \node[]  at (-1,0) {\textbf{(c)}};
         \end{tikzpicture}
     \end{center}
-    
-    \item 
 
-    \item Derive the state and measurement equation for the following system, where the input is the force $f$ applied to mass $m_2$, and the output is the acceleration of the mass $m_1$ and velocity of mass $m_2$.
-    \begin{center}
-    \begin{tikzpicture}[every node/.style={draw,outer sep=0pt,thick}, scale=0.8]
-    %define the spring
-    \tikzstyle{spring}=[thick,decorate,decoration={zigzag,pre length=0.12cm,post length=0.12cm,amplitude=1.3mm,segment length=6}]
-
-    %define the dashpot
-    \tikzstyle{damper}=[thick,decoration={markings,
-      mark connection node=dmp,
-      mark=at position 0.5 with 
-      {
-          \node (dmp) [thick,inner sep=0pt,transform shape,rotate=-90,minimum width=15pt,minimum height=3pt,draw=none] {};    
-          \draw [thick] ($(dmp.north east)+(2pt,0)$) -- (dmp.south east) -- (dmp.south west) -- ($(dmp.north west)+(2pt,0)$);
-          \draw [thick] ($(dmp.north)+(0,-5pt)$) -- ($(dmp.north)+(0,5pt)$);
-      }
-    }, decorate]
-
-    %define the spring-dashpot
-    \tikzstyle{spr-dash}=[thick,decorate,decoration={markings,
-      mark connection node=sqr,
-      mark=at position 0.5 with
-      {
-          \node (sqr) [thick,minimum width=16pt,minimum height=24pt,draw=none] {};
-          \draw [thick] (sqr.north west) -- (sqr.north east);
-          \draw [thick] (sqr.south west) -- (sqr.south east);
-          \draw [spring] (sqr.south west) -- (sqr.north west);
-          \draw [damper] (sqr.south east) -- (sqr.north east);
-      }
-      }]
-
-    %define the ground
-    \tikzstyle{ground}=[fill,pattern=north east lines,draw=none,minimum width=0.75cm,minimum height=0.3cm]
-
-    \begin{scope}[xshift=5.5cm]
-    %draw the frame mass
-    \node (M1) [minimum width=1cm,minimum height=1cm] {$m_1$};
-     
-    %draw the vehicle mass
-    \node (M2) at (M1.north) [yshift=+1.8cm, minimum width=1cm, minimum height=1cm] {$m_2$};
-
-    \node (ground-medium) at (M1.south) [ground,yshift=-1.3cm,minimum width=4cm,anchor=north] {};
-    \draw (ground-medium.north west) -- (ground-medium.north east);
-
-    \draw [spr-dash] (ground-medium.north) -- (M1.south);
-    \node [draw=none] at ($(ground-medium.north)+(-1cm,0.7cm)$) {$k_{1}$};
-    \node [draw=none] at ($(ground-medium.north)+(1.1cm,0.7cm)$) {$b_{1}$};
-    \draw [spr-dash] (M1.north) -- (M2.south);
-    \node [draw=none] at ($(M1.north)+(-1.0cm,0.7cm)$) {$k_{2}$};
-    \node [draw=none] at ($(M1.north)+(1.1cm,0.7cm)$) {$b_{2}$};
-     
-    \draw [-latex,thick] (M2.north) ++ (0, 0.5cm) -- (M2.north);
-    \draw [dashed,thin] (M2.east) ++ (0.5cm, 0) -- +(1.0cm, 0);
-    \node [draw=none, right] at ($(M2.east) + (1.5cm, 0)$) {$x_{2}$};
-
-    \draw [dashed,thin] (M1.west) ++ (-0.5cm, 0) -- +(-1.0cm, 0);
-    \node [draw=none, left] at ($(M1.west) + (-1.5cm, 0cm)$) {$x_{1}$};
-
-    \node [draw=none, yshift=0.7cm] at (M2.north) {$f$};
-    \end{scope}
-    \end{tikzpicture}
-    \end{center}
-
-    Assume now that instead of $f$ the input to this was the position of the mass $m_2$ (i.e. $x_2$) and the output of interest was the acceleration of the mass $m_1$. What would be correspondoing state and measurement equations in this case?
-
-    \item Obtain a state space representation for the following systems:
-    \begin{enumerate}
-        \item $\sum_{i=0}^n a_iy^{\ct{i}} = \sum_{j=0}^m b_jx^{\ct{j}}$, where $x^{\ct{k}} = \frac{d^k}{dt^k}x\ct{t}$
-        \item $\sum_{i=0}^n a_iy\dt{k+i} = \sum_{j=0}^m b_jx\dt{k+j}$
-    \end{enumerate}
-    
-
-    \item Write down the state and measurement equations for the following system with the scalar input $u\dt{k}$ and output $\mf{y}\dt{k} = \bmx y_1\dt{k}\\ y_2\dt{k}\emx$. 
-
-    \includegraphics[width=0.45\textwidth]{../figs/latticefilt.png}
-
-    \item The following model shows two media and their constituent elements. Medium 1 consists of elements with mass $M_1$ which are interconnected through a spring and damper in parallel with spring constant $k_1$ and damping coefficient $b_1$. Medium 2 consits of elements with mass $M_2$ connected through $k_2$ and $b_2$. At the interface $M_1$ and $M_2$ are connected through $k_3$ nd $b_3$.
-
-    \includegraphics[width=0.45\textwidth]{../figs/wavetx.png}    
-
-    The input to this system is $u\ct{t}$ which is the position imposed on the let most element in medium 1. The output of the system are the successive differences in the positions of the massess.
-    \[ y_i\ct{t} = x_{i+2}\ct{t} - x_{i+1}\ct{t} \, ,\,\,\, 1 \leq i \leq N-2 \]
-
-    Derive the state and measurement equations for the system.
-
-    \item Write a python program to simulate a continuous-time mass, spring, damper system, described by the follloing differential equation.
+    \item \textcolor{blue}{\textbf{[Programming]}} Write a python program to simulate a continuous-time mass, spring, damper system, described by the follloing differential equation.
     \[ M \ddot{y}(t) + B\dot{y}(t) + K y(t) = u(t) \]
-    Assuming the states of the system to be $\mf{x}\lp t \rp = \bmx y\lp t \rp \\ \dot{y}\lp t \rp \emx$, find out the matrices $\mf{A}, \mf{B}, \mf{C}, $ and $\mf{D}$.
+    \textcolor{red}{Assuming the states of the system to be $\mf{x}\lp t \rp = \bmx y\lp t \rp \\ \dot{y}\lp t \rp \emx$, find out the matrices $\mf{A}, \mf{B}, \mf{C}, $ and $\mf{D}$.} \textbf{[Marks: 2]}
 
     Assuming that the input $u(t) = 0$, $\forall t \geq 0$, and assuming an initial condition of $\mf{x}\lp 0 \rp = \bmx 1 \\ 1\emx$, numerically solve the state compute the evolution of the state and the output of the system using the following procedure. Let $\Delta$ be the time step used for the integration, then the time is divided into discrete time instants $n \Delta$, where $n \in \mb{Z}_{\geq 0}$. Assuming that we know the value of the state at time $n\Delta$, the rate of change of the state $\dot{\mf{x}}$ and the output $\mf{y}\lp n\Delta \rp$ at a time $n \Delta$ are given by,
     \[ \begin{split}
@@ -235,18 +154,43 @@
     \[ \mf{x}((n+1)\Delta) \approxeq \mf{x}\lp n\Delta\rp + \mf{x}\lp n\Delta \rp \cdot \Delta \]
     Starting from the value of the start at time $0$, $\mf{x}\lp 0 \rp$, we can numerically compute the evolution of the state for a given input $\mf{u}\lp t \rp$.
 
-    Compute the states and the output of the system from time $t = 0 s$ to $t = 10s$ for following values of the parameters $M, B, K$,
-    \begin{enumerate}
+    \textcolor{red}{Compute the states and the output of the system from time $t = 0 s$ to $t = 10s$ for following values of the parameters $M, B, K$,} \textbf{[Marks: 3]}
+    \textcolor{red}{\begin{enumerate}
         \item M = 1, B = 3, K = 1
         \item M = 1, B = 1, K = 1
         \item M = 0, B = 0, K = 1
+    \end{enumerate}}
+
+    \textcolor{red}{Carry out the simulations for different values of $\Delta = 0.1, 0.01, 0.001$. Compute the states and plot them as function of time.} \textbf{[Marks: 2]}
+
+    \textcolor{red}{What differences do you find for the three systems for the different parameters and when using different step times? What do you think is the reason for the differences?} \textbf{[Marks: 2]}
+
+    \item Prove that $\mf{A}^T\mf{A}$ is positive semi-definite for any matrix $\mf{A}$. When is $\mf{A}^T\mf{A}$ guaranteed to be positive definite? \textbf{[Marks: 2]}
+
+    \item If $\mf{A}$ is positive definite, then prove that $\mf{A}^{-1}$ is also positive definite. \textbf{[Marks: 1]}
+
+    \item Is the function $f\lp x_1, x_2, x_3\rp = 12 x_1^2 + x_2^2 + 6x_3^2 + x_1x_2 - 2x_2x_3 + 4x_3x_1$ positive definite?  \textbf{[Marks: 3]}
+    
+    \item Prove the following for $\mf{A} \in \mb{R}^{m \times n}$:  \textbf{[Marks: 4]}
+    \[ \mf{A} = \bmx \mf{a}_1 & \mf{a}_2 & \ldots & \mf{a}_n\emx = \bmx \tilde{\mf{a}_1^T}\\ \tilde{\mf{a}_1^T} \\ \vdots \\ \tilde{\mf{a}_m^T}\emx \]
+    \begin{enumerate}
+        \item $\lV\mf{A}\rV_1 = \max_{1 \leq i \leq n} \lV\mf{a}_i\rV_1$
+        \item $\lV\mf{A}\rV_\infty = \max_{1 \leq i \leq m} \lV\tilde{\mf{a}}_i\rV_1$
+        \item $\lV\mf{A}\rV_2 = \max_{1 \leq i \leq n} \lv \lambda_i \rv$, where $\lambda_i$ are the eigenvalues of $\mf{A}^T\mf{A}$.
+        \item $\lV\mf{A}\rV_F = trace\lp \mf{A}^T\mf{A}\rp$
     \end{enumerate}
 
-    Carry out the simulations for different values of $\Delta = 0.1, 0.01, 0.001$. Compute the states and plot them as function of time. 
+    \item Prove that the induced norm of a matrix product is bounded:  \textbf{[Marks: 1]}
+    \[ \lV\mf{A}\mf{B}\rV \leq \lV\mf{A}\rV\lV\mf{B}\rV \]
 
-    What differences do you find for the three systems for the different parameters and when using different step times.
+    \item Verify the following inequalities on vector and matrix norms ($\mf{x} \in \mb{R}^m$ and $\mf{A} \in \mb{R}^{m \times n}$):  \textbf{[Marks: 4]}
+    \begin{enumerate}
+        \item $\lV\mf{x}\rV_\infty \leq \lV\mf{x}\rV_2$
+        \item $\lV\mf{x}\rV_2 \leq \sqrt{m}\lV\mf{x}\rV_\infty$
+        \item $\lV\mf{A}\rV_\infty \leq \sqrt{n}\lV\mf{A}\rV_2$
+        \item $\lV\mf{A}\rV_2 \leq \sqrt{m}\lV\mf{A}\rV_\infty$
+    \end{enumerate}
 
 \end{enumerate}
 
-\end{multicols}
 \end{document}
