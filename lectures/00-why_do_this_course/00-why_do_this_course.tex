@@ -26,6 +26,8 @@
 \usepackage{tikz}
 \usepackage{tikz-3dplot}
 \usetikzlibrary{arrows.meta, decorations.pathreplacing, positioning, shapes.geometric}
+\usepackage{extarrows}
+
 
 %% Fonts
 \usefonttheme{professionalfonts}
@@ -148,11 +150,11 @@
 \begin{frame}[t]{The world is multidimensional}
 \begin{itemize}
   \item Most things/systems/ideas of interest in science and engineering are multidimensional.
-  \item In undergrdaute engineering programs cover the mathetical skills for representing, analysing, and designing simple systems $\longrightarrow$ Univariate \textbf{Calculus}!
+  \item Most courses in undergraduate engineering programs focus on mathematical skills for representing, analysing, and designing simple systems $\longrightarrow$ Univariate \textbf{Calculus}!
   \begin{itemize}
     \item Linear single-input-single-output (SISO) system theory (used in signal processing and control theory).
     \item Fourier, Laplace, z-transforms for understanding 1D temporal or spatial phenomena.
-    \item Study of dyanmics in mechanical engineering.
+    \item Study of dynamics in mechanical engineering.
   \end{itemize}
   \item Most applications or systems we deal with have multiple degree-of-freedom, various causes and effects, multiple inputs and outputs, multiple measurements, multiple parameters etc.
   \item Dealing with such multidimensional problems requires an additional set of mathematical tools and a different way of thinking. 
@@ -207,7 +209,7 @@
   \textcolor{red}{What is so special about the Fourier transform? Are there other transforms that might better suited for certain types of signals? Can I design my own transform?}
   \vspace{0.2cm}
 
-  Thinking of signals and images as entities residing in a high-dimensional space turns out to be very useful way to think about signals and their processing.
+  Thinking of signals and images as entities residing in a high-dimensional space turns out to be very useful way to think about signals and how to process them.
 \end{frame}
 
 
@@ -306,41 +308,63 @@
 \begin{frame}[t]{Linear Algebra - the workhorse of modern science and engineering}
 \begin{figure}
   \centering 
-  \includegraphics[width=0.38\textwidth]{../../truth.png}
+  \includegraphics[width=0.35\textwidth]{../../truth.png}
 \end{figure}
 \end{frame}
 
 
-\begin{frame}[t]{Linear Algebra - the workhorse of modern science and engineering}
+\begin{frame}[t]{Linear Algebra}
 \begin{itemize}
+  \item Algebra (Arabic: \textit{al-jabr} `reunion of broken parts') is the study of variables and the rules for manipulating these variables in formulas (Source: Wikipedia).
+  
   \item Linear algebra is the study of linear system of equations.
   \[
     \begin{split}
       a_{11} x_1 + a_{12} x_2 + a_{13} x_3 &+ \cdots + a_{1n} x_n = y_1\\
-      a_{22} x_1 + a_{22} x_2 + a_{23} x_3 &+ \cdots + a_{2n} x_n = y_2\\
       &\vdots \\ 
       a_{m1} x_1 + a_{32} x_2 + a_{m3} x_3 &+ \cdots + a_{mn} x_n = y_m
     \end{split}
   \]
-  Such equations can be used to represent and analyse a surprisingly wide range of real world problems!
-  \vspace{0.2cm}
-  
-  $x_1, x_2, x_3, \ldots x_n$ could represents the various inputs or parameters associated with the problem, and $y_1, y_2, \ldots y_m$ could be the outputs or mesaurements.
-  \vspace{0.2cm}
-  
-  Linear algebra provides ways for working with and understanding such systems, and provides tools for efficiently solving problems.
+  These are useful in a surprisingly wide range of real world problems!
+  \[ 
+    \begin{split}
+      x_1, x_2, \ldots x_n &: \text{inputs/parameters of the problem}\\
+      y_1, y_2 \ldots y_m &: \text{outputs or mesaurements}\\
+      a_{ij} &: \text{physics of the problem}
+    \end{split}
+  \]
+  \item Linear algebra provides tools for: understanding, manipulating, and efficiently solving such problems.
 \end{itemize}
 \end{frame}
 
 
-\begin{frame}{Linear algebra in engineering}
-  \textbf{Signal Processing}
-  
+\begin{frame}{Linear algebra in engineering: Signal Processing}
+  \begin{itemize}
+    \item Expressing signals as a linear combinations of other signals (basis functions) is at the core of most of signal processing.
+    \[ x\ct{t} = c_1 \phi_1\ct{t} + c_2 \phi_2\ct{t} + \cdots + c_n \phi_n\ct{t} \]
+
+    \item $\lc c_i \rc_{i}$ is another representation of the signal $x\ct{t}$ in terms of $\lc \phi_i\ct{t} \rc_i$.
+    
+    \item $\lc \phi_i \rc_{i}$ are called the basis functions.  Different basis functions gives different types of transforms.
+    
+    \item Manipulating $\lc c_i \rc_i$ will allow us to extract or suppress different types of information from $x\ct{t}$.
+  \end{itemize}
 \end{frame}
 
 
-\begin{frame}{Linear algebra in engineering}
-  \textbf{Robotics}
+\begin{frame}{Linear algebra in engineering: Signal Processing}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{../../analysis/signalprocessing/output/signal2_fft.png}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}{Linear algebra in engineering: Robotics}
+  \begin{itemize}
+    \item Kinematics and dynamics of serial serial robots are highly non-linear.
+    \item 
+  \end{itemize}
   
 \end{frame}
 
