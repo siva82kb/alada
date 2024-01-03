@@ -20,6 +20,7 @@
 \usepackage[]{algorithm2e}
 \usepackage{changepage}
 \usepackage{amssymb}
+\usepackage{bm}
 \usepackage{xcolor}
 \usepackage{mathtools}
 \usepackage{tcolorbox}
@@ -361,23 +362,85 @@
 
 
 \begin{frame}{Linear algebra in engineering: Robotics}
-  \begin{itemize}
-    \item Kinematics and dynamics of serial serial robots are highly non-linear.
-    \item 
-  \end{itemize}
-  
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      Kinematics and dynamics of serial robots are highly non-linear.
+
+      \textbf{Kinematics of a 2-link planar robot}
+      \[ 
+        \begin{split}
+          x &= l_1 \cos\ct{\theta_1} + l_1 \cos\ct{\theta_1 + \theta_2} \\
+          y &= l_1 \sin\ct{\theta_1} + l_1 \sin\ct{\theta_1 + \theta_2} \\
+        \end{split}
+      \]
+
+      The differential kinematics however has is linear relationship:
+      \[ \bmx \dot{x} \\ \dot{y}\emx = \mf{J}\ct{\theta_1, \theta_2} \bmx \dot{\theta}_1 \\ \dot{\theta}_2 \emx \]
+      \[ \mf{J}\ct{\theta_1, \theta_2}: \text{Jacobian matrix} \]
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.8\textwidth]{2links.png}
+      \end{figure}
+    \end{column}    
+  \end{columns}
 \end{frame}
 
 
-\begin{frame}{Linear algebra in engineering}
-  \textbf{Computed tomography}
-  
+\begin{frame}{Linear algebra in engineering: Robotics}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \textbf{Dynamics of serial robots.}
+      \[ 
+        \mf{M}\ct{\mf{q}} \ddot{\mf{q}} + \mf{C}\ct{\mf{q}, \dot{\mf{q}}} \dot{\mf{q}} + \mf{g}\ct{\mf{q}} = \bm{\tau} + \mf{J}^\top \mf{f}
+      \]
+      where,
+      \begin{itemize}
+        \item $\mf{q}$: Joint angles
+        \item $\mf{M}\ct{\mf{q}}$: Inertia matrix
+        \item $\mf{C}\ct{\mf{q}, \dot{\mf{q}}}$: Coriolis and centrifugal forces
+        \item $\mf{g}\ct{\mf{q}}$: Gravity forces
+        \item $\bm{\tau}$: Joint torques
+      \end{itemize}
+      
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.8\textwidth]{2links.png}
+      \end{figure}
+    \end{column}    
+  \end{columns}
 \end{frame}
 
 
-\begin{frame}{Linear algebra in engineering}
-  \textbf{Radiotherapy}
-  
+\begin{frame}{Linear algebra in engineering: Computed tomography}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      An imagining technique used to obtained detailed images of the inside of an object.
+      \vspace{0.2cm}
+
+      A series of images are measurements are taken from different angles around the object. 
+      \vspace{0.2cm}
+
+      The measurements are then combined using a mathematical process called \textbf{tomographic reconstruction} to create cross-sectional images of the object.
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{ctimage.jpg}
+      \end{figure}
+    \end{column}    
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}{Linear algebra in engineering: Computed tomography}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.45\textwidth]{ct_example.jpg}
+  \end{figure}
 \end{frame}
 
 
