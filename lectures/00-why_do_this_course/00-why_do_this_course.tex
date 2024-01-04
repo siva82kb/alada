@@ -151,7 +151,7 @@
 \begin{frame}[t]{The world is multidimensional}
 \begin{itemize}
   \item Most things/systems/ideas of interest in science and engineering are multidimensional.
-  \item Most courses in undergraduate engineering programs focus on mathematical skills for representing, analysing, and designing simple systems $\longrightarrow$ Univariate \textbf{Calculus}!
+  \item Undergraduate engineering programs focus on mathematical skills for representing, analysing, and designing relatively simple systems $\longrightarrow$ Univariate \textbf{Calculus}!
   \begin{itemize}
     \item Linear single-input-single-output (SISO) system theory (used in signal processing and control theory).
     \item Fourier, Laplace, z-transforms for understanding 1D temporal or spatial phenomena.
@@ -163,7 +163,108 @@
 \end{frame}
 
 
-\begin{frame}{What are these multidimensional problems?}
+\begin{frame}{The world is also uncertain}
+\begin{itemize}
+  \item Noise and uncertainty are inherent in the real world.
+  \item All measurements are corrupted by unwanted sources and the outcomes of all our actions are also influenced by a variety of factors.
+  \item There is often some structure to this uncertainty, which can be exploited.
+  \item Dealing with uncertainity too requires an additional set of mathematical and statistical tools.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{We are often faced with multiple options}
+\begin{itemize}
+  \item There are multiple options for solving a problem. For example,
+  \begin{itemize}
+    \item Estimating a parameter from a set of measurements.
+    \item Choosing the inputs to a system to get a desired output. 
+    \item Choose the design parameters for a given set of specifications.
+  \end{itemize}
+  \vspace{0.2cm}
+  \item In such situations, we need to search through the \textit{options space} to find the ``best'' one.
+  \vspace{0.2cm}
+  \item Various mathematical tools exist for formulating and efficiently solving a wide range of problems.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Three major topics are covered in this course}
+  \begin{Large}
+    {\textbf{Linear Algebra}}
+  \end{Large}
+  \begin{itemize}
+    \item First step in high dimensional thinking.
+  \end{itemize}
+  \vspace{0.75cm}
+  
+  \begin{Large}
+    {\textbf{Probability theory}}
+  \end{Large}
+  \begin{itemize}
+    \item Principled approach to navigate uncertainity.
+  \end{itemize}
+  \vspace{0.75cm}
+  
+  \begin{Large}
+    {\textbf{Optimization}}
+  \end{Large}
+  \begin{itemize}
+    \item Approaches for searching spaces for the best solutions.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[t]{Linear Algebra}
+  \begin{itemize}
+    \item Algebra (Arabic: \textit{al-jabr} `reunion of broken parts') is the study of variables and the rules for manipulating these variables in formulas (Source: Wikipedia).
+    
+    \item Linear algebra is the study of linear system of equations.
+    \[
+      \left. \begin{aligned}
+        a_{11} x_1 + a_{12} x_2 + a_{13} x_3 &+ \cdots + a_{1n} x_n = y_1\\
+        &\vdots \\ 
+        a_{m1} x_1 + a_{32} x_2 + a_{m3} x_3 &+ \cdots + a_{mn} x_n = y_m
+      \end{aligned} \right\} \longrightarrow \mf{A}\mf{x} = \mf{y}
+    \]
+    These are useful in a surprisingly wide range of real world problems!
+    \[ 
+      \begin{split}
+        x_1, x_2, \ldots x_n &: \text{inputs/parameters of the problem}\\
+        y_1, y_2 \ldots y_m &: \text{outputs or mesaurements}\\
+        a_{ij} &: \text{physics of the problem}
+      \end{split}
+    \]
+    \item Linear algebra provides tools for: understanding, manipulating, and efficiently solving such problems.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Probability Theory}
+  \begin{itemize}
+    \item Branch of mathematics dealing with probability - a measure of uncertainty of events.
+    
+    \item Provides the tools for representing, analysing, and manipulating uncertainity with events.
+    
+    \item Some essential concepts: probability distributions/densities, random variables, expectation, variance, covariance, conditional probability, Bayes rule, etc.
+    
+    \item We will also look at the Gaussian or Normal distribution, arguably the most important distribution in statistics.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Mathematical Optimization}
+  \begin{itemize}
+    \item Mathematical optimization/programming is the selection of a best element, with regard to some criterion, from some set of available alternatives. (Source: Wikipedia)
+    
+    \item We will deal only with continuous optimization problems, where are searching over the spaces of real numbers $\ct{\mb{R}^n}$.
+    
+    \item Criteria for choosing the best element is often expressed as a function $\ct{f\ct{\mf{x}}}$ of the elements from the search space $\mb{R}^n$.
+    \[ \min_{\mf{x} \in \mb{R}^n} f\ct{\mf{x}} \quad \quad \mathrm{subject \,\, to} \,\, g_i\ct{\mf{x}} \leq 0, \,\, i = 1, \ldots, m \]
+  \end{itemize}
+\end{frame}
+  
+
+\begin{frame}{What kind of problems can we solve with these tools?}
   \begin{columns}
     \begin{column}{0.3\textwidth}
       \begin{itemize}
@@ -172,7 +273,8 @@
         \item Robotics
         \item Statistics
         \item Machine learning
-        \item Optimization
+        \item Medicine
+        \item Economics
         \item $\cdots$
       \end{itemize}
     \end{column}
@@ -199,9 +301,22 @@
 
 
 \begin{frame}{Signal Processing}
-  We can do this to slightly more complex signals as well:
-  \vspace{0.2cm}
+  \begin{itemize}
+    \item Expressing signals as a linear combinations of other signals (basis functions) is at the core of most of signal processing.
+    \[ x\ct{t} = c_1 \phi_1\ct{t} + c_2 \phi_2\ct{t} + \cdots + c_n \phi_n\ct{t} \]
 
+    \item $\lc c_i \rc_{i}$ is another representation of the signal $x\ct{t}$ in terms of $\lc \phi_i\ct{t} \rc_i$.
+    
+    \item The Fourier transform is one such representation of a signal.
+    
+    \item $\lc \phi_i \rc_{i}$ are called the basis functions. Different basis functions gives different types of transforms.
+    
+    \item Manipulating $\lc c_i \rc_i$ will allow us to extract or suppress different types of information from $x\ct{t}$.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Signal Processing}
   \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{../../analysis/signalprocessing/output/signal2_fft.png}
@@ -265,103 +380,7 @@
   \end{columns}
 \end{frame}
 
-
 \begin{frame}{Robotics}
-  Typically robots have multiple DOF.
-  \vspace{0.2cm}
-  
-  The end-effector of the robot is often where interesting things happen. 
-  \vspace{0.2cm}
-  
-  Controlling the kinematics of the end-effector and its interaction with evnironment (forces and torques) through multiple actuators and sensors located on the robot's body poses a multidimensional control problem.
-  \vspace{0.2cm}
-
-  \textcolor{red}{Which and by how much do we activate the different actuators to control the end-effector?}
-\end{frame}
-
-
-\begin{frame}{Statistics}
-  The data that we deal with is often heterogeneous, high-dimensional, and noisy.
-  \vspace{0.2cm}
-  
-  Representing such data, evaluating the relationships between different variables, building models for inference and estimation of natural phenomena is at the core of statistics. 
-  \vspace{0.2cm}
-  
-  There is a need for mathematical frameworks and computaitonal methods for doing these efficiently.
-  \vspace{0.2cm}
-  
-  \textbf{Example}: How much do dietry habits, alchohol consumption, smoking, exercise, and other lifestyle factors affect the risk of developing a stroke? We want to identify the most important factor and strength of its effect.
-
-  \textcolor{red}{How do we do answer this question, assuming we have data collected from a large segments of the population over several years?}
-\end{frame}
-
-
-\begin{frame}{Machine learning}
-  In machine learning, we are interested in predicting, and automating complex relationships and tasks through the use of data.
-  \vspace{0.2cm}
-  
-  Data is almost always high dimensional in such applications with complex structure.
-  \vspace{0.2cm}
-  
-\end{frame}
-
-
-\begin{frame}[t]{Linear Algebra - the workhorse of modern science and engineering}
-\begin{figure}
-  \centering 
-  \includegraphics[width=0.35\textwidth]{../../truth.png}
-\end{figure}
-\end{frame}
-
-
-\begin{frame}[t]{Linear Algebra}
-\begin{itemize}
-  \item Algebra (Arabic: \textit{al-jabr} `reunion of broken parts') is the study of variables and the rules for manipulating these variables in formulas (Source: Wikipedia).
-  
-  \item Linear algebra is the study of linear system of equations.
-  \[
-    \begin{split}
-      a_{11} x_1 + a_{12} x_2 + a_{13} x_3 &+ \cdots + a_{1n} x_n = y_1\\
-      &\vdots \\ 
-      a_{m1} x_1 + a_{32} x_2 + a_{m3} x_3 &+ \cdots + a_{mn} x_n = y_m
-    \end{split}
-  \]
-  These are useful in a surprisingly wide range of real world problems!
-  \[ 
-    \begin{split}
-      x_1, x_2, \ldots x_n &: \text{inputs/parameters of the problem}\\
-      y_1, y_2 \ldots y_m &: \text{outputs or mesaurements}\\
-      a_{ij} &: \text{physics of the problem}
-    \end{split}
-  \]
-  \item Linear algebra provides tools for: understanding, manipulating, and efficiently solving such problems.
-\end{itemize}
-\end{frame}
-
-
-\begin{frame}{Linear algebra in engineering: Signal Processing}
-  \begin{itemize}
-    \item Expressing signals as a linear combinations of other signals (basis functions) is at the core of most of signal processing.
-    \[ x\ct{t} = c_1 \phi_1\ct{t} + c_2 \phi_2\ct{t} + \cdots + c_n \phi_n\ct{t} \]
-
-    \item $\lc c_i \rc_{i}$ is another representation of the signal $x\ct{t}$ in terms of $\lc \phi_i\ct{t} \rc_i$.
-    
-    \item $\lc \phi_i \rc_{i}$ are called the basis functions.  Different basis functions gives different types of transforms.
-    
-    \item Manipulating $\lc c_i \rc_i$ will allow us to extract or suppress different types of information from $x\ct{t}$.
-  \end{itemize}
-\end{frame}
-
-
-\begin{frame}{Linear algebra in engineering: Signal Processing}
-  \begin{figure}
-    \centering
-    \includegraphics[width=0.8\textwidth]{../../analysis/signalprocessing/output/signal2_fft.png}
-  \end{figure}
-\end{frame}
-
-
-\begin{frame}{Linear algebra in engineering: Robotics}
   \begin{columns}
     \begin{column}{0.5\textwidth}
       Kinematics and dynamics of serial robots are highly non-linear.
@@ -388,7 +407,7 @@
 \end{frame}
 
 
-\begin{frame}{Linear algebra in engineering: Robotics}
+\begin{frame}{Robotics}
   \begin{columns}
     \begin{column}{0.5\textwidth}
       \textbf{Dynamics of serial robots.}
@@ -414,46 +433,149 @@
   \end{columns}
 \end{frame}
 
-
-\begin{frame}{Linear algebra in engineering: Computed tomography}
-  \begin{columns}
-    \begin{column}{0.5\textwidth}
-      An imagining technique used to obtained detailed images of the inside of an object.
-      \vspace{0.2cm}
-
-      A series of images are measurements are taken from different angles around the object. 
-      \vspace{0.2cm}
-
-      The measurements are then combined using a mathematical process called \textbf{tomographic reconstruction} to create cross-sectional images of the object.
-    \end{column}
-    \begin{column}{0.45\textwidth}
-      \begin{figure}
-        \centering
-        \includegraphics[width=\textwidth]{ctimage.jpg}
-      \end{figure}
-    \end{column}    
-  \end{columns}
-\end{frame}
-
-
-\begin{frame}{Linear algebra in engineering: Computed tomography}
-  \begin{figure}
-    \centering
-    \includegraphics[width=0.45\textwidth]{ct_example.jpg}
-  \end{figure}
-\end{frame}
-
-
-\begin{frame}{Linear algebra in engineering}
-  \textbf{Machine learning}
+% \begin{frame}{Robotics}
+%   Typically robots have multiple DOF.
+%   \vspace{0.2cm}
   
+%   The end-effector of the robot is often where interesting things happen. 
+%   \vspace{0.2cm}
+  
+%   Controlling the kinematics of the end-effector and its interaction with evnironment (forces and torques) through multiple actuators and sensors located on the robot's body poses a multidimensional control problem.
+%   \vspace{0.2cm}
+
+%   \textcolor{red}{Which and by how much do we activate the different actuators to control the end-effector?}
+% \end{frame}
+
+
+\begin{frame}{Statistics}
+  The data that we deal with is often heterogeneous, high-dimensional, and noisy.
+  \vspace{0.2cm}
+  
+  Representing such data, evaluating the relationships between different variables, building models for inference and estimation of natural phenomena is at the core of statistics. 
+  \vspace{0.2cm}
+  
+  There is a need for mathematical frameworks and computaitonal methods for doing these efficiently.
+  \vspace{0.2cm}
+  
+  \textbf{Example}: How much do dietry habits, alchohol consumption, smoking, exercise, and other lifestyle factors affect the risk of developing a stroke? We want to identify the most important factor and strength of its effect.
+
+  \textcolor{red}{How do we do answer this question, assuming we have data collected from a large segments of the population over several years?}
 \end{frame}
 
 
-\begin{frame}{Linear Algebra - the workhorse of modern science and engineering}
-
-  In a more modern view, linear algebra is the study of vector spaces and linear transformations between them.
+\begin{frame}{Machine learning}
+  In machine learning, we are interested in predicting, and automating complex relationships and tasks through the use of data.
+  \vspace{0.2cm}
+  
+  Data is almost always high dimensional in such applications with complex structure.
+  \vspace{0.2cm}  
 \end{frame}
+
+
+% \begin{frame}[t]{Three major topics are covered in this course}
+%   \begin{Large}
+%     {\textbf{Linear Algebra}}
+%   \end{Large}
+%   \begin{itemize}
+%     \item First step in high dimensional thinking.
+%   \end{itemize}
+%   \vspace{0.5cm}
+  
+%   \begin{Large}
+%     {\textbf{Probability theory}}
+%   \end{Large}
+%   \begin{itemize}
+%     \item Principled approach to navigate uncertainity.
+%   \end{itemize}
+%   \vspace{0.5cm}
+  
+%   \begin{Large}
+%     {\textbf{Optimization}}
+%   \end{Large}
+%   \begin{itemize}
+%     \item Approaches for searching spaces for the best solutions.
+%   \end{itemize}
+%   \vspace{0.5cm}
+
+% \end{frame}
+
+
+% \begin{frame}[t]{Linear Algebra - the workhorse of modern science and engineering}
+% \begin{figure}
+%   \centering 
+%   \includegraphics[width=0.35\textwidth]{../../truth.png}
+% \end{figure}
+% \end{frame}
+
+
+% \begin{frame}[t]{Linear Algebra}
+% \begin{itemize}
+%   \item Algebra (Arabic: \textit{al-jabr} `reunion of broken parts') is the study of variables and the rules for manipulating these variables in formulas (Source: Wikipedia).
+  
+%   \item Linear algebra is the study of linear system of equations.
+%   \[
+%     \begin{split}
+%       a_{11} x_1 + a_{12} x_2 + a_{13} x_3 &+ \cdots + a_{1n} x_n = y_1\\
+%       &\vdots \\ 
+%       a_{m1} x_1 + a_{32} x_2 + a_{m3} x_3 &+ \cdots + a_{mn} x_n = y_m
+%     \end{split}
+%   \]
+%   These are useful in a surprisingly wide range of real world problems!
+%   \[ 
+%     \begin{split}
+%       x_1, x_2, \ldots x_n &: \text{inputs/parameters of the problem}\\
+%       y_1, y_2 \ldots y_m &: \text{outputs or mesaurements}\\
+%       a_{ij} &: \text{physics of the problem}
+%     \end{split}
+%   \]
+%   \item Linear algebra provides tools for: understanding, manipulating, and efficiently solving such problems.
+% \end{itemize}
+% \end{frame}
+
+
+% \begin{frame}{Linear algebra in engineering: Computed tomography}
+%   \begin{columns}
+%     \begin{column}{0.5\textwidth}
+%       An imagining technique used to obtained detailed images of the inside of an object.
+%       \vspace{0.2cm}
+
+%       A series of images are measurements are taken from different angles around the object. 
+%       \vspace{0.2cm}
+
+%       The measurements are then combined using a mathematical process called \textbf{tomographic reconstruction} to create cross-sectional images of the object.
+%     \end{column}
+%     \begin{column}{0.45\textwidth}
+%       \begin{figure}
+%         \centering
+%         \includegraphics[width=\textwidth]{ctimage.jpg}
+%       \end{figure}
+%     \end{column}    
+%   \end{columns}
+% \end{frame}
+
+
+% \begin{frame}{Linear algebra in engineering: Computed tomography}
+%   \begin{figure}
+%     \centering
+%     \includegraphics[width=0.45\textwidth]{ct_example.jpg}
+%   \end{figure}
+% \end{frame}
+
+
+% \begin{frame}{Probability theory}
+
+% \end{frame}
+
+
+% \begin{frame}{Probability theory}
+  
+% \end{frame}
+
+
+% \begin{frame}{Linear Algebra - the workhorse of modern science and engineering}
+
+%   In a more modern view, linear algebra is the study of vector spaces and linear transformations between them.
+% \end{frame}
 
 
 
