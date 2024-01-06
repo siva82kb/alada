@@ -433,150 +433,79 @@
   \end{columns}
 \end{frame}
 
-% \begin{frame}{Robotics}
-%   Typically robots have multiple DOF.
-%   \vspace{0.2cm}
-  
-%   The end-effector of the robot is often where interesting things happen. 
-%   \vspace{0.2cm}
-  
-%   Controlling the kinematics of the end-effector and its interaction with evnironment (forces and torques) through multiple actuators and sensors located on the robot's body poses a multidimensional control problem.
-%   \vspace{0.2cm}
-
-%   \textcolor{red}{Which and by how much do we activate the different actuators to control the end-effector?}
-% \end{frame}
-
 
 \begin{frame}{Statistics}
   The data that we deal with is often heterogeneous, high-dimensional, and noisy.
-  \vspace{0.2cm}
+  \vspace{1cm}
   
-  Representing such data, evaluating the relationships between different variables, building models for inference and estimation of natural phenomena is at the core of statistics. 
-  \vspace{0.2cm}
+  \textbf{Core of statistics:}
+  \begin{itemize}
+    \item Representing such data
+    \item Evaluating the relationships between different variables
+    \item Building and estimating models for inference and decision making
+  \end{itemize}
+  \vspace{1cm}
   
-  There is a need for mathematical frameworks and computaitonal methods for doing these efficiently.
-  \vspace{0.2cm}
-  
-  \textbf{Example}: How much do dietry habits, alchohol consumption, smoking, exercise, and other lifestyle factors affect the risk of developing a stroke? We want to identify the most important factor and strength of its effect.
+  Proability theory, Calculus, Linear algebra, and Optimiztion are mployed for solving these problems efficiently.
+\end{frame}
 
-  \textcolor{red}{How do we do answer this question, assuming we have data collected from a large segments of the population over several years?}
+
+\begin{frame}{Statistics}
+  Health-related physical fitness (HRPF) can be good indicator for the developments of chronic diseases [1].
+
+  HRPF can be difficult to measure and has multiple components - HGS, STS, and $VO_2$ max.. 
+  
+  Can we predict these HRPF component's from easily measurable variables -- age, height, weight, BMI, and \% body fat?
+
+  \[ y_j = \beta_0 + \beta_1 x_{j1} + \beta_2 x_{j2} + \cdots + \beta_n x_{jn} + \epsilon_j \,\, \longrightarrow \,\, \mf{y} = \mf{X}\bm{\beta} + \bm{\epsilon} \]
+  \[ \min_{\bm{\beta}} \Vert \mf{y} - \mf{X}\bm{\beta}\Vert_2^2 \implies \hat{\bm{\beta}} = \lp \mf{X}^\top{\mf{X}} \rp^{-1}\mf{X}^\top\mf{y} \]
+
+  \vspace{0.75cm}
+
+  \begin{small}
+    [1] Kim, S.-W. et al., Front. Physiol. 12, 668055 (2021).
+  \end{small}
+\end{frame}
+
+
+\begin{frame}{Statistics}
+  What if we want to have a minimalistic model --  good performance with fewest number of variables?
+  \[ \mf{y} = \mf{X}\bm{\beta} + \bm{\epsilon} \]
+
+  \textbf{Ridge Regression:}
+  \[ \min_{\bm{\beta}} \Vert \mf{y} - \mf{X}\bm{\beta}\Vert_2^2 + \lambda \Vert \bm{\beta} \Vert_2^2 \implies \hat{\bm{\beta}} = \lp \mf{X}^\top{\mf{X}} + \lambda \mf{I} \rp^{-1}\mf{X}^\top\mf{y} \]
+
+  \vspace{0.7cm}
+
+  \textbf{LASSO Regression:}
+  \[ \min_{\bm{\beta}} \Vert \mf{y} - \mf{X}\bm{\beta}\Vert_2^2 + \lambda \Vert \bm{\beta} \Vert_1 \]
 \end{frame}
 
 
 \begin{frame}{Machine learning}
   In machine learning, we are interested in predicting, and automating complex relationships and tasks through the use of data.
-  \vspace{0.2cm}
+  \vspace{0.5cm}
   
   Data is almost always high dimensional in such applications with complex structure.
-  \vspace{0.2cm}  
+  \vspace{0.5cm}
+  
+  Models we are interested in fitting a more complex than linear models.
+  \begin{itemize}
+    \item Linear/Logistic Regression
+    \item Decision trees, random forests
+    \item Support vector machines
+    \item Neural networks
+    \item $\cdots$
+  \end{itemize}
 \end{frame}
 
 
-% \begin{frame}[t]{Three major topics are covered in this course}
-%   \begin{Large}
-%     {\textbf{Linear Algebra}}
-%   \end{Large}
-%   \begin{itemize}
-%     \item First step in high dimensional thinking.
-%   \end{itemize}
-%   \vspace{0.5cm}
-  
-%   \begin{Large}
-%     {\textbf{Probability theory}}
-%   \end{Large}
-%   \begin{itemize}
-%     \item Principled approach to navigate uncertainity.
-%   \end{itemize}
-%   \vspace{0.5cm}
-  
-%   \begin{Large}
-%     {\textbf{Optimization}}
-%   \end{Large}
-%   \begin{itemize}
-%     \item Approaches for searching spaces for the best solutions.
-%   \end{itemize}
-%   \vspace{0.5cm}
-
-% \end{frame}
-
-
-% \begin{frame}[t]{Linear Algebra - the workhorse of modern science and engineering}
-% \begin{figure}
-%   \centering 
-%   \includegraphics[width=0.35\textwidth]{../../truth.png}
-% \end{figure}
-% \end{frame}
-
-
-% \begin{frame}[t]{Linear Algebra}
-% \begin{itemize}
-%   \item Algebra (Arabic: \textit{al-jabr} `reunion of broken parts') is the study of variables and the rules for manipulating these variables in formulas (Source: Wikipedia).
-  
-%   \item Linear algebra is the study of linear system of equations.
-%   \[
-%     \begin{split}
-%       a_{11} x_1 + a_{12} x_2 + a_{13} x_3 &+ \cdots + a_{1n} x_n = y_1\\
-%       &\vdots \\ 
-%       a_{m1} x_1 + a_{32} x_2 + a_{m3} x_3 &+ \cdots + a_{mn} x_n = y_m
-%     \end{split}
-%   \]
-%   These are useful in a surprisingly wide range of real world problems!
-%   \[ 
-%     \begin{split}
-%       x_1, x_2, \ldots x_n &: \text{inputs/parameters of the problem}\\
-%       y_1, y_2 \ldots y_m &: \text{outputs or mesaurements}\\
-%       a_{ij} &: \text{physics of the problem}
-%     \end{split}
-%   \]
-%   \item Linear algebra provides tools for: understanding, manipulating, and efficiently solving such problems.
-% \end{itemize}
-% \end{frame}
-
-
-% \begin{frame}{Linear algebra in engineering: Computed tomography}
-%   \begin{columns}
-%     \begin{column}{0.5\textwidth}
-%       An imagining technique used to obtained detailed images of the inside of an object.
-%       \vspace{0.2cm}
-
-%       A series of images are measurements are taken from different angles around the object. 
-%       \vspace{0.2cm}
-
-%       The measurements are then combined using a mathematical process called \textbf{tomographic reconstruction} to create cross-sectional images of the object.
-%     \end{column}
-%     \begin{column}{0.45\textwidth}
-%       \begin{figure}
-%         \centering
-%         \includegraphics[width=\textwidth]{ctimage.jpg}
-%       \end{figure}
-%     \end{column}    
-%   \end{columns}
-% \end{frame}
-
-
-% \begin{frame}{Linear algebra in engineering: Computed tomography}
-%   \begin{figure}
-%     \centering
-%     \includegraphics[width=0.45\textwidth]{ct_example.jpg}
-%   \end{figure}
-% \end{frame}
-
-
-% \begin{frame}{Probability theory}
-
-% \end{frame}
-
-
-% \begin{frame}{Probability theory}
-  
-% \end{frame}
-
-
-% \begin{frame}{Linear Algebra - the workhorse of modern science and engineering}
-
-%   In a more modern view, linear algebra is the study of vector spaces and linear transformations between them.
-% \end{frame}
-
+\begin{frame}[t]{What is this course about?}
+  \vspace{2cm}
+  \begin{center}
+    \textcolor{myred}{\huge \textbf{This is will prepare to comfortably work with such problems in your field.}}
+  \end{center}
+\end{frame}
 
 
 \end{document}
