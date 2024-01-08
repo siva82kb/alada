@@ -177,8 +177,8 @@
 \begin{itemize}
   \item There are multiple options for solving a problem. For example,
   \begin{itemize}
-    \item Estimating a parameter from a set of measurements.
     \item Choosing the inputs to a system to get a desired output. 
+    \item Estimating a parameter from a set of measurements.
     \item Choose the design parameters for a given set of specifications.
   \end{itemize}
   \vspace{0.2cm}
@@ -230,7 +230,7 @@
     \[ 
       \begin{split}
         x_1, x_2, \ldots x_n &: \text{inputs/parameters of the problem}\\
-        y_1, y_2 \ldots y_m &: \text{outputs or mesaurements}\\
+        y_1, y_2 \ldots y_m &: \text{outputs or measurements}\\
         a_{ij} &: \text{physics of the problem}
       \end{split}
     \]
@@ -243,7 +243,7 @@
   \begin{itemize}
     \item Branch of mathematics dealing with probability - a measure of uncertainty of events.
     
-    \item Provides the tools for representing, analysing, and manipulating uncertainity with events.
+    \item Provides the tools for representing, analysing, and manipulating uncertainity of events.
     
     \item Some essential concepts: probability distributions/densities, random variables, expectation, variance, covariance, conditional probability, Bayes rule, etc.
     
@@ -254,9 +254,9 @@
 
 \begin{frame}{Mathematical Optimization}
   \begin{itemize}
-    \item Mathematical optimization/programming is the selection of a best element, with regard to some criterion, from some set of available alternatives. (Source: Wikipedia)
+    \item Mathematical optimization/programming is the selection of a best element, with regard to some criterion, from a some set of available alternatives. (Source: Wikipedia)
     
-    \item We will deal only with continuous optimization problems, where are searching over the spaces of real numbers $\ct{\mb{R}^n}$.
+    \item We will deal only with continuous optimization problems, where involves searching over the spaces of real numbers $\ct{\mb{R}^n}$.
     
     \item Criteria for choosing the best element is often expressed as a function $\ct{f\ct{\mf{x}}}$ of the elements from the search space $\mb{R}^n$.
     \[ \min_{\mf{x} \in \mb{R}^n} f\ct{\mf{x}} \quad \quad \mathrm{subject \,\, to} \,\, g_i\ct{\mf{x}} \leq 0, \,\, i = 1, \ldots, m \]
@@ -319,10 +319,18 @@
 \begin{frame}{Signal Processing}
   \begin{figure}
     \centering
+    \includegraphics[width=1\textwidth]{../../analysis/signalprocessing/output/signal2_fft.png}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}{Signal Processing}
+  \begin{figure}
+    \centering
     \includegraphics[width=0.8\textwidth]{../../analysis/signalprocessing/output/signal2_fft.png}
   \end{figure}
 
-  \textcolor{red}{What is so special about the Fourier transform? Are there other transforms that might better suited for certain types of signals? Can I design my own transform?}
+  What is so special about the Fourier transform? Are there other transforms that might be better suited for certain types of signals? Can I design my own transform?
   \vspace{0.2cm}
 
   Thinking of signals and images as entities residing in a high-dimensional space turns out to be very useful way to think about signals and how to process them.
@@ -344,12 +352,12 @@
       Multiple thrusters, reaction-wheels are used to control the spacecraft dynamics.
       \vspace{0.2cm}
 
-      \textcolor{red}{How do we get the best estimate of the spacecraft position and velocity? Which and by how much do we activate the different thrusters and reaction-wheels to control the spacecraft?}
+      How do we get the best estimate of the spacecraft position and velocity? Which and by how much do we activate the different thrusters and reaction-wheels to control the spacecraft?
     \end{column}
     \begin{column}{0.475\textwidth}
       \begin{figure}
         \centering
-        \includegraphics[width=1\textwidth]{spacecraft.png}
+        \includegraphics[width=0.9\textwidth]{spacecraft.png}
         \caption{\scriptsize Source: http://surl.li/klulx}
       \end{figure}
     \end{column}    
@@ -364,15 +372,11 @@
         \centering
         \includegraphics[width=0.825\textwidth]{rehabrobots.png}
         \caption{\scriptsize \textbf{Rehab Robot} [Source: http://surl.li/klupd]}
-        % \includegraphics[width=1\textwidth]{rehabrobots.png}
-        % \caption{\scriptsize Source: http://surl.li/klurm}
       \end{figure}
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{figure}
         \centering
-        % \includegraphics[width=1\textwidth]{surgicalrobot.png}
-        % \caption{\scriptsize Source: http://surl.li/klupd}
         \includegraphics[width=1\textwidth]{surgicalrobot.png}
         \caption{\scriptsize \textbf{Surgical Robot} [Source: http://surl.li/klurm]}
       \end{figure}
@@ -446,14 +450,14 @@
   \end{itemize}
   \vspace{1cm}
   
-  Proability theory, Calculus, Linear algebra, and Optimiztion are mployed for solving these problems efficiently.
+  Proability theory, Calculus, Linear algebra, and Optimiztion are employed for solving these problems efficiently.
 \end{frame}
 
 
 \begin{frame}{Statistics}
   Health-related physical fitness (HRPF) can be good indicator for the developments of chronic diseases [1].
 
-  HRPF can be difficult to measure and has multiple components - HGS, STS, and $VO_2$ max.. 
+  HRPF can be difficult to measure and has multiple components - HGS, STS, and $VO_2$ max.
   
   Can we predict these HRPF component's from easily measurable variables -- age, height, weight, BMI, and \% body fat?
 
@@ -483,7 +487,7 @@
 
 
 \begin{frame}{Machine learning}
-  In machine learning, we are interested in predicting, and automating complex relationships and tasks through the use of data.
+  In machine learning, we are interested in modelling complex models through the use of data.
   \vspace{0.5cm}
   
   Data is almost always high dimensional in such applications with complex structure.
@@ -500,10 +504,9 @@
 \end{frame}
 
 
-\begin{frame}[t]{What is this course about?}
-  \vspace{2cm}
+\begin{frame}{Why do this course?}
   \begin{center}
-    \textcolor{myred}{\huge \textbf{This is will prepare to comfortably work with such problems in your field.}}
+    \textcolor{myred}{\huge \textbf{This is will prepare you to comfortably work with such problems.}}
   \end{center}
 \end{frame}
 
