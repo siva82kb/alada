@@ -83,9 +83,9 @@
 \begin{enumerate}
     \item Elements of the matrix $\mf{C} \in \mb{R}^{m \times n}$ obtained as the product of two matrices $\mf{A} \in \mb{R}^{m \times p}$ and $\mf{B} \in \mb{R}^{p \times n}$ is given by,
     \[ c_{ij} = \sum_{k=1}^{p}a_{ik}b_{kj} \]
-    We had discussed four different ways to think of matrix multiplication. By algebraically manipulating the previous equation arrive at these four views (inner product view, column view, row view and outer product view)?  \textbf{[Marks: 4]}
+    We had discussed four different ways to think of matrix multiplication. By algebraically manipulating the previous equation, arrive at these four views (inner product view, column view, row view and outer product view)?  \textbf{[Marks: 4]}
     
-    \item \textbf{Computational cost of different operations.} What is computational cost of the following matrix operations? Computational cost refers to the number of arithmetic operations  required to carry out a particular matrix operation. Computational cost is a measure of the efficiency of an algorithm. For example, the consider the operation of vector addition, $\mf{a} + \mf{b}$, where $\mf{a}, \mf{b} \in \mb{R}^n$. This requires $n$ addition/subtraction operations and zero multiplication/division operations.
+    \item \textbf{Computational cost of different operations.} What is the computational cost of the following matrix operations? Computational cost refers to the number of arithmetic operations  required to carry out a particular matrix operation. Computational cost is a measure of the efficiency of an algorithm. For example, consider the operation of vector addition, $\mf{a} + \mf{b}$, where $\mf{a}, \mf{b} \in \mb{R}^n$. This requires $n$ addition/subtraction operations and zero multiplication/division operations.
     \begin{enumerate}
         \item Matrix multiplication: $\mf{AB}$, where $\mf{A}, \mf{B} \in \mb{R}^{n \times n}$
         \item Inner product: $\mf{u}^T\mf{v}$
@@ -100,7 +100,7 @@
     \[ \mf{A} = \bmx \frac{\sqrt{3}}{2} & -\frac{1}{2}\\\frac{1}{2} & \frac{\sqrt{3}}{2} \emx \bmx 0.1 & 0\\0 & 0.9 \emx \bmx \frac{\sqrt{3}}{2} & \frac{1}{2}\\-\frac{1}{2} & \frac{\sqrt{3}}{2} \emx \]
     Find out the expression for $\mf{A}_n = \mf{A}^n$. What is $\mf{A}_\infty = \lim_{n\to\infty} \mf{A}^n$?  \textbf{[Marks: 2]}
 
-    \item Prove that a matrix $\mf{M} \in \mathbb{R}^{n \times n}$ can always be written as a sum a symmetric matrix $\mf{S}$ and a skew-symmetric matrix $\mf{A}$.
+    \item Prove that a matrix $\mf{M} \in \mathbb{R}^{n \times n}$ can always be written as a sum of a symmetric matrix $\mf{S}$ and a skew-symmetric matrix $\mf{A}$.
     \[ \mf{M} = \mf{S} + \mf{A}, \,\,\, \mf{S}^T = \mf{S} \, \text{ and } \, \mf{A}^T = -\mf{A} \]
 
     Does this property also hold for a complex matrix $\mf{M} \in \mb{C}^{n \times n}$?  \textbf{[Marks: 1]}
@@ -118,7 +118,7 @@
     % \[ \mf{y}^T\mf{A} = \mf{c}^T \,\,\,\, \text{ and } \,\,\,\,\, \mf{A}\mf{x} = \mf{b} \]
     % If so, how are they related?
 
-    \item Consider an upper triangular and lower triangular matrices $\mf{U}$ and $\mf{L}$, respectively.   \textbf{[Marks: 3]}
+    \item Consider upper triangular and lower triangular matrices $\mf{U}$ and $\mf{L}$, respectively.   \textbf{[Marks: 3]}
     \begin{enumerate}
         \item Is the product of two upper triangular matrices $\mf{U}_1\mf{U}_2$ upper triangular?
         \item Is the product of two lower triangular matrices $\mf{L}_1\mf{L}_2$ upper triangular?
@@ -151,7 +151,7 @@
         \item $\mf{A} = \mf{I} - \mf{U}\mf{V}$ and $\mf{B} = \mf{I}_{n} + \mf{U}\lp \mf{I}_m - \mf{V}\mf{U}\rp^{-1}\mf{V}$
         \item $\mf{A} = \mf{C} - \mf{U}\mf{D}^{-1}\mf{V}$ and $\mf{B} = \mf{A}^{-1} + \mf{A}^{-1}\mf{U}\lp \mf{D} - \mf{V}\mf{A}^{-1}\mf{U}\rp^{-1}\mf{V}\mf{A}^{-1}$
     \end{enumerate}
-    where, $\mf{A}, \mf{B} \in \mb{R}^{n \times n}$, $\mf{u}, \mf{v} \in \mb{R}^n$, $\mf{U} \in \mb{R}^{n \times m}$, $\mf{V} \in \mb{R}^{m \times n}$ and $\mf{D} \in \mb{R}^{m \times m}$.
+    where, $\mf{A}, \mf{B}, \mf{C} \in \mb{R}^{n \times n}$, $\mf{u}, \mf{v} \in \mb{R}^n$, $\mf{U} \in \mb{R}^{n \times m}$, $\mf{V} \in \mb{R}^{m \times n}$ and $\mf{D} \in \mb{R}^{m \times m}$.
 
     % \item Consider the matrices $\mf{A} \in \mb{R}^{m \times m}$, $\mf{B} \in \mb{R}^{n \times n}$ and $\mf{C} \in \mb{R}^{m \times n}$. Verify the following,
     % \begin{enumerate}
