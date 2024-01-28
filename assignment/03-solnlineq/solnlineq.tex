@@ -259,7 +259,17 @@ If we make a set of such measurements for $m$ different angles $\phi_1, \phi_2, 
 \[ \mf{A} = \bmxc \tilde{\mf{a}}_1 & \tilde{\mf{a}}_2 & \cdots & \tilde{\mf{a}}_m\emx^\top \in \mb{R}^{m \times n^2}\quad \mf{y} = \bmxc y_1 & y_2 & \cdots & y_m\emx^\top \in \mb{R}^{m} \]
 where, $\tilde{\mf{a}}_i$ is the vector relating the attentuation coefficients to the detector measurement for the source-detector angle $\phi_i$ and $y_i$ is the log of the x-ray intensity measured by the detector for the angle $\phi_i$.
 
-\textbf{Forward problem for CT}. Once you've derived the above matrix linear equation, we can use it to simulate a CT scan by computing $\mf{y}$ for a given $\mf{x}$ and scan angle $\phi$, we can compute intensity of the x-ray that will be measured by the detector. \textcolor{red}{\textcolor{blue}{\textbf{[Programming]}} Write a python function that will compute the measured detector intensities $\mf{y}$ for a given $\mf{x}$ and a given set of scan angles $\lc \phi_i \rc_{i=1}^{m}$.} You will be provided with a iPython notebook template for this purpose where you will only need to focus on writing the function that computes $\mf{y}$. After completing this, you need to use the data given to you to compute the measured detector intensities $\mf{y}$ for a given set of $\mf{x}$ and scan angles $\lc \phi_i \rc_{i=1}^{m}$. \textbf{[Marks: 6]}
+\textbf{Forward problem for CT}. Once you've derived the above matrix linear equation, we can use it to simulate a CT scan by computing $\mf{y}$ for a given $\mf{x}$ and scan angle $\phi$, we can compute intensity of the x-ray that will be measured by the detector. \textcolor{red}{\textcolor{blue}{\textbf{[Programming]}} Write a python function that will compute the measured detector intensities $\mf{y}$ for a given $\mf{x}$ and a given set of scan angles $\lc \phi_i \rc_{i=1}^{m}$.} 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = 0.8\textwidth]{ct_images.png}
+    \caption{Three objects that are to be scanned using the CT scanner described in the figure above. The black regions in this image represent the pixels with attenuation coefficient $\mu = 1$, and the gray regions represent the pixels with attenuation coefficient $\mu = 0.5$.}
+    \label{fig:ctimages}
+\end{figure}
+
+Write the down the matrix $\mf{A}$ for the three objects shown in Figure~\ref{fig:ctimages}, and use the python f
+After completing this, you need to use the data given to you to compute the measured detector intensities $\mf{y}$ for a given set of $\mf{x}$ and scan angles $\lc \phi_i \rc_{i=1}^{m}$. \textbf{[Marks: 6]}
 
 \end{enumerate}
 
