@@ -77,7 +77,7 @@
 \vspace{1em}
 
 \begin{large}
-    \textbf{Marks: 36}
+    \textbf{Marks: 31}
 \end{large}
 \vspace{0.2cm}
 
@@ -162,14 +162,6 @@
 \end{center}
 
 \textcolor{red}{Express the relationship between the voltages at the different nodes (represented by $\bullet$ in the figure) and the net current flowing in/out of the node in the following form, $\mf{G}\mf{v} = \mf{i}$. Where, $\mf{G}$ is the conductance matrix, $\mf{v}$ is the vector of node voltages, and $\mf{i}$ is the vector representing the net current flow in/out of the different node. \textbf{[Marks: 3]}}
-
-\item Consider the system of equation, $\mf{Ax} = \mf{b}$, such that a matrix $\mf{A} \in \mb{R}^{m \times n}$, $\mf{x} \in \mb{R}^n$, $\mf{b} \in \mb{R}^m$. \textcolor{red}{Are the following statements true? Explain your answer. \textbf{[Marks: 3]}
-\begin{enumerate}
-    \item $rank \lp \mf{A} \rp \leq \min \lp m, n \rp$
-    \item The system is consistent if $\,rank\lp \mf{A} \rp = m$.
-    \item The system has a unique solution if $\,rank \lp \mf{A} \rp = n$.
-\end{enumerate}
-}
 
 \item \textbf{Two point boundary problem.} $\mf{A}\mf{x} = \mf{b}$ is often encountered in many practical applications. One such application is the numerical solution of differential equations of the following form,
 \[ \sum_{i=0}^M a_{i}\ct{x}y^{\ct{i}}\ct{x} = f\ct{x} \]
@@ -259,7 +251,12 @@ If we make a set of such measurements for $m$ different angles $\phi_1, \phi_2, 
 \[ \mf{A} = \bmxc \tilde{\mf{a}}_1 & \tilde{\mf{a}}_2 & \cdots & \tilde{\mf{a}}_m\emx^\top \in \mb{R}^{m \times n^2}\quad \mf{y} = \bmxc y_1 & y_2 & \cdots & y_m\emx^\top \in \mb{R}^{m} \]
 where, $\tilde{\mf{a}}_i$ is the vector relating the attentuation coefficients to the detector measurement for the source-detector angle $\phi_i$ and $y_i$ is the log of the x-ray intensity measured by the detector for the angle $\phi_i$.
 
-\textbf{Forward problem for CT}. Once you've derived the above matrix linear equation, we can use it to simulate a CT scan by computing $\mf{y}$ for a given $\mf{x}$ and scan angle $\phi$, we can compute intensity of the x-ray that will be measured by the detector. \textcolor{red}{\textcolor{blue}{\textbf{[Programming]}} Write a python function that will compute the measured detector intensities $\mf{y}$ for a given $\mf{x}$ and a given set of scan angles $\lc \phi_i \rc_{i=1}^{m}$.} 
+\textbf{Forward problem for CT}. Once you've derived the above matrix linear equation, we can use it to simulate a CT scan by computing $\mf{y}$ for a given $\mf{x}$ and scan angle $\phi$, we can compute intensity of the x-ray that will be measured by the detector. Consider the following three objects that we wish to scan using out CT scanner. Given the relatively simple geometry of the spatial distribution of the attenuation coefficients $\mu\ct{x,y}$, you can use the $\mf{A}\mf{x} = \mf{y}$ equation to solve the forward CT problem, i.e., compute the detector output for different scan angles for the given object. For the three objects below, come up with a pixelation scheme for the objects ($n$ number of pixels and pixel dimensions) and come up with the matrix $\mf{A}$ for the three objects. Use this matrix $A$ and the known pixel attentualtion coefficients $\mf{x}$ to compute the detector outputs for 360 scan angle $\phi = 0\deg, 1\deg, 2\deg, \ldots 359\deg$. Assume $l = 1 unit$.
+
+\textcolor{red}{\textcolor{blue}{\textbf{[Programming]}} Write a python program to compute and plot the detector output for the different scan angles.\textbf{[Marks: 6]}}
+
+\textbf{Suggestion:} \textit{For each object write a function that will take in the scan angle, the object side length $l$, and return the row vector $\tilde{\mf{a}}\ct{\phi}^\top$. Use this function to compute the matrix $\mf{A}$ for the three objects.}
+
 
 \begin{figure}[h]
     \centering
@@ -267,10 +264,6 @@ where, $\tilde{\mf{a}}_i$ is the vector relating the attentuation coefficients t
     \caption{Three objects that are to be scanned using the CT scanner described in the figure above. The black regions in this image represent the pixels with attenuation coefficient $\mu = 1$, and the gray regions represent the pixels with attenuation coefficient $\mu = 0.5$.}
     \label{fig:ctimages}
 \end{figure}
-
-Write the down the matrix $\mf{A}$ for the three objects shown in Figure~\ref{fig:ctimages}, and use the python f
-After completing this, you need to use the data given to you to compute the measured detector intensities $\mf{y}$ for a given set of $\mf{x}$ and scan angles $\lc \phi_i \rc_{i=1}^{m}$. \textbf{[Marks: 6]}
-
 \end{enumerate}
 
 \end{document}
