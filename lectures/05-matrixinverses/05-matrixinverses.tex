@@ -150,7 +150,7 @@
 
 \begin{frame}[t]{Representation of vectors in a basis}
 \begin{itemize}
-\item Consider the vector space $\mb{R}^n$ with basis $\left\{\mf{v}_1, \mf{v}_2, \ldots \mf{v}_n\right\}$. Any vector in $\mf{b} \in \mb{R}^n$ can be representated as a linear combination of $\mf{v}_i$s,
+\item Consider the vector space $\mb{R}^n$ with basis $\left\{\mf{v}_1, \mf{v}_2, \ldots \mf{v}_n\right\}$. Any vector in $\mf{b} \in \mb{R}^n$ can be represented as a linear combination of vectors $\mf{v}_i$,
 \[ \mf{b} = \sum_{i=1}^{n} \mf{v}_i\mf{a}_i = \mf{V}\mf{a}; \,\,\, \mf{a} \in \mb{R}^n, \,\,\, \mf{V} = \begin{bmatrix*}\mf{v}_1 & \mf{v}_2 & \ldots & \mf{v}_n\end{bmatrix*} \in \mb{R}^{n \times n} \]
 
 \begin{center}
@@ -187,7 +187,7 @@ $\left\{\mf{v}_1, \mf{v}_2\right\}$, $\left\{\mf{u}_1, \mf{u}_2\right\}$ and $\l
 
     \item Let us assume $\mf{A}$ is non-singular $\implies$ columns of $\mf{A}$ represent a basis for $\mb{R}^n$.
 
-    \item What does $\mf{x}$ represent? It is the representation of $\mf{y}$ in the basis consisitng of the columns of $\mf{A}$.
+    \item What does $\mf{x}$ represent? It is the representation of $\mf{y}$ in the basis consisting of the columns of $\mf{A}$.
     \[ \mf{y} = \mf{Ax} = \begin{bmatrix*}\mf{a}_1 & \mf{a}_2 & \ldots & \mf{a}_n\end{bmatrix*}\begin{bmatrix*}x_1 \\ x_2 \\ \vdots \\ x_n\end{bmatrix*} = \sum_{i=1}^{n}\mf{a}_i x_i\]
     \[ \implies \,\, \mf{x} = \mf{A}^{-1}\mf{y} = \begin{bmatrix*}\tilde{\mf{b}}_1^\top \\ \tilde{\mf{b}}_2^\top \\ \ldots \\ \tilde{\mf{b}}_n^\top\end{bmatrix*}\mf{y} = \begin{bmatrix*}\tilde{\mf{b}}_1^\top\mf{y} \\ \tilde{\mf{b}}_2^\top\mf{y} \\ \ldots \\ \tilde{\mf{b}}_n^\top\mf{y}\end{bmatrix*} \]
 \end{itemize}
@@ -287,7 +287,7 @@ $\left\{\mf{v}_1, \mf{v}_2\right\}$, $\left\{\mf{u}_1, \mf{u}_2\right\}$ and $\l
 
     \item $\mf{Ax} = \mf{b}$ can be solved for any $\mf{b}$. $\mf{x} = \mf{Bb} \implies \mf{A}\left(\mf{Bb}\right) = \mf{b}$. 
 
-    \item There are an infitnite number of $\mf{B}$s $\implies$ an infinite number of solutions $\mf{x}$.
+    \item There are an infinite number of $\mf{B}$s $\implies$ an infinite number of solutions $\mf{x}$.
 \end{itemize}
 \end{frame}
 
@@ -332,7 +332,7 @@ $\left\{\mf{v}_1, \mf{v}_2\right\}$, $\left\{\mf{u}_1, \mf{u}_2\right\}$ and $\l
     \[ \mf{A} = \mf{QR} \implies \mf{A}^{-1} = \left(\mf{QR}\right)^{-1} = \mf{R}^{-1}\mf{Q}^{-1} = \mf{R}^{-1}\mf{Q}^\top \] 
     where, $\mf{R}, \mf{Q} \in \mb{R}^{n \times n}$. $\mf{R}$ is upper triangular, and $\mf{Q}$ is an orthogonal matrix.
     
-    \item In the case of a left invertible rectangular matrix $\mf{A} \in \mb{R}^{m \times n}$, we can factorize $\mf{A} = \mf{QR}$, with $\mf{Q} \in \mb{R}^{m \times n}$ and $\mf{R} \in \mb{R}^{m \times m}$.
+    \item In the case of a left invertible rectangular matrix $\mf{A} \in \mb{R}^{m \times n}$, we can factorize $\mf{A} = \mf{QR}$, with $\mf{Q} \in \mb{R}^{m \times n}$ and $\mf{R} \in \mb{R}^{n \times n}$.
     \[ \mf{A}^{\dagger} = \left(\mf{A}^\top\mf{A}\right)^{-1}\mf{A}^\top = \left(\mf{R}^\top\mf{Q}^\top\mf{QR}\right)^{-1}\mf{R}^\top\mf{Q}^\top = \left(\mf{R}^\top\mf{R}\right)^{-1}\mf{R}^\top\mf{Q}^\top = \mf{R}^{-1}\mf{Q}^\top \]
 \end{itemize}
 \end{frame}
@@ -350,7 +350,7 @@ $\left\{\mf{v}_1, \mf{v}_2\right\}$, $\left\{\mf{u}_1, \mf{u}_2\right\}$ and $\l
 \begin{frame}[t]{What about when $\mf{A}$ is not full rank?}
 \begin{itemize}
     \item There is no left or right inverse for $\mf{A} \in \mb{R}^{m \times n}$, when $rank(\mf{A}) = r < \min(m, n)$.
-    \[ \nexists \,\, \mf{B} \in \mb{R}^{n \times m}, s.t. \,\, \mf{B}\mf{A} = \mf{I}_m \,\, \text{or} \,\, \mf{AB} = \mf{I}_n \]
+    \[ \nexists \,\, \mf{B} \in \mb{R}^{n \times m}, s.t. \,\, \mf{B}\mf{A} = \mf{I}_n \,\, \text{or} \,\, \mf{AB} = \mf{I}_m \]
     
     \item \textbf{$\mf{A}$ is tall}: First $r$ columns of $\mf{A}$ are linear independent, then  $\exists \,\, \mf{B} \in \mb{R}^{n \times m}, s.t.$
     \[\mf{BA} = \bmx \mf{I}_r & \mf{0} \\ \mf{0} & \mf{0} \emx \]
