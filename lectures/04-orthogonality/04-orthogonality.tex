@@ -250,18 +250,18 @@ $\left\lVert \mf{e}\right\rVert$ is the distance of the point $\mf{b}$ from the 
 
     $\mf{v}_\mc{X}, \mf{v}_\mc{Y}$ are the components of $\mf{v}$ in $\mc{X}$ and $\mc{Y}$, respectively.
 
-    \item When $\mc{V} \perp \mc{W}$, then $\mf{v}^\top\mf{w} = 0$; $\mf{v}, \mf{w}$ are orthogonal components. 
+    \item When $\mc{X} \perp \mc{Y}$, then $\mf{v}_\mc{X}^\top\mf{v}_\mc{Y} = 0$; $\mf{v}_\mc{X}, \mf{v}_\mc{Y}$ are orthogonal components. 
 \end{itemize}
 \end{frame}
 
 
 \begin{frame}[t]{Relationship between the Four Fundamental Subspaces of $\mf{A}$}
 \begin{itemize}
-    \item $\mc{C}\lp\mf{A}\rp, \mc{N}\lp\mf{A}^\top\rp \subseteq \mb{R}^m$ are orthogonal complements.
-    \[ \mc{C}\lp\mf{A}\rp \perp \mc{N}\lp\mf{A}^\top\rp \implies \mc{C}\lp\mf{A}\rp + \mc{N}\lp\mf{A}^\top\rp = \mb{R}^m \]
+    \item $\mc{C}\lp\mf{A}\rp, \mc{N}\lp\mf{A}^\top\rp \subseteq \mb{R}^n$ are orthogonal complements.
+    \[ \mc{C}\lp\mf{A}\rp \perp \mc{N}\lp\mf{A}^\top\rp \implies \mc{C}\lp\mf{A}\rp + \mc{N}\lp\mf{A}^\top\rp = \mb{R}^n \]
 
-    \item $\mc{C}\lp\mf{A}^\top\rp, \mc{N}\lp\mf{A}\rp \subseteq \mb{R}^n$ are orthogonal complements.
-    \[ \mc{C}\lp\mf{A}^\top\rp \perp \mc{N}\lp\mf{A}\rp \implies \mc{C}\lp\mf{A}^\top\rp + \mc{N}\lp\mf{A}\rp = \mb{R}^n  \]
+    \item $\mc{C}\lp\mf{A}^\top\rp, \mc{N}\lp\mf{A}\rp \subseteq \mb{R}^m$ are orthogonal complements.
+    \[ \mc{C}\lp\mf{A}^\top\rp \perp \mc{N}\lp\mf{A}\rp \implies \mc{C}\lp\mf{A}^\top\rp + \mc{N}\lp\mf{A}\rp = \mb{R}^m  \]
 \end{itemize}
 \end{frame}
 
@@ -317,7 +317,7 @@ $\left\lVert \mf{e}\right\rVert$ is the distance of the point $\mf{b}$ from the 
 \begin{column}{0.4\textwidth}
 \begin{footnotesize}
 \begin{itemize}
-    \item $\mf{x}_r$ and $\mf{x}_n$ are the components of $\mf{x} \in \mb{R}^n$ in the row space and nullspace of $\mf{A}$.
+    \item $\mf{x}_r$ and $\mf{x}_n$ are the components of $\mf{x} \in \mb{R}^m$ in the row space and nullspace of $\mf{A}$.
     \item \textbf{Nullspace} $\mc{N}\lp\mf{A}\rp$ is mapped to $\mf{0}$.
     \[ \mf{A}\mf{x}_n = \mf{0} \]
     \item \textbf{Row space} $\mc{C}\lp\mf{A}^\top\rp$ is mapped to the \textbf{column space} $\mc{C}\lp\mf{A}\rp$.
