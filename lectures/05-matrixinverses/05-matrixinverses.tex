@@ -278,19 +278,31 @@ $\left\{\mf{v}_1, \mf{v}_2\right\}$, $\left\{\mf{u}_1, \mf{u}_2\right\}$ and $\l
 \end{frame}
 
 
-\begin{frame}[t]{Right Inverse}
-% \vspace{-0.25cm}
-\begin{itemize}
-    \item For $\mf{A} \in \mb{R}^{m \times n}$, $n > m$ with full rank, $\mf{AB} = \mf{I}_m \longrightarrow \mf{B} \text{ is the right inverse.}$
+\begin{frame}[t]{Left Inverse}
+  \begin{itemize}
+    \item Any non-zero $\mf{a} \in \mb{R}^{n \times 1} $ is left invertible: $ \mf{ba} = 1, \,\,\, \mf{b} \in \mb{R}^{1 \times n}; \,\,\,\,\, \mf{b}^T = \frac{\mf{a}}{\left\lVert \mf{a}\right\rVert^2} + \alpha \mf{a}^{\perp} $
 
-    \item Right inverse of $\mf{A}$ exists only if the rows of $\mf{A}$ are independent, i.e. $rank\left(\mf{A}\right) = m$ $\longrightarrow \mf{A}^\top\mf{x} = \mf{0} \implies \mf{x} = \mf{0}$
+    \item This can be generalized to $\mf{A} \in \mb{R}^{m \times n}$, $m > n$.
+    \[ \lp \mf{C} + \hat{\mf{C}} \rp \mf{A} = \mf{I}_m \,\,\, \text{where } \mf{C}, \hat{\mf{C}} \in \mb{R}^{n \times m},\,\,\,{ }\hat{\mf{C}}\mf{A} = \mf{0}\]
 
-    \item $\mf{Ax} = \mf{b}$ can be solved for any $\mf{b}$. $\mf{x} = \mf{Bb} \implies \mf{A}\left(\mf{Bb}\right) = \mf{b}$. 
+    \item Condition for left inverse of $\mf{A}$ to exist: \textit{Colmuns of $\mf{A}$ must be independent.} $\longrightarrow rank\left(\mf{A}\right) = n \longrightarrow \mf{Ax} = 0 \implies \mf{x} = 0$.
 
-    \item There are an infinite number of $\mf{B}$s $\implies$ an infinite number of solutions $\mf{x}$.
+    \item $\mf{Ax = b}$ can be solved, if and only if $\mf{A}\lp\mf{C}\mf{b}\rp = \mf{b}$, where $\mf{CA} = \mf{I}_n$.
 \end{itemize}
 \end{frame}
 
+
+\begin{frame}[t]{Right Inverse}
+  \begin{itemize}
+    \item For $\mf{A} \in \mb{R}^{m \times n}$, $n > m$ with full rank, $\mf{AB} = \mf{I}_m \longrightarrow \mf{B} \text{ is the right inverse.}$
+
+    \item Right inverse of $\mf{A}$ exists only if the rows of $\mf{A}$ are independent, i.e. $rank\left(\mf{A}\right) = m$ $\longrightarrow \mf{A}^T\mf{x} = \mf{0} \implies \mf{x} = \mf{0}$
+
+    \item $\mf{Ax} = \mf{b}$ can be solved for any $\mf{b}$. $\mf{x} = \mf{Bb} \implies \mf{A}\left(\mf{Bb}\right) = \mf{b}$. 
+
+    \item There are an infitnite number of $\mf{B}$s $\implies$ an infinite number of solutions $\mf{x}$.
+\end{itemize}
+\end{frame}
 
 \begin{frame}[t]{Pseudo Inverse}
 \begin{itemize}
@@ -371,7 +383,7 @@ $\left\{\mf{v}_1, \mf{v}_2\right\}$, $\left\{\mf{u}_1, \mf{u}_2\right\}$ and $\l
 
     \item $\mf{b} \notin \mathcal{C}\lp \mf{A} \rp \,\, \implies $ There is no solution to the above equation. But there are infinitely many solutions $\hat{\mf{x}}$ that minimize $\Vert \mf{b} - \mf{A}\hat{\mf{x}} \Vert_2$.
     
-    \item One approach to solve the case wherre $\mf{b} \notin \mc{C}\lp \mf{A} \rp$ is to formualte the problem as a regularized least squares problem,
+    \item One approach to solve the case where $\mf{b} \notin \mc{C}\lp \mf{A} \rp$ is to formualte the problem as a regularized least squares problem,
     \[ \hat{\mf{x}} = \arg \min \Vert \mf{Ax} - \mf{b}\Vert_2^2 + \lambda \Vert \mf{x} \Vert_2^2 \]
 \end{itemize}
 \end{frame}
