@@ -1,0 +1,265 @@
+% --- LaTeX Lecture Notes Template - S. Venkatraman ---
+
+% --- Set document class and font size ---
+
+\documentclass[letterpaper, twocolumn, 11pt]{article}
+
+% --- Package imports ---
+
+% Extended set of colors
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage{
+  amsmath, amsthm, amssymb, mathtools, dsfont, units,          % Math typesetting
+  graphicx, wrapfig, subfig, float,                            % Figures and graphics formatting
+  listings, color, inconsolata, pythonhighlight,               % Code formatting
+  fancyhdr, sectsty, hyperref, enumerate, enumitem, framed }   % Headers/footers, section fonts, links, lists
+
+% lipsum is just for generating placeholder text and can be removed
+\usepackage{hyperref, lipsum} 
+
+% --- Fonts ---
+
+\usepackage{newpxtext, newpxmath, inconsolata}
+
+% --- Page layout settings ---
+
+% Set page margins
+\usepackage[left=1cm, right=1cm, top=1cm, bottom=1cm, headsep=0.5cm, footskip=0.5cm]{geometry}
+
+% Anchor footnotes to the bottom of the page
+\usepackage[bottom]{footmisc}
+
+% Set line spacing
+\renewcommand{\baselinestretch}{1.0}
+
+% Set spacing between paragraphs
+\setlength{\parskip}{1.5mm}
+
+% Allow multi-line equations to break onto the next page
+\allowdisplaybreaks
+
+
+% --- Page formatting settings ---
+
+% Set image captions to be italicized
+\usepackage[font={it,footnotesize}]{caption}
+
+% Set link colors for labeled items (blue), citations (red), URLs (orange)
+\hypersetup{colorlinks=true, linkcolor=RoyalBlue, citecolor=RedOrange, urlcolor=ForestGreen}
+
+% Set font size for section titles (\large) and subtitles (\normalsize) 
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{{\fontsize{19}{19}\selectfont\textreferencemark}\;\; }{0em}{}
+\titleformat{\subsection}{\normalsize\bfseries\selectfont}{\thesubsection\;\;\;}{0em}{}
+
+% Enumerated/bulleted lists: make numbers/bullets flush left
+%\setlist[enumerate]{wide=2pt, leftmargin=16pt, labelwidth=0pt}
+\setlist[itemize]{wide=0pt, leftmargin=16pt, labelwidth=10pt, align=left}
+
+% --- Table of contents settings ---
+
+\usepackage[subfigure]{tocloft}
+
+% Reduce spacing between sections in table of contents
+\setlength{\cftbeforesecskip}{.9ex}
+
+% Remove indentation for sections
+\cftsetindents{section}{0em}{0em}
+
+% Set font size (\large) for table of contents title
+\renewcommand{\cfttoctitlefont}{\large\bfseries}
+
+% Remove numbers/bullets from section titles in table of contents
+\makeatletter
+\renewcommand{\cftsecpresnum}{\begin{lrbox}{\@tempboxa}}
+\renewcommand{\cftsecaftersnum}{\end{lrbox}}
+\makeatother
+
+% --- Set path for images ---
+
+\graphicspath{{Images/}{../Images/}}
+
+% --- Math/Statistics commands ---
+
+% Add a reference number to a single line of a multi-line equation
+% Usage: "\numberthis\label{labelNameHere}" in an align or gather environment
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+% Shortcut for bold text in math mode, e.g. $\b{X}$
+\let\b\mathbf
+
+% Shortcut for bold Greek letters, e.g. $\bg{\beta}$
+\let\bg\boldsymbol
+
+% Shortcut for calligraphic script, e.g. %\mc{M}$
+\let\mc\mathcal
+
+% \mathscr{(letter here)} is sometimes used to denote vector spaces
+\usepackage[mathscr]{euscript}
+
+% Convergence: right arrow with optional text on top
+% E.g. $\converge[p]$ for converges in probability
+\newcommand{\converge}[1][]{\xrightarrow{#1}}
+
+% Weak convergence: harpoon symbol with optional text on top
+% E.g. $\wconverge[n\to\infty]$
+\newcommand{\wconverge}[1][]{\stackrel{#1}{\rightharpoonup}}
+
+% Equality: equals sign with optional text on top
+% E.g. $X \equals[d] Y$ for equality in distribution
+\newcommand{\equals}[1][]{\stackrel{\smash{#1}}{=}}
+
+% Normal distribution: arguments are the mean and variance
+% E.g. $\normal{\mu}{\sigma}$
+\newcommand{\normal}[2]{\mathcal{N}\left(#1,#2\right)}
+
+% Uniform distribution: arguments are the left and right endpoints
+% E.g. $\unif{0}{1}$
+\newcommand{\unif}[2]{\text{Uniform}(#1,#2)}
+
+% Independent and identically distributed random variables
+% E.g. $ X_1,...,X_n \iid \normal{0}{1}$
+\newcommand{\iid}{\stackrel{\smash{\text{iid}}}{\sim}}
+
+% Sequences (this shortcut is mostly to reduce finger strain for small hands)
+% E.g. to write $\{A_n\}_{n\geq 1}$, do $\bk{A_n}{n\geq 1}$
+\newcommand{\bk}[2]{\{#1\}_{#2}}
+
+% Math mode symbols for common sets and spaces. Example usage: $\R$
+\newcommand{\R}{\mathbb{R}}	% Real numbers
+\newcommand{\C}{\mathbb{C}}	% Complex numbers
+\newcommand{\Q}{\mathbb{Q}}	% Rational numbers
+\newcommand{\Z}{\mathbb{Z}}	% Integers
+\newcommand{\N}{\mathbb{N}}	% Natural numbers
+\newcommand{\F}{\mathcal{F}}	% Calligraphic F for a sigma algebra
+\newcommand{\El}{\mathcal{L}}	% Calligraphic L, e.g. for L^p spaces
+
+% Math mode symbols for probability
+\newcommand{\pr}{\mathbb{P}}	% Probability measure
+\newcommand{\E}{\mathbb{E}}	% Expectation, e.g. $\E(X)$
+\newcommand{\var}{\text{Var}}	% Variance, e.g. $\var(X)$
+\newcommand{\cov}{\text{Cov}}	% Covariance, e.g. $\cov(X,Y)$
+\newcommand{\corr}{\text{Corr}}	% Correlation, e.g. $\corr(X,Y)$
+\newcommand{\B}{\mathcal{B}}	% Borel sigma-algebra
+
+% Other miscellaneous symbols
+\newcommand{\tth}{\text{th}}	% Non-italicized 'th', e.g. $n^\tth$
+\newcommand{\Oh}{\mathcal{O}}	% Big-O notation, e.g. $\O(n)$
+\newcommand{\1}{\mathds{1}}	% Indicator function, e.g. $\1_A$
+
+% Additional commands for math mode
+\DeclareMathOperator*{\argmax}{argmax}		% Argmax, e.g. $\argmax_{x\in[0,1]} f(x)$
+\DeclareMathOperator*{\argmin}{argmin}		% Argmin, e.g. $\argmin_{x\in[0,1]} f(x)$
+\DeclareMathOperator*{\spann}{Span}		% Span, e.g. $\spann\{X_1,...,X_n\}$
+\DeclareMathOperator*{\bias}{Bias}		% Bias, e.g. $\bias(\hat\theta)$
+\DeclareMathOperator*{\ran}{ran}			% Range of an operator, e.g. $\ran(T) 
+\DeclareMathOperator*{\dv}{d\!}			% Non-italicized 'with respect to', e.g. $\int f(x) \dv x$
+\DeclareMathOperator*{\diag}{diag}		% Diagonal of a matrix, e.g. $\diag(M)$
+\DeclareMathOperator*{\trace}{trace}		% Trace of a matrix, e.g. $\trace(M)$
+\DeclareMathOperator*{\supp}{supp}		% Support of a function, e.g., $\supp(f)$
+
+% Numbered theorem, lemma, etc. settings - e.g., a definition, lemma, and theorem appearing in that 
+% order in Lecture 2 will be numbered Definition 2.1, Lemma 2.2, Theorem 2.3. 
+% Example usage: \begin{theorem}[Name of theorem] Theorem statement \end{theorem}
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+
+% Un-numbered theorem, lemma, etc. settings
+% Example usage: \begin{lemma*}[Name of lemma] Lemma statement \end{lemma*}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem*{definition*}{Definition}
+\newtheorem*{example*}{Example}
+\newtheorem*{remark*}{Remark}
+\newtheorem*{claim}{Claim}
+
+% --- Left/right header text (to appear on every page) ---
+
+% Do not include a line under header or above footer
+\pagestyle{fancy}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0pt}
+
+% Right header text: Lecture number and title
+\renewcommand{\sectionmark}[1]{\markright{#1} }
+\fancyhead[R]{\small\textit{\nouppercase{\rightmark}}}
+
+% Left header text: Short course title, hyperlinked to table of contents
+% \fancyhead[L]{\hyperref[sec:contents]{\small Short title of document}}
+
+
+% --- Custom Math Mode Commands ---
+\def\mf{\ensuremath\mathbf}
+\def\mb{\ensuremath\mathbb}
+\def\mc{\ensuremath\mathcal}
+\def\lp{\ensuremath\left(}
+\def\rp{\ensuremath\right)}
+\def\lv{\ensuremath\left\lvert}
+\def\rv{\ensuremath\right\rvert}
+\def\lV{\ensuremath\left\lVert}
+\def\rV{\ensuremath\right\rVert}
+\def\lc{\ensuremath\left\{}
+\def\rc{\ensuremath\right\}}
+\def\ls{\ensuremath\left[}
+\def\rs{\ensuremath\right]}
+\def\bmx{\ensuremath\begin{bmatrix*}[r]}
+\def\emx{\ensuremath\end{bmatrix*}}
+\def\bmxc{\ensuremath\begin{bmatrix*}[c]}
+\def\t{\lp t\rp}
+\def\k{\ls k\rs}
+
+\newcommand{\demoex}[2]{\onslide<#1->\begin{color}{black!60} #2 \end{color}}
+\newcommand{\demoexc}[3]{\onslide<#1->\begin{color}{#2} #3 \end{color}}
+\newcommand{\anim}[3]{\onslide<#1->{\begin{color}{#2!60} #3 \end{color}}}
+\newcommand{\ct}[1]{\lp #1\rp}
+\newcommand{\dt}[1]{\ls #1\rs}
+\newcommand{\cols}[2]{\begin{columns}[#1] #2 \end{columns}}
+\newcommand{\col}[2]{\begin{column}{#1} #2 \end{column}}
+
+
+% --- Document starts here ---
+
+\begin{document}
+\begin{center}
+    \large{\textbf{Applied Linear Algebra in Data Analysis}}
+\end{center}
+\hrule
+\vspace{0.5cm}
+
+\noindent \textbf{Vector spaces}: A set of vectors that is closed under vector scaling and vector addition. E.g. $\R^n$, $\C^n$. \textit{A vector space will always contain the zero vector.}
+
+\noindent \textbf{Subspace}: A subset of a vector space $\mc{V}$ which is also a vector space.
+
+\noindent \textbf{Span of a set} (of vectors): The set of all linear combinations of a set of vectors $\mc{S} = \lc \mf{s}_i \rc_{i=1}^{p}$ from the vector space $\mc{V}$.
+\[ \text{span } \mc{S} = \lc \sum_{i=1}^p \alpha_i \mf{s}_i \,\, \Big \vert \,\, \alpha_i \in \R^n \rc \subseteq \mc{V}\]
+
+\noindent \textbf{Linear Independence}: A set $\mc{S}$ is linearly independent if and only if, $\sum_{i=1}^p \alpha_i \mf{s}_i = \mf{0} \implies \alpha_i = 0, \forall i$. \textit{If the set has $\mf{0}$, then the set is linearly dependent.}
+
+\noindent \textbf{Basis}: A set of vectors $\mc{B}$ is a basis for a vector space $\mc{V}$ if and only if, $\mc{B}$ is linearly independent and $\text{span }\mc{B} = \mc{V}$. The elements of $\mc{B}$ are called basis vectors of $\mc{V}$. \textit{There are infinitely many bases for a vector space. Every vector in $\mc{V}$ can be written as a \textbf{unique} linear combination of the basis vectors.}
+
+\noindent \textbf{Dimension}: The number of basis vectors in a basis of a vector space $\mc{V}$ is called the dimension of $\mc{V}$.
+
+\noindent \textbf{Inner product}: $\mf{x}^\top\mf{y} = \sum_{i=1}^n x_i y_i, \,\, \mf{x}, \mf{y} \in \R^n$.
+
+\noindent \textbf{Norm}: Measure of the length of a vector. $\lV \mf{x} \rV_p = \lp \sum_{i=1}^n \vert x_i \vert^p \rp^{\frac{1}{p}}, \,\, \mf{x} \in \R^n$. $\Vert \mf{x} \Vert_2^2 = \mf{x}^\top \mf{x}$.
+
+\noindent \textbf{Cauchy-Schwarz Inequality}: $\vert \mf{x}^\top \mf{y} \vert \leq \lV \mf{x} \rV_2 \lV \mf{y} \rV_2$.
+
+\noindent \textbf{Orthogonality}: Two vectors $\mf{x}, \mf{y} \in \R^n$ are orthogonal if and only if, $\mf{x}^\top \mf{y} = 0$.
+
+\noindent \textbf{Orthonormal basis}: A basis $\mc{B} = \lc \mf{b}_i \rc_{i=1}^n$ is orthonormal if and only if, $\mf{b}_i^\top \mf{b}_j = \delta_{ij}$, where $\delta_{ij}$ is the Kronecker delta function.
+
+\noindent \textbf{Linear Function}: A function $f: \R^n \to \R$ that satisfies superposition. All linear functions $f$ can be represented as $f(\mf{x}) = \mf{w}^\top \mf{x}$, where $\mf{w} \in \R^n$.
+
+% --- Document ends here ---
+
+\end{document}
