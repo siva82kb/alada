@@ -225,6 +225,7 @@
 \newcommand{\cols}[2]{\begin{columns}[#1] #2 \end{columns}}
 \newcommand{\col}[2]{\begin{column}{#1} #2 \end{column}}
 
+\setlength{\parindent}{0pt}
 
 % --- Document starts here ---
 
@@ -235,32 +236,81 @@
 \hrule
 \vspace{0.5cm}
 
-\noindent \textbf{Vector spaces}: A set of vectors that is closed under vector scaling and vector addition. E.g. $\R^n$, $\C^n$. \textit{A vector space will always contain the zero vector.}
+\textbf{Vector spaces}: A set of vectors that is closed under vector scaling and vector addition. E.g. $\R^n$, $\C^n$. \textit{A vector space will always contain the zero vector.}
 
-\noindent \textbf{Subspace}: A subset of a vector space $\mc{V}$ which is also a vector space.
+\textbf{Subspace}: A subset of a vector space $\mc{V}$ which is also a vector space.
 
-\noindent \textbf{Span of a set} (of vectors): The set of all linear combinations of a set of vectors $\mc{S} = \lc \mf{s}_i \rc_{i=1}^{p}$ from the vector space $\mc{V}$.
+\textbf{Span of a set} (of vectors): The set of all linear combinations of a set of vectors $\mc{S} = \lc \mf{s}_i \rc_{i=1}^{p}$ from the vector space $\mc{V}$.
 \[ \text{span } \mc{S} = \lc \sum_{i=1}^p \alpha_i \mf{s}_i \,\, \Big \vert \,\, \alpha_i \in \R \rc \subseteq \mc{V}\]
 
-\noindent \textbf{Linear Independence}: A set $\mc{S}$ is linearly independent if and only if, $\sum_{i=1}^p \alpha_i \mf{s}_i = \mf{0} \implies \alpha_i = 0, \forall i$. \textit{If the set has $\mf{0}$, then the set is linearly dependent.}
+\textbf{Linear independence}: A set $\mc{S}$ is linearly independent if and only if, $\sum_{i=1}^p \alpha_i \mf{s}_i = \mf{0} \implies \alpha_i = 0, \forall i$. \textit{If the set has $\mf{0}$, then the set is linearly dependent.}
 
-\noindent \textbf{Basis}: A set of vectors $\mc{B}$ is a basis for a vector space $\mc{V}$ if and only if, $\mc{B}$ is linearly independent and $\text{span }\mc{B} = \mc{V}$. The elements of $\mc{B}$ are called basis vectors of $\mc{V}$. \textit{There are infinitely many bases for a vector space. Every vector in $\mc{V}$ can be written as a \textbf{unique} linear combination of the basis vectors.}
+\textbf{Basis}: A set of vectors $\mc{B}$ is a basis for a vector space $\mc{V}$ if and only if, $\mc{B}$ is linearly independent and $\text{span }\mc{B} = \mc{V}$. The elements of $\mc{B}$ are called basis vectors of $\mc{V}$. \textit{There are infinitely many bases for a vector space. Every vector in $\mc{V}$ can be written as a \textbf{unique} linear combination of the basis vectors.}
 
-\noindent \textbf{Dimension}: The number of basis vectors in a basis of a vector space $\mc{V}$ is called the dimension of $\mc{V}$.
+\textbf{Dimension}: The number of basis vectors in a basis of a vector space $\mc{V}$ is called the dimension of $\mc{V}$.
 
-\noindent \textbf{Inner product}: $\mf{x}^\top\mf{y} = \sum_{i=1}^n x_i y_i, \,\, \mf{x}, \mf{y} \in \R^n$.
+\textbf{Inner product}: $\mf{x}^\top\mf{y} = \sum_{i=1}^n x_i y_i, \,\, \mf{x}, \mf{y} \in \R^n$.
 
-\noindent \textbf{Norm}: Measure of the length of a vector. $\lV \mf{x} \rV_p = \lp \sum_{i=1}^n \vert x_i \vert^p \rp^{\frac{1}{p}}, \,\, \mf{x} \in \R^n$. $\Vert \mf{x} \Vert_2^2 = \mf{x}^\top \mf{x}$.
+\textbf{Norm}: Measure of the length of a vector. $\lV \mf{x} \rV_p = \lp \sum_{i=1}^n \vert x_i \vert^p \rp^{\frac{1}{p}}, \,\, \mf{x} \in \R^n$. $\Vert \mf{x} \Vert_2^2 = \mf{x}^\top \mf{x}$.
 
-\noindent \textbf{Cauchy-Schwarz Inequality}: $\vert \mf{x}^\top \mf{y} \vert \leq \lV \mf{x} \rV_2 \lV \mf{y} \rV_2$.
+\textbf{Cauchy-Schwarz inequality}: $\vert \mf{x}^\top \mf{y} \vert \leq \lV \mf{x} \rV_2 \lV \mf{y} \rV_2$.
 
-\noindent \textbf{Orthogonality}: Two vectors $\mf{x}, \mf{y} \in \R^n$ are orthogonal if and only if, $\mf{x}^\top \mf{y} = 0$.
+\textbf{Orthogonality}: Two vectors $\mf{x}, \mf{y} \in \R^n$ are orthogonal if and only if, $\mf{x}^\top \mf{y} = 0$.
 
-\noindent \textbf{Orthonormal basis}: A basis $\mc{B} = \lc \mf{b}_i \rc_{i=1}^n$ is orthonormal if and only if, $\mf{b}_i^\top \mf{b}_j = \delta_{ij}$, where $\delta_{ij}$ is the Kronecker delta function.
+\textbf{Orthonormal basis}: A basis $\mc{B} = \lc \mf{b}_i \rc_{i=1}^n$ is orthonormal if and only if, $\mf{b}_i^\top \mf{b}_j = \delta_{ij}$, where $\delta_{ij}$ is the Kronecker delta function.
 
-\noindent \textbf{Linear Function}: A function $f: \R^n \to \R$ that satisfies superposition. All linear functions $f$ can be represented as $f(\mf{x}) = \mf{w}^\top \mf{x}$, where $\mf{w} \in \R^n$.
+\textbf{Linear function}: A function $f: \R^n \to \R$ that satisfies superposition. All linear functions $f$ can be represented as $f(\mf{x}) = \mf{w}^\top \mf{x}$, where $\mf{w} \in \R^n$.
 
-\noindent 
+\textbf{Matrix post-multiplication by a column vector}: $\mf{A} \in \R^{n \times m}, \mf{b} \in \R^m$, $\mf{c} = \mf{A}\mf{b} = \sum_{i=1}^m b_i \mf{a}_i$.
+
+\textbf{Matrix pre-multiplication by a row vector}: $\mf{A} \in \R^{n \times m}, \mf{b} \in \R^n$, $\mf{c} = \mf{b}^\top\mf{A} = \sum_{i=1}^n b_i \tilde{\mf{a}}_i^\top$.
+
+\textbf{Matrix multiplication}: $\mf{C} = \mf{A}\mf{B}, \,\, \mf{C} \in \R^{n \times m}, \,\, \mf{A} \in \R^{n \times p}, \,\, \mf{A} \in \R^{p \times m}$. Four views of matrix multiplication: 
+\vspace{-2.5em}
+
+\begin{itemize}
+  \item \textit{Inner product view}: $c_{ij} = \tilde{\mf{a}}_i^\top\mf{b}_j$ \vspace{-0.75em}
+  \item \textit{Column view}: $\mf{c}_{i} = \mf{A}\mf{b}_i$  \vspace{-0.75em}
+  \item \textit{Row view}: $\tilde{\mf{c}}_{i}^\top = \tilde{\mf{a}}_i^\top\mf{B}$  \vspace{-0.75em}
+  \item \textit{Outer product view}: $\mf{C} = \sum_{i=1}^p \mf{a}_i\tilde{\mf{b}}_i^\top$ \vspace{-0.75em}
+\end{itemize}
+
+\textbf{Outer product}: $\mf{x}, \mf{y} \in \R^{n}$, $\mf{A} = \mf{x}\mf{y}^\top \in R^{n \times n}$. \textit{Columns of $\mf{A}$ are scaled $\mf{x}$, and rows of $\mf{A}$ are scaled $\mf{y}^\top$.}
+
+\textbf{Rank of a matrix}: The rank of a matrix $\mf{A} \in \R^{n \times m}$ is the number of linearly independent columns or rows of $\mf{A}$. $\text{rank } \mf{A} = \min \lp n, m\rp$.
+
+\textbf{Matrix inverse}: When $\mf{A}$ is sqyare matrix, and is full rank, $\mf{A}\mf{A}^{-1} = \mf{A}^{-1}\mf{A} = \mf{I}$ and $\mf{A}^{-1}$ is unique.
+
+\textbf{Solutions to $\mf{A}\mf{x} = \mf{b}$}: $\mf{A} \in \R^{n \times m}$. \vspace{-1.25em}
+\begin{itemize}
+  \item $\mf{b} \notin \text{span }\mf{A} \implies \text{No solution}$ \vspace{-0.75em}
+  \item $\mf{b} \in \text{span }\mf{A} \text{ and } \text{rank }\mf{A} = m \implies$ Unique solution \vspace{-0.75em}
+  \item $\mf{b} \in \text{span }\mf{A} \text{ and } \text{rank }\mf{A} < m \implies$ Infinite solutions \vspace{-0.75em}
+\end{itemize}
+
+\textbf{Four fundamental subspaces of a matrix}: $\mf{A} \in \R^{n \times m}$ and $\text{rank } \mf{A} = r$. \vspace{-1.25em}
+\begin{itemize}
+  \item \textit{Column space}: $\mc{C}\ct{\mf{A}} = \text{span }\lc \mf{a}_i \rc_{i=1}^m \subseteq \R^n$,\\$\text{dim }\mc{C}\ct{\mf{A}} = r$. \vspace{-0.75em}
+  \item \textit{Row space}: $\mc{C}\ct{\mf{A}^\top} = \text{span }\lc \tilde{\mf{a}}_i^\top \rc_{i=1}^n \subseteq \R^m$,\\ $\text{dim }\mc{C}\ct{\mf{A}^\top} = r$. \vspace{-0.75em}
+  \item \textit{Null space}: $\mc{N}\ct{\mf{A}} = \lc \mf{x} \in \R^m \,\, \vert \,\, \mf{A}\mf{x} = \mf{0} \rc \subseteq \R^m$,\\ $\text{dim }\mc{N}\ct{\mf{A}} = m - r$. \vspace{-0.75em}
+  \item \textit{Left null space}: $\mc{N}\ct{\mf{A}^\top} = \lc \mf{x} \in \R^n \,\, \vert \,\, \mf{A}^\top\mf{x} = \mf{0} \rc \subseteq \R^n$,\\ $\text{dim }\mc{N}\ct{\mf{A}^\top} = n - r$. \vspace{-0.75em}
+\end{itemize}
+
+\textbf{Orthogonal subspaces}: Two subspace $\mc{U}, \mc{V} \subseteq \R^n$ are orthogonal if and only if, $\mf{u}^\top\mf{v} = 0, \forall \mf{u} \in \mc{U}, \forall \mf{v} \in \mc{V}$. $\mc{U} \perp \mc{V}$.
+
+\textbf{Sum of two subspaces}: $\mc{U}, \mc{V} \subseteq \R^n$. $\mc{U} + \mc{V} = \lc \mf{u} + \mf{v} \,\, \vert \,\, \mf{u} \in \mc{U}, \mf{v} \in \mc{V} \rc \subseteq \R^n$. $\mc{U} + \mc{V}$ is a subspace of $\R^n$.
+
+\textbf{Complementary subspaces}: $\mc{U}, \mc{V} \subseteq \R^n$. $\mc{U} \cap \mc{V} = \lc \mf{0} \rc \text{ and } \mc{U} + \mc{V} = \R^n$.
+
+\textbf{Orthogonal complements}: $\mc{U}, \mc{V}$ are complementary subspace of $\R^n$. If $\mc{U} \perp \mf{V}$, then $\mc{U}, \mc{V}$ are orthogonal complements. $\mc{U}^\perp = \mc{V}$ and $\mc{V}^\perp = \mc{U}$.
+
+\textbf{Orthogonal projection onto a subspace $\mc{S}$}: If $\lc \mf{u}_i \rc_{i=1}^{m}$ is an orthonormal basis for $\mc{S}$ with $\mf{u}_i \in \R^n$, then the orthogonal projection of $\mf{x}$ onto $\mc{S}$ is $\mf{P}_{\mc{S}}\mf{x} = \ct{\sum_{i=1}^{m} \mf{u}_i \mf{u}_i^\top} \mf{x} = \sum_{i=1}^{m} \lp \mf{u}_i^\top\mf{x} \rp \mf{u}_i$.
+
+\textbf{Components of a vector}: Let $\mc{U}, \mc{V}$ be complementary subspaces of $\R^n$. Then $\mf{x} \in \R^n$ can be uniquely expressed as, $\mf{x} = \mf{x}_{\mc{U}} + \mf{x}_{\mc{V}}$, where $\mf{x}_{\mc{U}} \in \mc{U}$ and $\mf{x}_{\mc{V}} \in \mc{V}$. If $\mc{U}^\perp = \mc{V}$, then $\mf{x}_{\mc{U}}^\top \mf{x}_{\mc{V}} = 0$.
+
+\textbf{Gram-Schmidt orthogonalization}: Let $\lc \mf{a}_i \rc_{i=1}^{m}$ be a set of linearly independent vectors in $\R^n$. Then, $\lc \mf{u}_i \rc_{i=1}^{m}$ is an orthonormal basis for $\text{span }\lc \mf{a}_i \rc_{i=1}^{m}$, where $\mf{u}_i = \frac{\mf{a}_i - \sum_{j=1}^{i-1} \lp \mf{u}_j^\top\mf{a}_i \rp \mf{u}_j}{\lV \mf{a}_i - \sum_{j=1}^{i-1} \lp \mf{u}_j^\top\mf{a}_i \rp \mf{u}_j \rV_2}$.
+
+\textbf{$\mf{Q}\mf{R}$ factorization}: Let $\mf{A} \in \R^{n \times m}$ with $\text{rank }\mf{A} = m$. Then, $\mf{A} = \mf{Q}\mf{R}$, where $\mf{Q} \in \R^{n \times m}$ is an orthogonal matrix and $\mf{R} \in \R^{m \times m}$ is an upper triangular matrix.
 
 % --- Document ends here ---
 
