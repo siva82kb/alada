@@ -183,35 +183,36 @@ colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
   \item Optimization is the process of finding the best solution to a problem from a set of possible solutions.
   \item Optimization problems come up in many applications in engineering, science, economics, biology, medicine, operations research, etc.
   \item Optimization problems can be classified in different ways, but one major classification gives us: \textbf{unconstrained} and \textbf{constrained} optimization problems.
-  \item In the context of data analysis, we are often interested in optimization problems of the following form: consider a set of observations $\lc \mf{a}_i, y_i\rc_{i=1}^m$. We are interested in identifyin 
-  \[ \min_{\mf{x} \in \mb{R}^n} f\ct{\mf{x}} \quad \quad \mathrm{subject \,\, to} \,\, g_i\ct{\mf{x}} \leq 0, \,\, i = 1, \ldots, m \]
+  \item In the context of data analysis, we are often interested in optimization problems of the following form: consider a set of observations $\lc \mf{x}_i, y_i\rc_{i=1}^m$. We are interested in identifying,
+  \[ \min_{\mf{w} \in \mb{R}^n} f\ct{\mf{w}; \mf{x}_i, y_i} \quad \quad \mathrm{subject \,\, to} \,\, g_i\ct{\mf{x}} \leq 0, \,\, i = 1, \ldots, m \]
   where, $f\ct{\mf{x}}$ is the \textbf{objective function} and $g_i\ct{\mf{x}}$ are the \textbf{constraint functions}.
 \end{itemize}
 \end{frame}
 
 
 \begin{frame}[t]{Optimization in single variable}
+  Consider the function $f\ct{x} = x^2 - 2x + 5$.
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{figs/singlevarfunc.pdf}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}[t]{Some definitions}
+  Consider the problem of finding the minimum of single variable function $f\ct{x}$.
+  \[ x^{*} = \arg \min_{x \in \mb{R}} f\ct{x} \] 
 \begin{itemize}
-  \item Consider the function $f\ct{x} = x^2 - 2x + 1$.
+  \item \textit{Necessary Condition:} 
 \end{itemize}
 \end{frame}
 
 
-\begin{frame}[t]{Some important definitions}
+\begin{frame}[t]{Some definitions}
+  Consider the problem of finding the minimum of single variable function $f\ct{x}$.
+  \[ x^{*} = \arg \min_{x \in \mb{R}} f\ct{x} \] 
 \begin{itemize}
-  \item \textbf{Random experiment} -- A experiment whose outcome is not predictable.
-  
-  \begin{itemize}
-    \item Tossing of a coin.
-    \item Voltage across a real resistor $\ct{R}$ for a known current.
-    \item Height and weight of 40 year old person randomly chosen from a population.
-  \end{itemize}
-
-  \item The \textbf{outcome} of a random experiment is any observable variable of interest.
-
-  \item \textbf{Sample space} of the experiment $S$ is the universe of possible values we can observe for a random experiment's outcome.
-
-  \item An \textbf{event} of an experiment is any subset of the sample space $S$.
+  \item \textit{Necessary Condition:} 
 \end{itemize}
 \end{frame}
 
