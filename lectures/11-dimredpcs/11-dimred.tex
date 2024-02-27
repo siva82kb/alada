@@ -245,25 +245,25 @@
 \end{frame}
 
 
-\begin{frame}[t]{Principal Component Analysis (PCA)}
-  \begin{columns}
-    \begin{column}{0.4\textwidth}
-      If the data lies in an low dimensional subspace (hyperplane), then a linear transformation could be used to identify 
-      \vspace{0.2cm}
+% \begin{frame}[t]{Principal Component Analysis (PCA)}
+%   \begin{columns}
+%     \begin{column}{0.4\textwidth}
+%       If the data lies in an low dimensional subspace (hyperplane), then a linear transformation could be used to identify 
+%       \vspace{0.2cm}
 
-      PCA helps identify the low dimensional subspace on which the data lies.
-      \vspace{0.2cm}
+%       PCA helps identify the low dimensional subspace on which the data lies.
+%       \vspace{0.2cm}
 
-      The output of PCA is an orthonormal basis, along with the variance of the data along each of the basis vectors.
-    \end{column}
-    \begin{column}{0.575\textwidth}
-      \begin{figure}
-        \centering
-        \includegraphics[width = 0.9\textwidth]{../../analysis/dimsionreduction/output/2dsubspace.pdf}
-      \end{figure}
-    \end{column}
-  \end{columns}
-\end{frame}
+%       The output of PCA is an orthonormal basis, along with the variance of the data along each of the basis vectors.
+%     \end{column}
+%     \begin{column}{0.575\textwidth}
+%       \begin{figure}
+%         \centering
+%         \includegraphics[width = 0.9\textwidth]{../../analysis/dimsionreduction/output/2dsubspace.pdf}
+%       \end{figure}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
 
 
 \begin{frame}[t]{Principal Component Analysis (PCA)}
@@ -297,7 +297,7 @@
       This data is stored in an array $\mf{X} \in \mb{R}^{m \times 2}$, where the rows are the measurements from each individual, and the first column is the height and the second column is the weight.
       \[ \mf{X} = \bmxc \mf{x}_{1} & \mf{x}_{2} \emx = \bmxc \tilde{\mf{x}}_{1}^\top \\ \tilde{\mf{x}}_{2}^\top \\ \vdots \\ \tilde{\mf{x}}_{m}^\top \emx = \bmxc x_{11} & x_{12} \\ x_{21} & x_{22} \\ \vdots & \vdots \\ x_{m1} & x_{m2}\emx\]
 
-      The spread of points appears to be lage in particular direction.
+      The spread of points appears to be large in particular direction.
       }
     \end{column}
     \begin{column}{0.425\textwidth}
@@ -431,7 +431,7 @@
 
 \begin{frame}[t]{Principal Component Analysis (PCA)}
 \begin{itemize}
-  \item The principal components are the eigenvectors of the covariance matrix $\mf{X}\mf{X}^\top$.
+  \item The principal components are the eigenvectors of the covariance matrix $\mf{X}^\top\mf{X}$.
   
   \item The principal components form an orthonormal basis in which the data points are decorrelated.
   

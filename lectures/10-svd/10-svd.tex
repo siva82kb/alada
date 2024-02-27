@@ -190,9 +190,9 @@
 
 \begin{frame}[t]{Singular Value Decomposition: Diagonalizing any matrix}
 \begin{itemize}
-    \item Eigen-decomposition provided a way to do this for a square matrix with full rank. $\mf{A} = \mf{X}\mf{\Lambda}\mf{X}^{-1}$. When $\mf{A}$ is symmetric, $\mf{A} = \mf{Q}\mf{\Lambda}\mf{Q}^\top$.
+    \item Eigen-decomposition provided a way to do this for a square diagonalizable matrix. $\mf{A} = \mf{X}\mf{\Lambda}\mf{X}^{-1}$. When $\mf{A}$ is symmetric, $\mf{A} = \mf{Q}\mf{\Lambda}\mf{Q}^\top$.
 
-    \item For rectangular and rank-deficient matrices, we can do this using \textit{singular value decomposition}.
+    \item For rectangular and non-diagonalizable matrices, we can do this using \textit{singular value decomposition}.
 
     \item Consider a matrix $\mf{A} \in \mb{R}^{n \times m}$ with $rank\lp\mf{A}\rp = r$.
     \[ \mf{A} = \mf{U}\mf{\Sigma}\mf{V}^\top = \bmx \mf{u}_1 & \mf{u}_2 & \ldots & \mf{u}_m\emx
@@ -213,7 +213,7 @@
 \begin{itemize}
     \item For $\mf{A}$,
     \vspace{-0.5cm}
-    \[ C\lp\mf{A}\rp = span\lc\hat{\mf{u}}_{1} \ldots \hat{\mf{u}}_{r}\rc\,\,\,\,\, N\lp\mf{A}^\top\rp =  span\lc\hat{\mf{u}}_{r+1} \ldots \hat{\mf{u}}_{m}\rc \]\vspace{-0.8cm}
+    \[ C\lp\mf{A}\rp = span\lc\hat{\mf{u}}_{1} \ldots \hat{\mf{u}}_{r}\rc\,\,\,\,\, N\lp\mf{A}^\top\rp =  span\lc\hat{\mf{u}}_{r+1} \ldots \hat{\mf{u}}_{m}\rc \]\vspace{-0.5cm}
     \[ C\lp\mf{A}^\top\rp = span\lc\hat{\mf{v}}_{1} \ldots \hat{\mf{v}}_{r}\rc\,\,\,\,\, N\lp\mf{A}\rp = span\lc\hat{\mf{v}}_{r+1} \ldots \hat{\mf{v}}_{n}\rc \]\vspace{-0.2cm}
 
     where, the $\hat{\mf{u}}_i$s and the $\hat{\mf{v}}_i$s are any orthonormal basis for $\mb{R}^m$ and $\mb{R}^n$, respectively.
