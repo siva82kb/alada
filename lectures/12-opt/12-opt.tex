@@ -254,12 +254,88 @@ colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
 \end{frame}
 
 
-\begin{frame}[t]{Some definitions}
-  Consider the problem of finding the minimum of single variable function $f\ct{x}$.
-  \[ x^{*} = \arg \min_{x \in \R} f\ct{x} \] 
-\begin{itemize}
-  \item \textit{Necessary Condition:} 
-\end{itemize}
+\begin{frame}[t]{Differentiability}
+  Differentiability is a local property of a function, like continuity. 
+  
+  Consider a function $f: \Omega \to \R$, where $\Omega \subseteq \R$. Let $x_0 \in \Omega$,
+  \[ \frac{\delta f\ct{x_0}}{\delta x} = \frac{f\ct{x_0 + \delta x} - f\ct{x_0}}{\delta x} \]
+
+  The function $f$ is said to be differentiable at the point $x_0 \in \Omega$, if and only if,
+  \begin{itemize}
+    \item $f\ct{x}$ is continuous at $x_0$.
+    \item $\lim_{\delta x \to 0} \frac{\delta f\ct{x_0}}{\delta x} = \lim_{\delta x \to 0^-}\frac{\delta f\ct{x_0}}{\delta x}  = \lim_{\delta x \to 0^+} \frac{\delta f\ct{x_0}}{\delta x}$
+    \item $\lim_{\delta x \to 0} \frac{f\ct{x_0}}{\delta x}$ is finite.
+  \end{itemize}
+
+  Then the derivative of the function  $f$ at the point $x_0$ is defined as,
+  \[ \frac{f\ct{x_0}}{dx} = \lim_{\delta x \to 0} \frac{f\ct{x_0 + \delta x} - f\ct{x_0}}{\delta x} \]
+\end{frame}
+
+
+\begin{frame}[t]{Differentiability}
+  Three functions $f_1, f_2, f_3$ defined over the set $\Omega = \left[ -1, 2\right] \subseteq \R$.
+  
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.85\textwidth]{figs/func_diff.pdf}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}[t]{Differentiability in $\R^n$}
+  Consider the function $f: \Omega \to \R$, where $\Omega \subseteq \R^n$.
+  \[ f\ct{\mf{x}} = f\ct{x_1, x_2, \ldots, x_n} \]
+  $f$ maps a column vector $\mf{x} = \bmx x_1 & x_2 & \cdots & x_n \emx^\top \in \mb{R}^n$ to a real number.
+  \vspace{0.25cm}
+
+  The partial derivative of the function $f\ct{\mf{x}}$ at $\mf{x}_0$ is defined as,
+  \[ \frac{\partial f\ct{\mf{x}_0}}{\partial x_i} = \lim_{\delta x \to 0} \frac{f\ct{\mf{x}_0 + \delta x \, \mf{e}_i} - f\ct{\mf{x}_0}}{\delta x} \]
+
+  $\frac{\partial f\ct{\mf{x}}}{\partial x_i}$ is the rate of change of the function $f$ when move along the $i$-th coordinate direction at the point $\mf{x}_0$.
+  \vspace{0.25cm}
+  
+  The function $f$ is said to be differentiable at the point $\mf{x}_0 \in \Omega$, if and only if, the partial derivatives of the function $f$ w.r.t. all $x_i$.
+\end{frame}
+
+
+\begin{frame}[t]{Differentiability in $\R^n$}
+  The derivative of the function $f: \Omega \to \R$, where $\Omega \subseteq \R^n$ with respect to the column vector $\mf{x}$ at the point $\mf{x}_0 \in \Omega$ is defined as the following,
+  \[ \nabla f\ct{\mf{x}_0} = \bmx \frac{\partial f}{\partial x_1}\ct{\mf{x}_0} & \frac{\partial f}{\partial x_2}\ct{\mf{x}_0} & \cdots & \frac{\partial f}{\partial x_n}\ct{\mf{x}_0}\emx \in \mb{R}^n \]
+  Notice that $\nabla f\ct{\mf{x}_0}$ is a row vector, and it is called the \textit{gradient} of the function $f$ at the point $\mf{x}_0$.
+
+  We follow the following convention when dealing with derivative of functions of multiple variables $f: \Omega \to \R$:
+  \begin{itemize}
+    \item The gradient with respect to a column vector $\mf{x}$ is a row vector $\nabla_{\mf{x}} f\ct{\mf{x}}$.
+    \[ \nabla_{\mf{x}} f\ct{\mf{x}} = \bmx \frac{\partial f}{\partial x_1} & \frac{\partial f}{\partial x_2} & \cdots & \frac{\partial f}{\partial x_n} \emx \]
+    \item The gradient with respect to a row vector $\mf{x}^\top$ is a column vector $\nabla_{\mf{x}^\top} f\ct{\mf{x}}$.
+    \[ \nabla_{\mf{x}^\top} f\ct{\mf{x}} = \bmx \frac{\partial f}{\partial x_1} & \frac{\partial f}{\partial x_2} & \cdots & \frac{\partial f}{\partial x_n} \emx^\top \]
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[t]{Differentiability in $\R^n$: Jacobian of a Vector-valued function}
+  Consider the function $\mf{h}: \R^q \to \R^p$, where
+  \[ \mf{h}\ct{\mf{x}} = \bmx h_1\ct{\mf{x}} & h_2\ct{\mf{x}} & \cdots & h_p\ct{\mf{x}} \emx^\top \,\,\, \mf{x} \in \R^q \]
+
+  The \textit{Jacobian} of the function $\mf{h}\ct{\mf{x}}$ with respect to $\mf{x} \in \R^q$ is defined as the following matrix,
+  \[ \nabla_{\mf{x}} \mf{h}\ct{\mf{x}} \triangleq \bmxc \nabla_{\mf{x}} h_1\ct{\mf{x}} \\ \nabla_{\mf{x}} h_2\ct{\mf{x}} \\ \vdots \\ \nabla_{\mf{x}} h_q\ct{\mf{x}}\emx^\top \in \R^{p \times q}\]
+\end{frame}
+
+
+\begin{frame}[t]{Differentiability in $\R^n$: Hessian Matrices}
+  Consider the function $f: \R^n \to \R$ and $\mf{x} \in \R^n$. 
+  \vspace{0.25cm}
+
+  The Hessian matrix $\mf{H}_f\ct{\mf{x}}$ of the function $f\ct{\mf{x}}$  is defined as the symmetric matrix $n \times n$ matrix of the second order partial derivatives of $f$ with respect to the components of $\mf{x}$, assuming all the second order partial derivatives exists.
+  \vspace{0.25cm}
+
+  The $ij^{th}$ element of the Hessian matrix of $f\ct{\mf{x}}$ is given by.
+  \[ \ls \mf{H}_f\ct{\mf{x}}\rs_{ij} = \frac{\partial^2 f}{\partial x_i \partial x_j}\ct{\mf{x}} = \frac{\partial}{\partial x_i}\ct{\frac{\partial f}{\partial x_j}\ct{\mf{x}}} = \frac{\partial}{\partial x_j}\ct{\frac{\partial f}{\partial x_i}\ct{\mf{x}}} \]
+  % \vspace{0.25cm}
+
+  \[ \mf{H}_f\ct{\mf{x}} \triangleq \bmxc \frac{\partial^2 f}{\partial x_1^2} & \cdots & \frac{\partial^2 f}{\partial x_1 \partial x_n} \\
+  \vdots & \ddots & \vdots \\
+  \frac{\partial^2 f}{\partial x_n \partial x_1} & \cdots & \frac{\partial^2 f}{\partial x_n^2} \emx \quad \mf{H}_f\ct{\mf{x}} = \nabla_{\mf{x}^\top}\ct{\nabla_{\mf{x}} f\ct{\mf{x}}} = \nabla_{\mf{x}}\ct{\nabla_{\mf{x}^\top} f\ct{\mf{x}}} \]
 \end{frame}
 
 
