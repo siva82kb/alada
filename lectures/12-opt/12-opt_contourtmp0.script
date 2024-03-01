@@ -1,0 +1,1 @@
+unset surface; set cntrparam levels 10; set contour; set table "12-opt_contourtmp0.table"; splot "12-opt_contourtmp0.dat";
