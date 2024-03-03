@@ -438,7 +438,31 @@ colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
 
   We  mininmize quadratic this approximiation $q\ct{x}$ to find the next guess $x_{k+1}$. By settinng, $q'\ct{x} = f1\ct{x_k} + f''\ct{x - x_k} = 0$, we get the next guess as,
   \[ x_{k+1} = x_k - \frac{f`\ct{x_k}'}{f''\ct{x_k}} \] 
+\end{frame}
 
+
+\begin{frame}{Line Search Algorithm: Secant method}
+  What if we did not have access to the $f''$? We can use an approximation for $f''$ instead, which gives us the Secant method for line search.
+  \vspace{0.25cm}
+
+  \textbf{$f'$ is unknown}: We can use $f'$ to approximate $f''$ as the following,
+  \[ \hat{f}''\ct{x_k} = \frac{f'\ct{x_k} - f'\ct{x_{k-1}}}{x_k - x{_k-1}} \] 
+  Using this approximation in the Newton's method and simplifying the expression, we get
+  \[ x_{k+1} = \frac{f'\ct{x_k}x_{k-1} - f'\ct{x_{k-1}}x_k}{f'\ct{x_k} - f'\ct{x_{k - 1}}} \]
+
+  It left as an exercise to shown that $x_{k+1}$ is the minimizer of the quadratic approximation of the function $f$ at the point $x_k$.
+
+\end{frame}
+
+
+\begin{frame}{Line Search Algorithm: Secant method}
+  Both the Newton's and Secant methods are examples of \textit{quadratic fit} methods. 
+  \vspace{0.25cm}
+  
+  A third possible method foregoes the requirement of the first derivative $f'$ and use only the value of the function at three points to fit a quadratic approximation. 
+  \vspace{0.25cm}
+  
+  The derivation of the iteration rule for this method is left as an exercise.
 \end{frame}
 
 

@@ -1,9 +1,10 @@
 """
-Script for create an animation to demonstrate the Newton's method for solving a minimimzation problem.
+Script for create an animation to demonstrate the Newton's method for solving a minimimzation problem with a difficult problem where the method fails.
 
 Author: Sivakumar Balasubramanian
 Date: 01 March 2024
 """
+
 
 import sys
 
@@ -16,9 +17,9 @@ mpl.rc('font',**{'family':'sans-serif', 'sans-serif': 'Arial'})
 mpl.rcParams['toolbar'] = 'None' 
 
 # Supporting functions   
-def f(x): return np.polyval([0.05, 0, 0.2, 0, 0], x) - 0.25 * np.sin(2 * x) + 1
-def df(x): return np.polyval([0.2, 0, 0.4, 0], x) - 0.5 * np.cos(2 * x)
-def d2f(x): return np.polyval([0.6, 0, 0.4], x) + 1 * np.sin(2 * x) 
+def f(x): return 1 - np.exp(-np.square(x) / 4)
+def df(x): return 0.5 * x * np.exp(-np.square(x) / 4)
+def d2f(x): return 0.5 * np.exp(-np.square(x) / 4) - 0.25 * np.square(x) * np.exp(-np.square(x) / 4)
 def update_soln(x0): return x0 - df(x0) / d2f(x0)
 
 
@@ -28,13 +29,13 @@ def plot_func(ax, axins, x_k):
     # Main function.
     ax.plot(x, f(x), lw=4, color="tab:blue", alpha=0.4)
     ax.set_xlim(-6, 12)
-    ax.set_ylim(-5, 40)
+    ax.set_ylim(-0.2, 1.2)
     ax.tick_params(axis='both', labelsize=16)
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
     ax.spines['left'].set_position(('axes', -0.03))
     ax.spines['bottom'].set_position(('axes', -0.04))
-    ax.set_title(r"$f(x) = 0.05 x^4 + 0.2x^2 - 0.25\sin (2x) + 1$" + "\n Newton's Method", fontsize=16)
+    ax.set_title(r"$f(x) = 1 - \exp\left(-\frac{x^2}{4}\right)$" + "\n Newton's Method", fontsize=16)
 
     # Quadrating approximation at xk
     _f, _df, _d2f = f(xk[-2]), df(xk[-2]), d2f(xk[-2])
@@ -50,19 +51,16 @@ def plot_func(ax, axins, x_k):
     ax.plot(xk, np.zeros(len(xk)), 'o', color='black', markersize=5)
 
     # Display the current solution.
-    ax.text(12, 38, f'$x_{{{len(x_k) - 1}}}$ = ' + f'{xk[-1]:+1.8f}',
+    ax.text(12, 0.9, f'$x_{{{len(x_k) - 1}}}$ = ' + f'{xk[-1]:+1.8f}',
             fontsize=16, verticalalignment='center',
             horizontalalignment='right')
-    ax.text(12, 35, f'$x_{{{len(x_k) - 2}}}$ = ' + f'{xk[-2]:+1.8f}',
+    ax.text(12, 0.8, f'$f(x_{{{len(x_k) - 1}}})$ = ' + f'{f(xk[-1]):+1.8f}',
             fontsize=16, verticalalignment='center',
             horizontalalignment='right')
-    ax.text(12, 32, f'$f(x_{{{len(x_k) - 2}}})$ = ' + f'{f(xk[-2]):+1.8f}',
+    ax.text(12, 0.7, f'$f\'(x_{{{len(x_k) - 1}}})$ = ' + f'{df(xk[-1]):+1.8f}',
             fontsize=16, verticalalignment='center',
             horizontalalignment='right')
-    ax.text(12, 29, f'$f\'(x_{{{len(x_k) - 2}}})$ = ' + f'{df(xk[-2]):+1.8f}',
-            fontsize=16, verticalalignment='center',
-            horizontalalignment='right')
-    ax.text(12, 26, f'$f\'\'(x_{{{len(x_k) - 2}}})$ = ' + f'{d2f(xk[-2]):+1.8f}',
+    ax.text(12, 0.6, f'$f\'\'(x_{{{len(x_k) - 1}}})$ = ' + f'{d2f(xk[-1]):+1.8f}',
             fontsize=16, verticalalignment='center',
             horizontalalignment='right')
     
