@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 
-mpl.rc('font',**{'family':'sans-serif', 'sans-serif': 'Arial'})
+mpl.rc('font',**{'family':'Helvetica', 'sans-serif': 'Helvetica'})
 mpl.rcParams['toolbar'] = 'None' 
 
 # Supporting functions   
@@ -50,7 +50,7 @@ def plot_func(ax, axins, x_k):
     ax.plot(xk, np.zeros(len(xk)), 'o', color='black', markersize=5)
 
     # Display the current solution.
-    ax.text(12, 38, f'$x_{{{len(x_k) - 1}}}$ = ' + f'{xk[-1]:+1.8f}',
+    ax.text(12, 35, f'$x_{{{len(x_k) - 1}}}$ = ' + f'{xk[-1]:+1.8f}',
             fontsize=16, verticalalignment='center',
             horizontalalignment='right')
     ax.text(12, 35, f'$x_{{{len(x_k) - 2}}}$ = ' + f'{xk[-2]:+1.8f}',
