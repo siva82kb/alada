@@ -78,7 +78,7 @@
 \vspace{1em}
 
 \begin{large}
-    \textbf{Marks: 14}
+    \textbf{Marks: 30}
 \end{large}
 
 \begin{enumerate}
@@ -114,13 +114,13 @@
     You are given a dataset (hw.csv) consisting of heights (in inches) and weights (in pounds) of individuals. Read this file and organize the data height and weight data into a matrix $\mf{X} \in \mb{R}^{N \times 2}$, where $N$ is the number of individuals. Carry out the principal component analysis and find the principal components of the data. Let's define the dimensionality of the data as the number of principal components required to explain 95\% of the variance in the data.
     \begin{enumerate}
         \item What is the dimensionality of the original data? \textbf{[Marks: 2]}
-        \item Instead of measuring the height inches, let's measure it in micrometers and weight in tonnes instead of pounds. Convert the colmun corresponding to the height from inches to micrometer. Let's call this new data,
+        \item Instead of measuring the height in inches, let's measure it in micrometers and weight in tonnes instead of pounds. Convert the colmun corresponding to the height from inches to micrometer. Let's call this new data,
         \[ \mf{X}_m = \mf{X}\bmx  d_1 & 0 \\ 0 & d_2\emx \,\, \begin{cases} d_1 = 2.54 \times 10^4 \\ d_2 = 4.53592 \times 10^{-4} \end{cases} \]
         Redo the principal component analysis on the $\mf{X}_m$. What is the dimensionality this modified data? Why is it different from the previous case? \textbf{[Marks: 2]}
     \end{enumerate}
     One way to address the differences in the PCA results with $\mf{X}$ and $\mf{X}_m$ is to standardize the data before performing PCA. Standardizing the data involves transforming each feature so that it has a mean of zero and a standard deviation of one.
     
-    \[ \hat{\mf{X}} = \bmx \hat{\mf{x}}_1 & \hat{\mf{x}}_2 \emx, \,\, \hat{\mf{x}}_i = \frac{\mf{x}_i - \mu_i\mf{1}}{s_i}, \,\, \mu_i = \frac{1}{N}\mf{1}^\top\mf{x}_i, \,\, s_i = \frac{1}{N-1}\Vert \mf{x}_i - \mu_i\mf{1} \Vert_2^2 \]
+    \[ \hat{\mf{X}} = \bmx \hat{\mf{x}}_1 & \hat{\mf{x}}_2 \emx, \,\, \hat{\mf{x}}_i = \frac{\mf{x}_i - \mu_i\mf{1}}{s_i}, \,\, \mu_i = \frac{1}{N}\mf{1}^\top\mf{x}_i, \,\, s_i = \frac{1}{\sqrt{N-1}}\Vert \mf{x}_i - \mu_i\mf{1} \Vert_2 \]
 
     Perform PCA on the standardized data $\hat{\mf{X}}$ and $\hat{\mf{X}}_m$, and verify if the analysis results are different. \textbf{[Marks: 4]}
     
