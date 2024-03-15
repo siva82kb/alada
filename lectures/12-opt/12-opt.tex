@@ -432,7 +432,7 @@ colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
   Assume that our current value of $x$ in our search process is $x_k$ where the  where the stopping criteria are not satisfied, and we need to continue our search.
   \vspace{0.25cm}
 
-  One possible approach toward obtaining the next search value is to use the derivative of the function $f$ at $x_k$ to guide our search. 
+  \textbf{Gradient decent}: One possible approach toward obtaining the next search value is to use the derivative of the function $f$ at $x_k$ to guide our search. 
   \[ 
     \begin{split} 
     \vert f'\ct{x_k}\vert &\rightarrow \text{How fast is the function change?} \\
@@ -447,12 +447,38 @@ colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
 \end{frame}
 
 
-\begin{frame}{Line Search Algorithm: Newton's method}
-  Line search algorithms may use the value of the function $f$ at different points, the first derivative $f'$ or even the second derivative $f''$.
+\begin{frame}{Unconstrained Optimization: Single variable case}
+  \textbf{Gradient decent}: The choice of $\alpha_k$ is crucial.
+  \[ 
+    \begin{split} 
+    \text{small } \alpha_k &\rightarrow \text{Slow convergence} \\
+    \text{large } \alpha_k &\rightarrow \text{Divergence} \\
+    \end{split}
+  \]
+  
+  An appropriate choice for $\alpha_k$ deepnds on the nature of $f\ct{x}$, i.e. its curvature $\rightarrow f''\ct{x}$.
+  \vspace{0.2cm}
+
+  For a quadrating function $f\ct{x} = ax^2 + bx + c$, there is a upper bound for alpha, beyond which the interative method will diverge.
+  \[ 0 < \alpha < \frac{2}{f''\ct{x}} \longrightarrow x_k \text{ will coverge.} \]
+\end{frame}
+
+
+\begin{frame}{Unconstrained Optimization: Single variable case}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{figs/gd_stepsize.pdf}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}{Unconstrained Optimization: Newton's method}
+  One way to address the issue with choosing an appropriate $\alpha_k$ is to make use of the local curvatute of $f$, i.e. use the second derivative.
   \vspace{0.25cm}
-
+  
   One of the most common line search methods is the Newton's methods, which uses the first and second derivatives of the function $f$ to iteratively compute a local minimizer for a function.
-
+  \vspace{0.25cm}
+  
   At any given iteration $k$, the Newton's method uses $f\ct{x_k}$, $f'\ct{k}$, and $f''\ct{x_k}$ to fit a quadratic approximation of the function as the following,
   \[ q\ct{x} = f\ct{x_k} + f'\ct{x_k}\ct{x - x_k} + \frac{1}{2}f''\ct{x_k}\ct{x - x_k}^2 \]
 
@@ -461,7 +487,7 @@ colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
 \end{frame}
 
 
-\begin{frame}{Line Search Algorithm: Secant method}
+\begin{frame}{Unconstrained Optimization: Secant method}
   What if we did not have access to the $f''$? We can use an approximation for $f''$ instead, which gives us the Secant method for line search.
   \vspace{0.25cm}
 
@@ -475,7 +501,7 @@ colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
 \end{frame}
 
 
-\begin{frame}{Line Search Algorithm: Secant method}
+\begin{frame}{Unconstrained Optimization: Secant method}
   Both the Newton's and Secant methods are examples of \textit{quadratic fit} methods. 
   \vspace{0.25cm}
   
@@ -486,8 +512,40 @@ colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
 \end{frame}
 
 
+\begin{frame}{Unconstrained Optimization: Newton's method}
+  \textbf{When do the Newton's or the Secant method fail?} When $f''\ct{x_k} \leq 0$.
+  \[ x_{k+1} = x_k - \frac{f`\ct{x_k}'}{f''\ct{x_k}} \]
+  \begin{itemize}
+    \item $f''\ct{x_k} \approx 0$: Step size becomes large.
+    \item $f''\ct{x_k} < 0$: Step size changes sign.
+  \end{itemize}
+  
+  One simple way to address this is to never let the demoninator become too small or negative. This can be achieved by adding a small positive number to the denominator,
+  \[ x_{k+1} = x_k - \frac{f'\ct{x_k}}{f''\ct{x_k} + \lambda}, \quad \lambda > 0 \]
+  The parameter $\lambda$ is called the \textit{damping parameter}.  
+\end{frame}
+
+
+\begin{frame}{Unconstrained Optimization: Newton's method}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{figs/newton_lm_compare.pdf}
+  \end{figure}
+\end{frame}
+
+
 \begin{frame}{Multivariate Unconstrained Optimization}
-  The line search methods can be extended to the multivariate case, where the function $f: \R^n \to \R$.
+  We need to make two decisions in the multivariate case,
+  \begin{itemize}
+    \item The search direction $\mf{d}_k$.
+    \item The step size $\alpha_k$.
+  \end{itemize}
+  \vspace{0.2cm}
+  
+  Once a search direction $\mf{d}_k$ is chosen at each iteration step, then the problem is equivalent to the univariate case. 
+  \vspace{0.2cm}
+
+  We search along that line in the direction $\mf{d}_k$. This is often called the \textit{line search} method.
   \vspace{0.2cm}
 
   Iterative methods for multivariate optimization are of the following form,
@@ -495,13 +553,15 @@ colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
   where, $\mf{d}_k \in \mb{R}^n$ is the search direction, and $\alpha_k$ is the step size.
   \vspace{0.2cm}
 
-  In the unconstrained optimization for the univariate case, there are only two possible direction we can move at any given point.
-  \vspace{0.2cm}
+  $\mf{d}_k$ is chosen based on the local information of the function $f$ at the point $\mf{x}_k$. We choose a search direction that will lead to a decrease in the value of the function $f$.
+\end{frame}
 
-  In the multivariate case, there are infinitely many possible directions we can move at any given point. We need to choose a search direction that is likely to lead to a decrease in the value of the function $f$. 
-  \vspace{0.2cm}
 
-  Once a direction $\mf{d}_k$ is chosen at each iteration step, then the problem is equivalent to the univariate line search case.
+\begin{frame}{Multivariate Unconstrained Optimization}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.85\textwidth]{figs/multivar_linesearch_demo.pdf}
+  \end{figure}
 \end{frame}
 
 
@@ -604,8 +664,25 @@ colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
 \end{frame}
 
 
-\begin{frame} {Multivariate Unconstrained Optimization: Steepest descent}
+\begin{frame} {Multivariate Unconstrained Optimization: Gradient descent}
   The gradient descent algorithm with a fixed step size can be used for minimizing the function $f\ct{\mf{x}}$.
+  \[ \mf{x}_{k+1} = \mf{x}_{k} - \alpha \nabla f\ct{\mf{x}_k} \]
+  The value of $\alpha$ is a simple approach, but runs into similar problem as in the single variable case. 
+  \vspace{0.2cm}
+  
+  The above equation can be thought of as $n$ separate single variable optimization problems, and a fixed $\alpha$ might is unlikely to be the best choice for all of them. The $i^{th}$ component of the vector $\mf{x}_k$ will be updated as,
+  \[ x_{{k+1}, i} = x_{{k}, i} - \alpha \frac{\partial f}{\partial x_i}\ct{\mf{x}_k} \]
+  where $\mf{x}_k = \bmx x_{k, 1} & x_{k, 2} & \cdots & x_{k, n}\emx^\top$.
+\end{frame}
+
+
+\begin{frame} {Multivariate Unconstrained Optimization: Gradient descent}
+  Just as in the single variable case, an appropriate choice of $\alpha$ will depend on the curvature of the function $f\ct{\mf{x}}$, which is given by the Hessian matrix $\mf{H}\ct{\mf{x}}$.
+  \vspace{0.2cm}
+
+  For a quadratic function $f\ct{\mf{x}} = \frac{1}{2}\mf{x}^\top \mf{H} \mf{x} + \mf{b}^\top \mf{x} + c$, the following choice for the step size will ensure convergence of $\mf{x}_k$ to the minimizer of the function $f\ct{\mf{x}}$.
+  \[ 0 < \alpha < \frac{2}{\lambda_{max}\ct{\mf{H}}}, \,\, \mf{H} \geq 0 \]
+  where, $\lambda_{max}\ct{\mf{H}}$ is the largest eigenvalue of the Hessian matrix $\mf{H}$.
 \end{frame}
 
 \end{document}

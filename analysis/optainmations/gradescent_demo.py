@@ -18,9 +18,28 @@ mpl.rc('font',**{'family':'Helvetica', 'sans-serif': 'Helvetica'})
 mpl.rcParams['toolbar'] = 'None' 
 
 
-# Gradient descent update
-def grad_descent_update(xk, ak, grad):
-    return xk - ak * grad
+def reset_params():
+    global funclass, Xk, ak, mu
+    # Reset the solution
+    Xk = np.random.rand(2, 1) * 8 - 4
+    ak = 0.025
+    mu = 1
+
+
+def update():
+    _xk = Xk[:, -1].reshape(-1, 1)
+    _grad = funclass.grad(_xk[0, 0], _xk[1, 0])
+    if methodclass.name == "Gradient Descent":
+        return methodclass.update(_xk, ak, _grad)
+
+    # Methods using the Hessian
+    _hess = funclass.hessian(_xk[0, 0], _xk[1, 0])
+    if methodclass.name == "Newton-Raphson":
+        return methodclass.update(_xk, _grad, _hess)
+    elif methodclass.name == "Levenberg-Marquardt":
+        return methodclass.update(_xk, _grad, _hess, mu)
+
+    return None
 
 
 def plot_contour():
@@ -31,8 +50,12 @@ def plot_contour():
     Z = funclass.func(X1, X2)
 
     # Plotting the contour
-    contours = ax.contour(X1, X2, Z, levels=np.logspace(-1, 5.5, 20),
-                          cmap='Blues_r', linewidths=0.5)
+    if funclass.name == "Flipped Gaussian":
+        ax.contour(X1, X2, Z, levels=np.logspace(-5, 5, 40),
+                   cmap='Blues_r', linewidths=0.5)
+    else:
+        contours = ax.contour(X1, X2, Z, levels=np.logspace(-1, 5.5, 20),
+                            cmap='Blues_r', linewidths=0.5)
     
     # Plot the search trajectory
     ax.plot(Xk[0, :], Xk[1, :], 'tab:red', lw=1.0)
@@ -80,71 +103,111 @@ def update_text():
     ax2.cla()
     ax2.axis('off')
     ax2.set_xlim(0, 1)
-    ax2.set_ylim(-1.1, 1.1)
+    ax2.set_ylim(-1.1, 1.2)
     k = Xk.shape[1]
 
+    # Method details.
+    xpos, ypos, delypos = 0.1, 1.1, 0.1 
+    j = 0
+    ax2.text(xpos, ypos - j * delypos, f"Method: {methodclass.name}",
+             fontsize=14, backgroundcolor='tab:red', color='white')
+
+    # Iteration
+    j += 1
+    ax2.text(xpos, ypos - j * delypos, f"Iteration $k = $" + f"{k}",
+            fontsize=14)
+    
     # Step size
-    ax2.text(0.1, 1, f"Step size " + f"$\\alpha_{{{k}}} = $" + f"{ak:.3f}",
-             fontsize=14)
+    if methodclass.name == "Gradient Descent":
+        j += 1
+        ax2.text(xpos, ypos - j * delypos,
+                 f"Step size " + f"$\\alpha_{{{k}}} = $" + f"{ak:.3f}",
+                 fontsize=14)
+    # Mu term
+    if methodclass.name == "Levenberg-Marquardt":
+        j += 1
+        ax2.text(xpos, ypos - j * delypos,
+                 f"$\\mu = $" + f"{mu:.3f}",
+                 fontsize=14)
     
     # Minimum point
+    j += 1
     _xmin = f"{np.array2string(funclass.xmin.T[0], precision=3, floatmode='fixed')}"
-    ax2.text(0.1, 0.9, f"$\\mathbf{{x}}^*$ = " + _xmin + r"$^\top$", fontsize=14)
+    ax2.text(xpos, ypos - j * delypos, f"$\\mathbf{{x}}^*$ = " + _xmin + r"$^\top$", fontsize=14)
 
     # Current point
+    j += 1
     _xk = f"{np.array2string(Xk[:, -1].T, precision=3, floatmode='fixed')}"
-    ax2.text(0.1, 0.8, f"$\\mathbf{{x}}_{{{k}}}$ = " + _xk + r"$^\top$", fontsize=14)
+    ax2.text(xpos, ypos - j * delypos, f"$\\mathbf{{x}}_{{{k}}}$ = " + _xk + r"$^\top$", fontsize=14)
     
     # Current function value
+    j += 1
     _fk = f"{funclass.func(Xk[0, -1], Xk[1, -1]):.3f}"
-    ax2.text(0.1, 0.7, f"$f\\left(\\mathbf{{x}}_{{{k}}}\\right) = {_fk}$", fontsize=14)
+    ax2.text(xpos, ypos - j * delypos, f"$f\\left(\\mathbf{{x}}_{{{k}}}\\right) = {_fk}$", fontsize=14)
 
 
 # Handling key press events
 def on_press(event):
-    global funclass, Xk, ak
-    draw_plot, draw_text = False, False
+    global funclass, methodclass, Xk, ak, mu
 
     # Close figure if escaped.
     if event.key == 'escape':
         plt.close(fig)
         return
 
-    # Choose which function to display.
-    if event.key in list(map(str, np.arange(0, 3, 1))):
+    # Choose which function to minimize.
+    if event.key in function_dict.keys():
         funclass = function_dict[event.key]
         # Reset variables
-        Xk = np.random.rand(2, 1) * 8 - 4
-        ak = 0.025
-        # Clear the plot.
+        reset_params()
         ax.cla()
     
     # Return if no function has been selected.
     if funclass is None:
         return
     
+    # Choose which mwthod to use for minimization.
+    if event.key in method_dict.keys():
+        methodclass = method_dict[event.key]
+        # Reset variables
+        reset_params()
+        ax.cla()
+    
+    # Return if no method has been selected.
+    if methodclass is None:
+        # Draw the plot and text
+        plot_contour()
+        fig.canvas.draw()
+        return
+
     # Check if the step size needs to be updated.
     if event.key == 'up':
-        # Increase the step size
-        ak = 1.05 * ak
+        if methodclass.name == "Gradient Descent":
+            # Increase the step size
+            ak = 1.05 * ak
+        elif methodclass.name == "Levenberg-Marquardt":
+            # Increase the mu term
+            mu = 1.05 * mu
     elif event.key == 'down':
-        # Decrease the step size
-        ak = np.max([0.001, 0.95 * ak])
+        if methodclass.name == "Gradient Descent":
+            # Decrease the step size
+            ak = np.max([0.001, 0.95 * ak])
+        elif methodclass.name == "Levenberg-Marquardt":
+            # Decrease the mu term
+            mu = np.max([0.001, 0.95 * mu])
     
     # Chekc if the solution needs to be updated.
     if event.key == 'right':
         # Compute the next step        
         # Update the solution
-        _xk = Xk[:, -1].reshape(-1, 1)
-        _grad = funclass.grad(_xk[0, 0], _xk[1, 0])
-        _xk1 = grad_descent_update(_xk, ak, _grad)
-        Xk = np.hstack((Xk, _xk1))
+        _xk1 = update()
+        if _xk1 is not None:
+            Xk = np.hstack((Xk, _xk1))
         # Clear axis
         ax.cla()
     elif event.key in ['r', 'R']:
         # Reset the plot
-        Xk = np.random.rand(2, 1) * 8 - 4
-        ak = 0.025
+        reset_params()
         ax.cla()
     
     # Draw the plot and text
@@ -160,11 +223,22 @@ if __name__ == "__main__":
         '0': aladaopt.Circle(xmin=np.array([2, 1])),
         '1': aladaopt.Ellipse(xmin=np.array([1, 0.5]),
                             Q=np.array([[3, 1], [1, 2]])),
-        '2': aladaopt.Rosenbrock(a=1, b=5)
+        '2': aladaopt.Rosenbrock(a=1, b=5),
+        '3': aladaopt.Quartic(xmin=np.array([2, 1]), a=2, b=5, c=3),
+        '4': aladaopt.FlippedGaussian(xmin=np.array([0, 0]),
+                                      Q=np.linalg.inv(np.array([[5, 2], [2, 3]])))
     }
 
-    # Function ID
+    # Method dictionary
+    method_dict = {
+        'ctrl+0': aladaopt.GradientDescent,
+        'ctrl+1': aladaopt.NewtonRaphson,
+        'ctrl+2': aladaopt.LevenbergMarquardt
+    }
+
+    # Function and Method ID
     funclass = None
+    methodclass = None
 
     # Create the figure and the axis.
     fig = plt.figure(figsize=(12, 7.8))
@@ -176,12 +250,11 @@ if __name__ == "__main__":
     ax2.axis('off')
     axins = inset_axes(ax2, width="80%", height="30%", loc=4, borderpad=1)
     axins.axis('off')
-
     fig.canvas.manager.set_window_title('ALADA Optimization Animations: Gradient Descent')
 
     # Initialize the solution
-    Xk = np.random.rand(2, 1) * 8 - 4
-    ak = 0.025
+    ak, mu = 0, 0
+    reset_params()
 
     # Create the figure and the axis.
     fig.canvas.manager.set_window_title('ALADA Optimization Animations: Gradient Descent')
