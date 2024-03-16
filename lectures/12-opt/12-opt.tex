@@ -219,7 +219,7 @@ colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
     \vspace{0.25cm}
   
     \item A number $x^{*}$ is said to be the \textbf{limit} of the sequence $\lc x_k \rc$ if for every $\epsilon > 0$, there exists an integer $K$ such that for all $k > K$, we have $\lv x_k - x^{*} \rv < \epsilon$.
-    \[ \lim_{k \to \infty} x_k = x^* \quad \mathrm{or} \quad x_k \to x^* \]
+    \[ \lim_{k \to \infty} x_k = x^{\star} \quad \mathrm{or} \quad x_k \to x^{\star} \]
 
     A sequence that has a limit is called a \textbf{convergent sequence}.
   \end{itemize}
@@ -233,7 +233,7 @@ colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
     \vspace{0.25cm}
   
     \item $\mf{x}^{*}$ is said to be the \textbf{limit} of the sequence $\lc \mf{x}_k \rc$ if for every $\epsilon > 0$, there exists an integer $K$ such that for all $k > K$, we have $\lV \mf{x}_k - \mf{x}^{*} \rV < \epsilon$.
-    \[ \lim_{k \to \infty} \mf{x}_k = \mf{x}^* \quad \mathrm{or} \quad \mf{x}_k \to \mf{x}^* \]
+    \[ \lim_{k \to \infty} \mf{x}_k = \mf{x}^{\star} \quad \mathrm{or} \quad \mf{x}_k \to \mf{x}^{\star} \]
 
     \item The limit of a convergent sequence is unique.
   \end{itemize}
@@ -376,16 +376,16 @@ colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
   We distinguih between two types of minimizers of a function $f :\R^n \to \R$:  Global and local minimizers.
   \vspace{0.25cm}
 
-  \textbf{Global minimizer}: A point $\mf{x}^* \in \R^n$ is said to be a \textit{global minimizer} of the function $f\ct{\mf{x}}$ if and only if, $f\ct{\mf{x}^*} \leq f\ct{\mf{x}}$ for all $\mf{x} \in \R^n - \lc \mf{x}^* \rc$. 
+  \textbf{Global minimizer}: A point $\mf{x}^{\star} \in \R^n$ is said to be a \textit{global minimizer} of the function $f\ct{\mf{x}}$ if and only if, $f\ct{\mf{x}^{\star}} \leq f\ct{\mf{x}}$ for all $\mf{x} \in \R^n - \lc \mf{x}^{\star} \rc$. 
   \vspace{0.25cm}
   
-  A global minimizer is a \textit{strict global minimizer} if $f\ct{\mf{x}^*} < f\ct{\mf{x}}$ for all $\mf{x} \in \R^n - \lc \mf{x}^* \rc$.
+  A global minimizer is a \textit{strict global minimizer} if $f\ct{\mf{x}^{\star}} < f\ct{\mf{x}}$ for all $\mf{x} \in \R^n - \lc \mf{x}^{\star} \rc$.
   \vspace{0.25cm}
   
-  \textbf{Local minimizer}: A point $\mf{x}^* \in \R^n$ is said to be a \textit{local minimizer} of the function $f\ct{\mf{x}}$ over the set $\Omega \subset \R^n$, if there exists $\epsilon > 0$ such that $f\ct{\mf{x}^*} \leq f\ct{\mf{x}}$ for all $\mf{x} \in \R^n - \lc \mf{x}^* \rc$ and $\Vert \mf{x} - \mf{x}^*\Vert < \epsilon$. 
+  \textbf{Local minimizer}: A point $\mf{x}^{\star} \in \R^n$ is said to be a \textit{local minimizer} of the function $f\ct{\mf{x}}$ over the set $\Omega \subset \R^n$, if there exists $\epsilon > 0$ such that $f\ct{\mf{x}^{\star}} \leq f\ct{\mf{x}}$ for all $\mf{x} \in \R^n - \lc \mf{x}^{\star} \rc$ and $\Vert \mf{x} - \mf{x}^{\star}\Vert < \epsilon$. 
   \vspace{0.25cm}
 
-  This is a \textit{strict local minimizer} if $f\ct{\mf{x}^*} < f\ct{\mf{x}}$ for all $\mf{x} \in \R^n - \lc \mf{x}^* \rc$ and $\Vert \mf{x} - \mf{x}^*\Vert < \epsilon$.
+  This is a \textit{strict local minimizer} if $f\ct{\mf{x}^{\star}} < f\ct{\mf{x}}$ for all $\mf{x} \in \R^n - \lc \mf{x}^{\star} \rc$ and $\Vert \mf{x} - \mf{x}^{\star}\Vert < \epsilon$.
 \end{frame}
 
 
@@ -394,23 +394,23 @@ colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
   \vspace{0.1cm}
 
   \textbf{First order necessary condition (FONC) for local minimizers}:
-  If $\mf{x}^*$ is a local minimizer of $f$, then
-  \[ \nabla_{\mf{x}^\top}f\ct{\mf{x^*}} = \mf{0} \]
+  If $\mf{x}^{\star}$ is a local minimizer of $f$, then
+  \[ \nabla_{\mf{x}^\top}f\ct{\mf{x^{\star}}} = \mf{0} \]
 
   \textbf{Second order necessary condition (SONC) for local minimizers}:
-  If $\mf{x}^*$ is a local minimizer of $f$, then
-  \[ \nabla_{\mf{x}^\top}f\ct{\mf{x^*}} = \mf{0} \quad \text{and} \quad \mf{d}^\top\mf{H}\ct{\mf{x}^*}
+  If $\mf{x}^{\star}$ is a local minimizer of $f$, then
+  \[ \nabla_{\mf{x}^\top}f\ct{\mf{x^{\star}}} = \mf{0} \quad \text{and} \quad \mf{d}^\top\mf{H}\ct{\mf{x}^{\star}}
   \mf{d} \geq 0, \,\, \mf{d} \in \R^n \]
 
   \textbf{Second order sufficient condition (SONC) for local minimizers}:
-  If $\mf{x}^*$ is a local minimizer of $f$, then
-  \[ \nabla_{\mf{x}^\top}f\ct{\mf{x^*}} = \mf{0} \quad \text{and} \quad \mf{d}^\top\mf{H}\ct{\mf{x}^*}
+  If $\mf{x}^{\star}$ is a local minimizer of $f$, then
+  \[ \nabla_{\mf{x}^\top}f\ct{\mf{x^{\star}}} = \mf{0} \quad \text{and} \quad \mf{d}^\top\mf{H}\ct{\mf{x}^{\star}}
   \mf{d} > 0, \,\, \mf{d} \in \R^n \]
 \end{frame}
 
 
 \begin{frame}{Unconstrained Optimization: Single variable case}
-  Consider a function $f: \R \to \R$, and we are interested in finding the minimizer $x^*$.
+  Consider a function $f: \R \to \R$, and we are interested in finding the minimizer $x^{\star}$.
   \vspace{0.25cm}
 
   The SOSC for this case is: $\frac{df\ct{x}}{dx} = 0$ and $\frac{d^2f\ct{x}}{dx^2} > 0$.
@@ -573,9 +573,9 @@ colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
     The arrow indicates that change $\alpha_k \mf{d}_k$.
 
     Choosing $\alpha_k$ is a critical step and is often posed as a one-dimensional optimization problem at each iteration $k$,
-    \[ \alpha_k^* = \arg \min_{\alpha_k \in \R_{\geq 0}} f\ct{\mf{x}_k  +\alpha_k \mf{d}_k} \]
+    \[ \alpha_k^{\star} = \arg \min_{\alpha_k \in \R_{\geq 0}} f\ct{\mf{x}_k  +\alpha_k \mf{d}_k} \]
 
-    An ``exact line search'' will attempt to solve for $\alpha_k^*$. But this is not necessary in practice.
+    An ``exact line search'' will attempt to solve for $\alpha_k^{\star}$. But this is not necessary in practice.
     \column{0.5\textwidth}
     \begin{figure}
       \centering
@@ -684,5 +684,113 @@ colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
   \[ 0 < \alpha < \frac{2}{\lambda_{max}\ct{\mf{H}}}, \,\, \mf{H} \geq 0 \]
   where, $\lambda_{max}\ct{\mf{H}}$ is the largest eigenvalue of the Hessian matrix $\mf{H}$.
 \end{frame}
+
+
+\begin{frame} {Multivariate Unconstrained Optimization: Steepest descent}
+  At the $k^{th}$ iteration, the \textit{steepest descent} method chooses the search direction $\mf{d}_k = -\nabla f\ct{\mf{x}_k}$, and the optimal step size $\alpha_k^\star$ by performing an exact line search.
+  \[ \alpha_k^{\star} = \arg \min_{\alpha_k \in \R_{\geq 0}} f\ct{\mf{x}_k - \alpha_k \nabla f\ct{\mf{x}_k}} \]
+  \[ \mf{x}_{k+1} = \mf{x}_{k} - \alpha_k^\star \nabla f\ct{\mf{x}_k} \]
+
+  Steepest descent has the following interesting property:
+  \[ \mf{d}_{k+1}^\top\mf{d}_{k} = \nabla f\ct{\mf{x}_{k+1}}^\top \nabla f\ct{\mf{x}_k} = 0 \]
+  The search direction at two consecutive iterations are orthogonal to each other. Refer to the figure in the next slide.
+\end{frame}
+
+
+\begin{frame}{Multivariate Unconstrained Optimization}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.85\textwidth]{figs/multivar_steepdesc.pdf}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame} {Multivariate Unconstrained Optimization: Newton's method}
+  The Newton's method explicitly accounts for the curvature of the function $f\ct{\mf{x}}$ at the point $\mf{x}_k$. 
+  \vspace{0.25cm}
+  
+  The generalization of the Newton's method to the multivariate case is as follows,
+  \[ \mf{x}_{k+1} = \mf{x}_{k} - \mf{H}\ct{\mf{x}_k}^{-1}\nabla f\ct{\mf{x}_k} \]
+  
+  This can be derived the same way we did for the univariate case, where at the point $\mf{x}_k$ we fit a quadratic approximation of the function $f\ct{\mf{x}}$ and minimize it to find the next guess $\mf{x}_{k+1}$.
+  \vspace{0.2cm}
+  
+  For quardatic $f\ct{\mf{x}}$, the Newtwon's method will find the minimum in a single iteration by exactly accouting the surface's curvature.
+\end{frame}
+
+
+\begin{frame}{Multivariate Unconstrained Optimization: Newton's method}
+  \begin{columns}
+    \column{0.5\textwidth}
+    The figure shows the directions of $-\nabla f\ct{\mf{x}_k}$ (in black) and $-\mf{H}\ct{\mf{x}_k}^{-1}\nabla f\ct{\mf{x}_k}$ (in red) at three different points for a quadratic function $f\ct{\mf{x}}$.
+    \vspace{0.2cm}
+
+    The correction for the curvature ensures that the direction of movement is always pointing towards the location of the function's minimum $\mf{x}^\star = -\mf{Q}^{-1}\mf{b}$. 
+    \vspace{0.2cm}
+
+    However, the Newton's method works only when $\mf{H}\ct{\mf{x}_k}$ is positive definite.
+    
+    \column{0.45\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=1\textwidth]{figs/newton_vs_gradient_descent.pdf}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}{Multivariate Unconstrained Optimization: Newton's method}
+  \begin{columns}
+    \column{0.5\textwidth}
+    This is an example where the Newton's method fails when it does not start very close to the minimum.\vspace{0.2cm}
+
+    The red arrows point away from the minimum at two points that are father away from the minimum, because the Hessian matrix $\mf{H}\ct{\mf{x}_k}$ is not positive definite at these points.
+    \vspace{0.2cm}
+
+    When the Hessian is not positive definite, the gradient vector will get rotated by more then $\pm 90\deg$ and thus the search direction points away from the -ve gradient direction.
+
+    \column{0.45\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=1\textwidth]{figs/newton_vs_gradient_descent_failure.pdf}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}{Multivariate Unconstrained Optimization: Levengerg-Marquardt method}
+  The Levengerg-Marquardt method is a modification of the Newton's method and is often employed for solving nonlinear least squares problems.
+  \vspace{0.2cm}
+  
+  The update equation for the Levengerg-Marquardt method is given by,
+  \[ \mf{x}_{k+1} = \mf{x}_{k} - \ct{\mf{H}\ct{\mf{x}_k} + \lambda \mf{I}}^{-1}\nabla f\ct{\mf{x}_k} \]
+  where, $\lambda > 0$ is a damping parameter, and $\mf{I}$ is the identity matrix.
+  \vspace{0.2cm}
+  
+  $\lambda$ is chosen so that the Hessian matrix $\mf{H}\ct{\mf{x}_k} + \lambda \mf{I}$ is positive definite, thus ensuring convergence.
+  \vspace{0.2cm}
+  
+  The downside of the modification is that the ``step size'' is lower than the Newton's method (when $\mf{H}\ct{\mf{x}_k} \geq 0$), and thus the convergence is slower.
+  \[ \Vert \mf{H}\ct{\mf{x}_k}^{-1} \Vert_2 < \Vert \ct{\mf{H}\ct{\mf{x}_k} + \lambda \mf{I}}^{-1} \Vert_2 \]
+\end{frame}
+
+
+\begin{frame}{Multivariate Unconstrained Optimization: Levengerg-Marquardt method}
+  \begin{columns}
+    \column{0.5\textwidth}
+    The blue arrows indicate the search direction for the Levengerg-Marquardt method, and the red arrows indicate the search direction for the Newton's method.
+    \vspace{0.2cm}
+    
+    When $\lambda = 0$, we have the Newton's method, and when $\lambda \to \infty$, the search direction becomes the negative gradient direction.
+
+    \column{0.45\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.9\textwidth]{figs/newton_vs_lm_vs_gradient_descent.pdf}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+
 
 \end{document}
