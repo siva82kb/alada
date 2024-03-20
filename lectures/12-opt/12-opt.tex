@@ -189,7 +189,8 @@ colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
 \begin{itemize}
   \item A general optimization problem can be fomulated as the following,
   \[ \begin{split}
-      \min_{\mf{x}} & \,\,\, f\ct{\mf{x}} \\
+      \underset{\mf{x}}{\text{minimize}} 
+      & \,\,\, f\ct{\mf{x}} \\
       \mathrm{subject \,\, to} & \,\,\, \mf{g}\ct{\mf{x}} \leq \mf{0}, \,\, \mf{g}\ct{\mf{x}} = \bmx g_1\ct{\mf{x}} & g_2\ct{\mf{x}} & \cdots & g_p\ct{\mf{x}}\emx^\top \\
       & \,\,\, \mf{h}\ct{\mf{x}} = \mf{0}, \,\, \mf{h}\ct{\mf{x}} = \bmx h_1\ct{\mf{x}} & h_2\ct{\mf{x}} & \cdots & h_q\ct{\mf{x}}\emx^\top \\
   \end{split} \]
