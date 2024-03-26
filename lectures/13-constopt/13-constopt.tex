@@ -333,4 +333,78 @@ colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
 \end{frame}
 
 
+\begin{frame}[t]{Constrained Optimization: Inequality Constraints}
+  \[ \begin{split}
+    \text{minimize}
+    & \,\,\, f\ct{\mf{x}} \\
+    \mathrm{subject \,\, to} & \,\,\, \mf{g}\ct{\mf{x}} \leq \mf{0}, \,\, \mf{g}\ct{\mf{x}} = \bmx g_1\ct{\mf{x}} & g_2\ct{\mf{x}} & \cdots & g_p\ct{\mf{x}}\emx^\top \\
+    & \,\,\, \mf{h}\ct{\mf{x}} = \mf{0}, \,\, \mf{h}\ct{\mf{x}} = \bmx h_1\ct{\mf{x}} & h_2\ct{\mf{x}} & \cdots & h_q\ct{\mf{x}}\emx^\top \\
+  \end{split} \]
+  where, $f\ct{\mf{x}}$ is the \textbf{objective function} and $\mf{g}\ct{\mf{x}}$ represents the set of \textbf{inquality constaints} and $\mf{h}\ct{\mf{x}}$ represents the set of \textbf{equality constraints}.
+  \vspace{0.25cm}
+
+  An inequality constraint $g_i\ct{\mf{x}} \leq 0$ is said to be \textbf{active} at a point $\mf{x}^\star$ if $g_i\ct{\mf{x}^\star} = 0$. It is \textbf{inactive} at $\mf{x}^\star$ if $g_i\ct{\mf{x}^\star} < 0$.
+\end{frame}
+
+
+\begin{frame}[t]{Constrained Optimization: Inequality Constraints}
+  \textbf{Regular point} Let the point $\mf{x}^\star$ satisfy $\mf{h}\ct{\mf{x}^\star} = \mf{0}$, $\mf{g}\ct{\mf{x}^\star} \leq \mf{0}$, and let $J\ct{\mf{x}^\star}$ be the index set of active inquality constraints,
+  \[ J\ct{\mf{x}^\star} = \lc j \, \mid \, g_j\ct{\mf{x}^\star} = 0 \rc \]
+  We say the point $\mf{x}^\star$ is a \textbf{regular point} if the following vectors form a linearly independent set.
+  \[ \nabla h_i\ct{\mf{x}^\star}, \, \nabla g_j\ct{\mf{x}^\star}, \,\, 1 \leq i \leq q, \, j \in J\ct{\mf{x}^\star} \]
+\end{frame}
+
+
+\begin{frame}[t]{Constrained Optimization: Inequality Constraints}
+  \textbf{Karush-Kuhn-Tucker Theorem}. Let $f, \mf{h}, \mf{g}$ be differentiable at least once, and let $\mf{x}^\star$ be a regular point and a local minimizer of the problem. Then, there exists $\bm{\lambda}^\star \in \R^q$ and $\bm{\mu}^\star \in \R^p$ such that,
+  \begin{enumerate}
+    \item $\bm{\mu}^\star \geq 0$
+    \item $\nabla f\ct{\mf{x}^\star} + \nabla \mf{h}\ct{\mf{x}^\star}^\top {\bm{\lambda}^\star} + \nabla \mf{g}\ct{\mf{x}^\star}^\top {\bm{\mu}^\star} = \mf{0}$
+    \item ${\bm{\mu}^\star}^\top \mf{g}\ct{\mf{x}^\star} = 0$
+  \end{enumerate}
+  \vspace{1cm}
+
+  The vector $\bm{\lambda}^\star$ is called the \textbf{Lagrange multiplier vector} and $\bm{\mu}^\star$ is called the \textbf{Karush-Kuhn-Tucker (KKT) multiplier vector}.
+  \vfill
+\end{frame}
+
+
+\begin{frame}[t]{Constrained Optimization: Inequality Constraints}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.45\textwidth]{figs/ineq_const.pdf}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}[t]{Constrained Optimization: Inequality Constraints}
+  \textbf{Tangent space}: The tangent space at a point $\mf{x}^\star$ is defined as,
+  \[ T\ct{\mf{x}^\star} = \lc \mf{y} \in \R^n \, \mid \, \nabla \mf{h}\ct{\mf{x}^\star} \mf{y} = \mf{0}, \nabla g_j\ct{\mf{x}^\star}^\top \mf{y} = 0, \,\, j \in J\ct{\mf{x}^\star} \rc \]
+  \vspace{0.25cm}
+
+  \textbf{Second order necessary condition.} Let $\mf{x}^\star$ be a local minimizer of $f\ct{\mf{x}}$ subject to $\mf{h}\ct{\mf{x}^\star} = \mf{0}$ and $\mf{g}\ct{\mf{x}} \leq \mf{0}$. Let $f, \mf{h}, \mf{g}$ be at least twice differentiableThen, there exists $\bm{\lambda}^\star \in \R^q$ and $\bm{\mu}^\star \in \R^p$ such that, 
+  \begin{enumerate}
+    \item $\nabla f\ct{\mf{x}^\star} + \nabla \mf{h}\ct{\mf{x}^\star}^\top {\bm{\lambda}^\star} + \nabla \mf{g}\ct{\mf{x}^\star}^\top {\bm{\mu}^\star} = \mf{0}$
+    \item For all $\mf{y} \in T\ct{\mf{x}^\star}$, we have $\mf{y}^\top \mf{H}\ct{\mf{x}^\star, \bm{\lambda}^\star, \bm{\mu}^\star}\mf{y} \geq 0$.
+  \end{enumerate}
+  where,
+  \[ \mf{H}\ct{\mf{x}} = \mf{H}_f\ct{\mf{x}} + \sum_{i=1}^p \mu_i \mf{H}_{g_i}\ct{\mf{x}} + \sum_{i=1}^q \lambda_i \mf{H}_{h_i}\ct{\mf{x}} \]
+\end{frame}
+
+
+\begin{frame}[t]{Constrained Optimization: Inequality Constraints}
+  \textbf{Second order sufficient condition.} Let $\mf{x}^\star$ be a local minimizer of $f\ct{\mf{x}}$ subject to $\mf{h}\ct{\mf{x}^\star} = \mf{0}$ and $\mf{g}\ct{\mf{x}} \leq \mf{0}$. Let $f, \mf{h}, \mf{g}$ be at least twice differentiableThen, there exists $\bm{\lambda}^\star \in \R^q$ and $\bm{\mu}^\star \in \R^p$ such that, 
+  \begin{enumerate}
+    \item $\nabla f\ct{\mf{x}^\star} + \nabla \mf{h}\ct{\mf{x}^\star}^\top {\bm{\lambda}^\star} + \nabla \mf{g}\ct{\mf{x}^\star}^\top {\bm{\mu}^\star} = \mf{0}$
+    \item For all $\mf{y} \in \tilde{T}\ct{\mf{x}^\star}$, we have $\mf{y}^\top \mf{H}\ct{\mf{x}^\star, \bm{\lambda}^\star, \bm{\mu}^\star}\mf{y} \geq 0$.
+  \end{enumerate}
+  where,
+  \[ \mf{H}\ct{\mf{x}} = \mf{H}_f\ct{\mf{x}} + \sum_{i=1}^p \mu_i \mf{H}_{g_i}\ct{\mf{x}} + \sum_{i=1}^q \lambda_i \mf{H}_{h_i}\ct{\mf{x}} \]
+  and,
+  \[ \tilde{T}\ct{\mf{x}^\star} = \lc \rc \]
+  \vspace{0.5cm}
+
+  $\mf{x}^\star$ is a strict local minimizer of $f\ct{\mf{x}}$ subject to $\mf{h}\ct{x} = \mf{0}$ and $\mf{g}\ct{\mf{x}} \leq \mf{0}$.
+\end{frame}
+
 \end{document}
