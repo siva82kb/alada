@@ -70,7 +70,7 @@
 \begin{document}
 \begin{center}
 \begin{large}
-\textbf{Applied Linear Algebra in Data Analaysis}\\
+\textbf{Applied Linear Algebra in Data Analysis}\\
 \vspace{0.1cm}
 \end{large}
 \textbf{Introduction to Optimization}
@@ -97,7 +97,7 @@
     \begin{enumerate}
         \item $f\ct{\mf{x}} = \mf{c}^\top \mf{x}$ $\longrightarrow$ $\nabla_{\mf{x}}f\ct{\mf{x}} = \mf{c}^\top$ and $\mf{H}_{f}\ct{\mf{x}} = \mf{0}$
         \item $f\ct{\mf{x}} = \mf{x}^\top\mf{A}\mf{x}$ $\longrightarrow$ $\nabla_{\mf{x}}f\ct{\mf{x}} = 2\mf{x}^\top\mf{A}$ and $\mf{H}_{f}\ct{\mf{x}} = 2\mf{A}$, where $\mf{A}$ is a symmetric matrix.
-        \item $f\ct{\mf{x}} = \mf{x}^\top\mf{C}\mf{x}$ $\longrightarrow$ $\nabla_{\mf{x}}f\ct{\mf{x}} = \mf{x}^\top\ct{\mf{C} + \mf{C}^\top}$ and $\mf{H}_{f}\ct{\mf{x}} = \mf{C} + \mf{C}^\top$, where $\mf{C}$ is need not be symmetric.
+        \item $f\ct{\mf{x}} = \mf{x}^\top\mf{C}\mf{x}$ $\longrightarrow$ $\nabla_{\mf{x}}f\ct{\mf{x}} = \mf{x}^\top\ct{\mf{C} + \mf{C}^\top}$ and $\mf{H}_{f}\ct{\mf{x}} = \mf{C} + \mf{C}^\top$, where $\mf{C}$ need not be symmetric.
         \item $f\ct{\mf{x}} = \mf{x}^\top\mf{A}\mf{x} + \mf{b}^\top\mf{x} + c$ $\longrightarrow$ $\nabla_{\mf{x}}f\ct{\mf{x}} = 2\mf{x}^\top\mf{A} + \mf{b}^\top$ and $\mf{H}_{f}\ct{\mf{x}} = 2\mf{A}$, where $\mf{A}$ is symmetric.
         \item $\mf{f}\ct{\mf{x}} = \mf{A}\mf{x}$ $\longrightarrow$ $\nabla_{\mf{x}}\mf{f}\ct{\mf{x}} = \mf{A}$.
     \end{enumerate}
@@ -112,16 +112,16 @@
     This result can be extended to the case of $f: \mb{R}^n \to \mb{R}$, where $0 < \lV\mf{H}_f\ct{\mf{x}}\rV_2 \leq L$ for all $\mf{x} \in \mb{R}^n$. Then, show that the following gradient descent algorithm converges to the minimum of the function $f\ct{\mf{x}}$.\textbf{[Marks: 2]}
     \[ \mf{x}_{k+1} = \mf{x}_k - \alpha_k \nabla f\ct{\mf{x}_k}, \,\, 0 < \alpha_k < \frac{2}{L}, \, k \in \lc 1, 2, \cdots \rc \]
     
-    \item \textcolor{blue}{\textbf{[Programming]}} The Rosenbrock's function is the given by the following,
+    \item \textcolor{blue}{\textbf{[Programming]}} The Rosenbrock's function is given by the following,
     \[ f\ct{\mf{x}} = 100\ct{x_2 - x_1^2}^2 + \ct{1 - x_1}^2 \]
-    Write a Python/MATLAB program to minimize the Rosenbrock's function using to following algorithms and terminate the search when the norm of the gradient is less than $10^{-3}$. \textbf{[Marks: 8]}
+    Write a Python/MATLAB program to minimize the Rosenbrock's function using the following algorithms and terminate the search when the norm of the gradient is less than $10^{-3}$. \textbf{[Marks: 8]}
     \begin{enumerate}
         \item Gradient descent with a fixed step size $\alpha = 0.001$.
         \item Gradient descent with a inexact line search.
         \item Newton's method.
         \item Levenberg-Marquardt method with a $\lambda = 0.1$.
     \end{enumerate}
-    Assume $\mf{x}_1 = \bmx -2 & 2\emx^\top$ as the initial guess. Plot the trajectory of the $\mf{x}$ for the four differnet algorithms in different colors along with the contour of the Rosenbrock's function. How long did the four methods take to reach the termination condition? \textbf{[Marks: 2]}
+    Assume $\mf{x}_1 = \bmx -2 & 2\emx^\top$ as the initial guess. Plot the trajectory of the $\mf{x}$ for the four different algorithms in different colors along with the contour of the Rosenbrock's function. How long did the four methods take to reach the termination condition? \textbf{[Marks: 2]}
     
     \item \textbf{(Perceptron)} A perceptron is a simple model of a neuron that takes a set of inputs $\lc x_1, x_2, \ldots, x_n\rc$ and produces an output $y$ based on a set of weights $\lc w_1, w_2, \ldots, w_n\rc$ and a bias $w_0$. The output of the perceptron $y$ is given by the following equation,
     \[ y = f\ct{\sum_{i=1}^n w_i x_i + w_0} \]
@@ -170,7 +170,7 @@
     \[ l\ct{\mf{w}} = \sum_{l=1}^{m} \lp y_l - \frac{1}{1 + \exp\ct{-\mf{w}^\top \tilde{\mf{x}}_i}}\rp^2 \]
     where, $\tilde{\mf{x}}_i = \bmxc 1 \\ \mf{x}_l\emx$.
 
-    The optimization problem can be formualted as the following,
+    The optimization problem can be formulated as the following,
     \[ \mf{w}^* = \arg\min_{\mf{w}} l\ct{\mf{w}} \]
 
     We can solve this using a gradient descent algorithm, starting with a random guess for the weight vector $\mf{w}_1$ and update the weight vector using the following update rule,
@@ -186,7 +186,7 @@
        \end{split} \]
     Find the expression for the minimizer of this problem $\mf{x}^*$ and the minimum value of the objective function $\frac{1}{2}\mf{x}^\top\mf{Q}\mf{x}$. \textbf{[Marks: 2]}
        
-    \item Find the mimizer and maximizer of the following optimization problem $\mf{x} \in \mb{R}^3$,
+    \item Find the minimizer and maximizer of the following optimization problem $\mf{x} \in \mb{R}^3$,
     \[  \begin{split}
         \min_{\mf{x}} &\,\, \ct{\mf{a}^\top \mf{x}}\ct{\mf{b}^\top \mf{x}} \\
         \text{s.t. } &\,\, x_1 + x_2 = 0\\
@@ -207,7 +207,7 @@
         \item Use the KKT theorem to show that $\mf{x}^*$ is unique and has the form $\mf{x}^* = \alpha\bmx a \\ b\emx$, where $\alpha \in \mb{R}$ is a positive constant.
         \item Find the expression for $\alpha$ in terms of $a$ and $b$.
         \item Can you explain the solution to this problem geometrically.
-        \item Does the above analysis hold when the constraint $a^2 + b^2 < 1$? Explain you answer. If it does not, what would be the solution $\mf{x}^*$ in this case?
+        \item Does the above analysis hold when the constraint $a^2 + b^2 < 1$? Explain your answer. If it does not, what would be the solution $\mf{x}^*$ in this case?
     \end{enumerate}
     
     \item Consider the following optimization problem,
@@ -218,7 +218,7 @@
     where, the non-zero vectors $\mf{a}, \mf{c} \in \mb{R}^n$ and $b \in \mb{R}$ are constants.  \textbf{[Marks: 6]}
     \begin{enumerate}
         \item Under what conditions does the above optimization problem have a solution?
-        \item When the above optimization problem has a solution, is the solution unique? If yes, find the unique mimizer $\mf{x}^*$, else find the set of all minimizers.
+        \item When the above optimization problem has a solution, is the solution unique? If yes, find the unique minimizer $\mf{x}^*$, else find the set of all minimizers.
         \item Can you explain these results geometrically?
     \end{enumerate}
 \end{enumerate}
