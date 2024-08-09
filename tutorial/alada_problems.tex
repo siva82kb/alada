@@ -168,35 +168,48 @@ What is the span of this set? Does this set form the basis for its span? Does it
 \vspace{0.5cm}
 
 \begin{enumerate}
+	\item Conisder the following matrices:
+	\[ \mf{A} = \bmx 1 & 1 & -1 & 0 \\
+	0 & 2 & -2 & 1 \\
+	-3 & 1 & 1 & 3
+	\emx \quad \text{and} \quad \mf{B} = \bmx 2 & 1 & 1 \\
+	1 & -1 & 1 \\
+	3 & 2 & 1 \\
+	1 & 2 & 1
+	\emx \]
+	Find the product of the two matrices $\mf{C} = \mf{A}\mf{B}$ using the four views of matrix muliplication.
 
-\item 
+	If we change $b_{23} = 0$. Can you compute the new matrix $\mf{C}$ without performing the matrix muliplication?
 
-\item Show that the matrix product $\mf{A}\mf{B}\mf{C}$ can be written as a weighted sum  of the outer products of the columns of $\mf{A}$ and rows of $\mf{C}$, with the weights coming from the matrix $\mf{B}$.
+	If we increase the value of the elements of the 3$^{rd}$ column of $\mf{A}$ by $1$, how can we compute the new $\mf{C}$ without performing the matrix multiplication?
 
-\item Prove the following for the matrices $\mf{A}_1, \mf{A}_2, \mf{A}_3, \ldots \mf{A}_n$.
-\[ \lp \mf{A}_1, \mf{A}_2 \mf{A}_3 \ldots \mf{A}_n \rp^\top =  \mf{A}_n^\top \mf{A}_{n-1}^\top \ldots \mf{A}_2^\top \mf{A}_1^\top \]
+	If we insert a new row $\mf{1}^\top$ in $\mf{A}$ after the 2$^{nd}$ row, how can we compute the new $\mf{C}$ without performing the matrix multiplication? 
 
+	\item Show that the matrix product $\mf{A}\mf{B}\mf{C}$ can be written as a weighted sum  of the outer products of the columns of $\mf{A}$ and rows of $\mf{C}$, with the weights coming from the matrix $\mf{B}$.
 
-\item Show that two polynomial functions of a square matrix $\mf{A}$ commutate.
+	\item Prove the following for the matrices $\mf{A}_1, \mf{A}_2, \mf{A}_3, \ldots \mf{A}_n$.
+	\[ \lp \mf{A}_1, \mf{A}_2 \mf{A}_3 \ldots \mf{A}_n \rp^\top =  \mf{A}_n^\top \mf{A}_{n-1}^\top \ldots \mf{A}_2^\top \mf{A}_1^\top \]
 
-\item \textbf{Nilpotent matrices}. Show that a strictly triangular matrix $\mf{A} \in \mb{R}^{n \times n}$, $\mf{A}^n = \mf{0}$.
+	\item Show that two polynomial functions of a square matrix $\mf{A}$ commutate.
 
-\item \textbf{Matrix Inversion Lemma}. Consider an invertible matrix $\mf{A}$. The matrix $\mf{A} + \mf{u}\mf{v}^\top$ is invertible if and only if the two vectors $\mf{u}, \mf{v} \neq \mf{0}$, and $\mf{v}^\top\mf{A}^{-1}\mf{u} \neq -1$. Then, the inverse is given by,
-\[ \lp \mf{A} + \mf{u}\mf{v}^\top\rp^{-1} = \mf{A}^{-1} - \frac{\mf{A}^{-1}\mf{u}\mf{v}^\top\mf{A}^{-1}}{1 + \mf{v}^{\top}\mf{A}^{-1}\mf{u}} \]
+	\item \textbf{Nilpotent matrices}. Show that a strictly triangular matrix $\mf{A} \in \mb{R}^{n \times n}$, $\mf{A}^n = \mf{0}$.
 
-\item Prove that $tr\lp \mf{A}\mf{B} \rp = tr\lp \mf{B}\mf{A} \rp$, where $\mf{A} \in \mb{R}^{n \times d}$ and $\mf{B} \in \mb{R}^{d \times n}$.
+	\item \textbf{Matrix Inversion Lemma}. Consider an invertible matrix $\mf{A}$. The matrix $\mf{A} + \mf{u}\mf{v}^\top$ is invertible if and only if the two vectors $\mf{u}, \mf{v} \neq \mf{0}$, and $\mf{v}^\top\mf{A}^{-1}\mf{u} \neq -1$. Then, the inverse is given by,
+	\[ \lp \mf{A} + \mf{u}\mf{v}^\top\rp^{-1} = \mf{A}^{-1} - \frac{\mf{A}^{-1}\mf{u}\mf{v}^\top\mf{A}^{-1}}{1 + \mf{v}^{\top}\mf{A}^{-1}\mf{u}} \]
 
-\item Effect of matrix operation on matrix rank. Let $\mf{A} \in \mb{R}^{n \times d}$ and $\mf{B} \in \mb{R}^{d \times n}$, with ranks $a$ and $b$ respectively. What is the rank of the following matrices?
-	\begin{enumerate}
-		\item $\mf{A} + \mf{B}$
-		\item $\mf{A}\mf{B}$
-	\end{enumerate}
+	\item Prove that $tr\lp \mf{A}\mf{B} \rp = tr\lp \mf{B}\mf{A} \rp$, where $\mf{A} \in \mb{R}^{n \times d}$ and $\mf{B} \in \mb{R}^{d \times n}$.
 
-\item Show that the $rank\pp{\mf{A}\mf{B}} = rank\pp{\mf{A}}$, when $\mf{B}$ is square and full rank.
+	\item Effect of matrix operation on matrix rank. Let $\mf{A} \in \mb{R}^{n \times d}$ and $\mf{B} \in \mb{R}^{d \times n}$, with ranks $a$ and $b$ respectively. What is the rank of the following matrices?
+		\begin{enumerate}
+			\item $\mf{A} + \mf{B}$
+			\item $\mf{A}\mf{B}$
+		\end{enumerate}
 
-\item Let $\mf{A}, \mf{B} \in \mb{R}^{n \times n}$, $\mf{A}\mf{B}$ is non-singular if and only if both $\mf{A}$ and $\mf{B}$ are non-singular.
+	\item Show that the $rank\pp{\mf{A}\mf{B}} = rank\pp{\mf{A}}$, when $\mf{B}$ is square and full rank.
 
-\item Let $\mf{A}$ is a full rank matrix. Show that the \textit{Gram matrix} of the column space, $\mf{A}^\top\mf{A}$ is invertible.
+	\item Let $\mf{A}, \mf{B} \in \mb{R}^{n \times n}$, $\mf{A}\mf{B}$ is non-singular if and only if both $\mf{A}$ and $\mf{B}$ are non-singular.
+
+	\item Let $\mf{A}$ is a full rank matrix. Show that the \textit{Gram matrix} of the column space, $\mf{A}^\top\mf{A}$ is invertible.
 
 \end{enumerate}
 
@@ -205,64 +218,64 @@ What is the span of this set? Does this set form the basis for its span? Does it
 % -----
 % SOLUTION TO LINEAR EQUATIONS
 % -----
-\section{Solution to Linear Equations}
-\hrule
-\vspace{0.5cm}
+% \section{Solution to Linear Equations}
+% \hrule
+% \vspace{0.5cm}
 
-\begin{enumerate}
-	\item 
-\end{enumerate}
+% % \begin{enumerate}
+% % 	\item 
+% % \end{enumerate}
 
-\newpage
+% \newpage
 % -----
 % ORTHOGONALITY
 % -----
-\section{Orthogonality}
-\hrule
-\vspace{0.5cm}
-\begin{enumerate}
-	\item If $\mf{A}$ is an orthogonal matrix, show that $\mf{A}^{-1} = \mf{A}^\top$.
+% \section{Orthogonality}
+% \hrule
+% \vspace{0.5cm}
+% \begin{enumerate}
+% 	\item If $\mf{A}$ is an orthogonal matrix, show that $\mf{A}^{-1} = \mf{A}^\top$.
 	
-	\item If $\mf{P}_{\mathcal{S}}$ is the orthogonal projection matrix onto the subspace $\mathcal{S}$, then what is the corresponding orthogonal projection matrix onto $\mathcal{S}^{\perp}$ -- the orthogonal complement of $\mathcal{S}$?
+% 	\item If $\mf{P}_{\mathcal{S}}$ is the orthogonal projection matrix onto the subspace $\mathcal{S}$, then what is the corresponding orthogonal projection matrix onto $\mathcal{S}^{\perp}$ -- the orthogonal complement of $\mathcal{S}$?
 	
-	\item Let $\mf{x}, \mf{y} \in \mathbb{R}^n$. Let $\cc{\mf{u}_1, \mf{u}_2, \ldots \mf{u}_n}$ be an orthonormal basis for $\mathbb{R}^n$. Show that the following holds,
-	\[ \mf{x}^\top\mf{y} = \sum_{i=1}^n \pp{\mf{x}^\top \mf{u_i}} \cdot \pp{\mf{u_i}^\top \mf{y}} \]
+% 	\item Let $\mf{x}, \mf{y} \in \mathbb{R}^n$. Let $\cc{\mf{u}_1, \mf{u}_2, \ldots \mf{u}_n}$ be an orthonormal basis for $\mathbb{R}^n$. Show that the following holds,
+% 	\[ \mf{x}^\top\mf{y} = \sum_{i=1}^n \pp{\mf{x}^\top \mf{u_i}} \cdot \pp{\mf{u_i}^\top \mf{y}} \]
 	
-	\item Consider the following set of vectors, $\mathcal{S} = \left\{ \mf{a}_1, \mf{a}_2, \mf{a}_3, \ldots \mf{a}_n \right\}$, where $\mf{a}_i \in \mathbb{R}^n$. The set $\mc{S}$ is linearly indepndent. Find the orthogonal components of a vector $\mf{b} \in \mathbb{R}^n$ in the subspace spanned by the sets of vectors $\mathcal{S}_1 = \left\{ \mf{a}_i \right\}_{i=1}^m$ and $\mathcal{S}_1^\perp$.
+% 	\item Consider the following set of vectors, $\mathcal{S} = \left\{ \mf{a}_1, \mf{a}_2, \mf{a}_3, \ldots \mf{a}_n \right\}$, where $\mf{a}_i \in \mathbb{R}^n$. The set $\mc{S}$ is linearly indepndent. Find the orthogonal components of a vector $\mf{b} \in \mathbb{R}^n$ in the subspace spanned by the sets of vectors $\mathcal{S}_1 = \left\{ \mf{a}_i \right\}_{i=1}^m$ and $\mathcal{S}_1^\perp$.
 	
-	\item Show that the set of orthogonal matrices $\left\{ \mf{Q} \, \big \vert \, \mf{Q} \in \mb{R}^{n \times n}, \, \mf{Q}^\top\mf{Q} = \mf{Q}\mf{Q}^\top = \mf{I}_n  \right\}$ is closed under matrx multiplication.
+% 	\item Show that the set of orthogonal matrices $\left\{ \mf{Q} \, \big \vert \, \mf{Q} \in \mb{R}^{n \times n}, \, \mf{Q}^\top\mf{Q} = \mf{Q}\mf{Q}^\top = \mf{I}_n  \right\}$ is closed under matrx multiplication.
 	
-    \item Consider the linear map, $\mf{y} = \mf{Ax}$, such that $\mf{x}, \mf{y} \in \mb{R}^n$ and $\mf{A} \in \mb{R}^{n \times n}$. Let us assume that $\mf{A}$ is full rank. What conditions must $\mf{A}$ satisfy for the following statements to be true,
-    \begin{enumerate}
-        \item $\left\lVert \mf{y}\right\rVert_2 = \left\lVert \mf{x}\right\rVert_2$, for all $\mf{x}, \mf{y}$ such that $\mf{y} = \mf{Ax}$.
-        \item $\mf{y}_1^T\mf{y}_2 = \mf{x}_1^T\mf{x}_2$, for all $\mf{x}_1, \mf{x}_2, \mf{y}_1, \mf{y}_2$ such that $\mf{y}_1 = \mf{A}\mf{x}_1$ and $\mf{y}_2 = \mf{A}\mf{x}_2$. 
-    \end{enumerate}
-    \vspace{-0.1cm}
-    \begin{color}{black!60}\small{\textbf{Note}: A linear map $\mf{A}$ with the aforementioned properties preserves lengths and angle between vectors. Such maps are encountered in rigid body mechanics.}
-    \end{color}
-\end{enumerate}
+%     \item Consider the linear map, $\mf{y} = \mf{Ax}$, such that $\mf{x}, \mf{y} \in \mb{R}^n$ and $\mf{A} \in \mb{R}^{n \times n}$. Let us assume that $\mf{A}$ is full rank. What conditions must $\mf{A}$ satisfy for the following statements to be true,
+%     \begin{enumerate}
+%         \item $\left\lVert \mf{y}\right\rVert_2 = \left\lVert \mf{x}\right\rVert_2$, for all $\mf{x}, \mf{y}$ such that $\mf{y} = \mf{Ax}$.
+%         \item $\mf{y}_1^T\mf{y}_2 = \mf{x}_1^T\mf{x}_2$, for all $\mf{x}_1, \mf{x}_2, \mf{y}_1, \mf{y}_2$ such that $\mf{y}_1 = \mf{A}\mf{x}_1$ and $\mf{y}_2 = \mf{A}\mf{x}_2$. 
+%     \end{enumerate}
+%     \vspace{-0.1cm}
+%     \begin{color}{black!60}\small{\textbf{Note}: A linear map $\mf{A}$ with the aforementioned properties preserves lengths and angle between vectors. Such maps are encountered in rigid body mechanics.}
+%     \end{color}
+% \end{enumerate}
 
 
-\newpage
-% -----
-% MATRIX INVERSES
-% -----
-\section{Matrix Inverses}
-\hrule
-\vspace{0.5cm}
+% \newpage
+% % -----
+% % MATRIX INVERSES
+% % -----
+% \section{Matrix Inverses}
+% \hrule
+% \vspace{0.5cm}
 
-\begin{enumerate}
-	\item Find a left inverse for the matrix $\mf{A} = \bmx 1 & 1 \\ -1 & 1 \\ 0 & 1\emx$. Find the set of all possible left inverses. 
+% \begin{enumerate}
+% 	\item Find a left inverse for the matrix $\mf{A} = \bmx 1 & 1 \\ -1 & 1 \\ 0 & 1\emx$. Find the set of all possible left inverses. 
 	
-	\item Show that if the product of two square $d \times d$ matrices $\mf{A}$ and $\mf{B}$ is the identity matrix $\mf{I}$, then $\mf{B}\mf{A} = \mf{I}$.
+% 	\item Show that if the product of two square $d \times d$ matrices $\mf{A}$ and $\mf{B}$ is the identity matrix $\mf{I}$, then $\mf{B}\mf{A} = \mf{I}$.
 	
-	\item Consider an upper triangular matrix $\mf{R} \in \mb{R}^{n \times n}$. We are interested in solving the following set of $n$ linear equations,
-	\[ \mf{R} \mf{x} = \mf{e}_i \]
-	$\mf{x} = \bmxc x_1 & x_2 & x_3 & \ldots & x_n \emx^\top$ is the solution to the above equation. Show that $x_{i+1} = x_{i+2} = \ldots = x_n = 0$.
+% 	\item Consider an upper triangular matrix $\mf{R} \in \mb{R}^{n \times n}$. We are interested in solving the following set of $n$ linear equations,
+% 	\[ \mf{R} \mf{x} = \mf{e}_i \]
+% 	$\mf{x} = \bmxc x_1 & x_2 & x_3 & \ldots & x_n \emx^\top$ is the solution to the above equation. Show that $x_{i+1} = x_{i+2} = \ldots = x_n = 0$.
 
-	Show that the solution to this equation is equal to the $i^{th}$ column of the inverse of $\mf{R}$.
+% 	Show that the solution to this equation is equal to the $i^{th}$ column of the inverse of $\mf{R}$.
 
-	\item Find the 
-\end{enumerate}
+% 	\item Find the 
+% \end{enumerate}
 
 \end{document}
