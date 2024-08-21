@@ -128,13 +128,9 @@ BCOR5mm, % Binding correction
 
 \item Which of the following sets forms a vector space?
 \begin{enumerate}
-	\item $\left\{ a_1x_1 + a_2 x_2 = 0 \, \vert \, x_1, x_2 \in \mathbb{R} \right\}$, where $a_1, a_2 \in \mathbb{R}$ are fixed constants.
-	\item $\left\{ \mathbf{a}^\top \mathbf{x} = b \, \vert \, \mathbf{x} \in \mathbb{R}^n \right\}$, where $\mathbf{a} \in \mathbb{R}^n$ and $b \in \mathbb{R}$ are fixed constants.
-	\item $\left\{ \mathbf{x}^\top \mathbf{x} = 1 \, \vert \, \mathbf{x} \in \mathbb{R}^n \right\}$.
-	\item $\left\{ a_0 + a_1x + a_2x^2 \, \vert \, a_0, a_1, a_2 \in \mathbb{R} \right\}$, where $x \in \left[0, 1\right]$.
-
-	\textcolor{blue}{(\small{The set of all polynomials of degree 2 or less.})}
-
+	\item $\left\{ \mf{x} \, \vert \, x_1, x_2 \in \mathbb{R} \text{ and } a_1x_1 + a_2 x_2 = 0 \right\}$, where $a_1, a_2 \in \mathbb{R}$ are fixed constants.
+	\item $\left\{ \mf{x} \, \vert \, \mathbf{x} \in \mathbb{R}^n \text{ and } \mathbf{a}^\top \mathbf{x} = b \right\}$, where $\mathbf{a} \in \mathbb{R}^n$ and $b \in \mathbb{R}$ are fixed constants.
+	\item $\left\{ \mf{x} \, \vert \, \mathbf{x} \in \mathbb{R}^n \text{ and } \mathbf{x}^\top \mathbf{x} = 1 \right\}$.
 	\item $\left\{ \left(x[0], x[1], x[2], \ldots x[N-1]\right) \, \vert \, x[i] \in \mathbb{R}, 0 \leq i < N \right\}$.
 	
 	\textcolor{blue}{(\small{The set of all real-valued time-domain signals of length $N$. $x[i]$ is the value of the signal at time instant $i$.})}
@@ -190,7 +186,7 @@ What is the span of this set? Does this set form the basis for its span? Does it
 	\item Prove the following for the matrices $\mf{A}_1, \mf{A}_2, \mf{A}_3, \ldots \mf{A}_n$.
 	\[ \lp \mf{A}_1, \mf{A}_2 \mf{A}_3 \ldots \mf{A}_n \rp^\top =  \mf{A}_n^\top \mf{A}_{n-1}^\top \ldots \mf{A}_2^\top \mf{A}_1^\top \]
 
-	\item Show that two polynomial functions of a square matrix $\mf{A}$ commutate.
+	% \item Show that two polynomial functions of a square matrix $\mf{A}$ commutate.
 
 	\item \textbf{Nilpotent matrices}. Show that a strictly triangular matrix $\mf{A} \in \mb{R}^{n \times n}$, $\mf{A}^n = \mf{0}$.
 
