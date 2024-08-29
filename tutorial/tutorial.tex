@@ -226,52 +226,55 @@ What is the span of this set? Does this set form the basis for its span? Does it
 % -----
 % ORTHOGONALITY
 % -----
-% \section{Orthogonality}
-% \hrule
-% \vspace{0.5cm}
-% \begin{enumerate}
-% 	\item If $\mf{A}$ is an orthogonal matrix, show that $\mf{A}^{-1} = \mf{A}^\top$.
+\section{Orthogonality}
+\hrule
+\vspace{0.5cm}
+\begin{enumerate}
+	\item If $\mf{A}$ is an orthogonal matrix, show that $\mf{A}^{-1} = \mf{A}^\top$.
 	
-% 	\item If $\mf{P}_{\mathcal{S}}$ is the orthogonal projection matrix onto the subspace $\mathcal{S}$, then what is the corresponding orthogonal projection matrix onto $\mathcal{S}^{\perp}$ -- the orthogonal complement of $\mathcal{S}$?
+	\item If $\mf{P}_{\mathcal{S}}$ is the orthogonal projection matrix onto the subspace $\mathcal{S}$, then what is the corresponding orthogonal projection matrix onto $\mathcal{S}^{\perp}$ -- the orthogonal complement of $\mathcal{S}$?
 	
-% 	\item Let $\mf{x}, \mf{y} \in \mathbb{R}^n$. Let $\cc{\mf{u}_1, \mf{u}_2, \ldots \mf{u}_n}$ be an orthonormal basis for $\mathbb{R}^n$. Show that the following holds,
-% 	\[ \mf{x}^\top\mf{y} = \sum_{i=1}^n \pp{\mf{x}^\top \mf{u_i}} \cdot \pp{\mf{u_i}^\top \mf{y}} \]
+	\item Let $\mf{x}, \mf{y} \in \mathbb{R}^n$. Let $\cc{\mf{u}_1, \mf{u}_2, \ldots \mf{u}_n}$ be an orthonormal basis for $\mathbb{R}^n$. Show that the following holds,
+	\[ \mf{x}^\top\mf{y} = \sum_{i=1}^n \pp{\mf{x}^\top \mf{u_i}} \cdot \pp{\mf{u_i}^\top \mf{y}} \]
 	
-% 	\item Consider the following set of vectors, $\mathcal{S} = \left\{ \mf{a}_1, \mf{a}_2, \mf{a}_3, \ldots \mf{a}_n \right\}$, where $\mf{a}_i \in \mathbb{R}^n$. The set $\mc{S}$ is linearly indepndent. Find the orthogonal components of a vector $\mf{b} \in \mathbb{R}^n$ in the subspace spanned by the sets of vectors $\mathcal{S}_1 = \left\{ \mf{a}_i \right\}_{i=1}^m$ and $\mathcal{S}_1^\perp$.
+	\item Consider the following set of vectors, $\mathcal{S} = \left\{ \mf{a}_1, \mf{a}_2, \mf{a}_3, \ldots \mf{a}_n \right\}$, where $\mf{a}_i \in \mathbb{R}^n$. The set $\mc{S}$ is linearly independent. Find the orthogonal components of a vector $\mf{b} \in \mathbb{R}^n$ in the subspace spanned by the sets of vectors $\mathcal{S}_1 = \left\{ \mf{a}_i \right\}_{i=1}^m$ and $\mathcal{S}_1^\perp$.
 	
-% 	\item Show that the set of orthogonal matrices $\left\{ \mf{Q} \, \big \vert \, \mf{Q} \in \mb{R}^{n \times n}, \, \mf{Q}^\top\mf{Q} = \mf{Q}\mf{Q}^\top = \mf{I}_n  \right\}$ is closed under matrx multiplication.
+	\item Consider the set of $n \times n$ orthogonal matrices,
+	\[ \mc{Q} = \left\{ \mf{Q} \, \big \vert \, \mf{Q} \in \mb{R}^{n \times n}, \, \mf{Q}^\top\mf{Q} = \mf{Q}\mf{Q}^\top = \mf{I}_n  \right\} \] 
+	Is this set a subspace of $\mb{R}^{n \times n}$? \\
+	Show that the set is closed under matrx multiplication.
 	
-%     \item Consider the linear map, $\mf{y} = \mf{Ax}$, such that $\mf{x}, \mf{y} \in \mb{R}^n$ and $\mf{A} \in \mb{R}^{n \times n}$. Let us assume that $\mf{A}$ is full rank. What conditions must $\mf{A}$ satisfy for the following statements to be true,
-%     \begin{enumerate}
-%         \item $\left\lVert \mf{y}\right\rVert_2 = \left\lVert \mf{x}\right\rVert_2$, for all $\mf{x}, \mf{y}$ such that $\mf{y} = \mf{Ax}$.
-%         \item $\mf{y}_1^T\mf{y}_2 = \mf{x}_1^T\mf{x}_2$, for all $\mf{x}_1, \mf{x}_2, \mf{y}_1, \mf{y}_2$ such that $\mf{y}_1 = \mf{A}\mf{x}_1$ and $\mf{y}_2 = \mf{A}\mf{x}_2$. 
-%     \end{enumerate}
-%     \vspace{-0.1cm}
-%     \begin{color}{black!60}\small{\textbf{Note}: A linear map $\mf{A}$ with the aforementioned properties preserves lengths and angle between vectors. Such maps are encountered in rigid body mechanics.}
-%     \end{color}
-% \end{enumerate}
+    \item Consider the linear map, $\mf{y} = \mf{Ax}$, such that $\mf{x}, \mf{y} \in \mb{R}^n$ and $\mf{A} \in \mb{R}^{n \times n}$. Let us assume that $\mf{A}$ is full rank. What conditions must $\mf{A}$ satisfy for the following statements to be true,
+    \begin{enumerate}
+        \item $\left\lVert \mf{y}\right\rVert_2 = \left\lVert \mf{x}\right\rVert_2$, for all $\mf{x}, \mf{y}$ such that $\mf{y} = \mf{Ax}$.
+        \item $\mf{y}_1^T\mf{y}_2 = \mf{x}_1^T\mf{x}_2$, for all $\mf{x}_1, \mf{x}_2, \mf{y}_1, \mf{y}_2$ such that $\mf{y}_1 = \mf{A}\mf{x}_1$ and $\mf{y}_2 = \mf{A}\mf{x}_2$. 
+    \end{enumerate}
+    \vspace{-0.1cm}
+    \begin{color}{black!60}\small{\textbf{Note}: A linear map $\mf{A}$ with the aforementioned properties preserves lengths and angle between vectors. Such maps are encountered in rigid body mechanics.}
+    \end{color}
+\end{enumerate}
 
 
-% \newpage
-% % -----
-% % MATRIX INVERSES
-% % -----
-% \section{Matrix Inverses}
-% \hrule
-% \vspace{0.5cm}
+\newpage
+% -----
+% MATRIX INVERSES
+% -----
+\section{Matrix Inverses}
+\hrule
+\vspace{0.5cm}
 
-% \begin{enumerate}
-% 	\item Find a left inverse for the matrix $\mf{A} = \bmx 1 & 1 \\ -1 & 1 \\ 0 & 1\emx$. Find the set of all possible left inverses. 
+\begin{enumerate}
+	\item Find a left inverse for the matrix $\mf{A} = \bmx 1 & 1 \\ -1 & 1 \\ 0 & 1\emx$. Find the set of all possible left inverses. 
 	
-% 	\item Show that if the product of two square $d \times d$ matrices $\mf{A}$ and $\mf{B}$ is the identity matrix $\mf{I}$, then $\mf{B}\mf{A} = \mf{I}$.
+	\item Show that if the product of two square $d \times d$ matrices $\mf{A}$ and $\mf{B}$ is the identity matrix $\mf{I}$, then $\mf{B}\mf{A} = \mf{I}$.
 	
-% 	\item Consider an upper triangular matrix $\mf{R} \in \mb{R}^{n \times n}$. We are interested in solving the following set of $n$ linear equations,
-% 	\[ \mf{R} \mf{x} = \mf{e}_i \]
-% 	$\mf{x} = \bmxc x_1 & x_2 & x_3 & \ldots & x_n \emx^\top$ is the solution to the above equation. Show that $x_{i+1} = x_{i+2} = \ldots = x_n = 0$.
+	\item Consider an upper triangular matrix $\mf{R} \in \mb{R}^{n \times n}$. We are interested in solving the following set of $n$ linear equations,
+	\[ \mf{R} \mf{x} = \mf{e}_i \]
+	$\mf{x} = \bmxc x_1 & x_2 & x_3 & \ldots & x_n \emx^\top$ is the solution to the above equation. Show that $x_{i+1} = x_{i+2} = \ldots = x_n = 0$.
 
-% 	Show that the solution to this equation is equal to the $i^{th}$ column of the inverse of $\mf{R}$.
+	Show that the solution to this equation is equal to the $i^{th}$ column of the inverse of $\mf{R}$.
 
-% 	\item Find the 
-% \end{enumerate}
+	\item Find the pseudo-inverse of the matrix $\mf{A} = \bmx 1 & 1 \\ 1 & -1 \\ 1 & 1 \emx$. Show that the matrix $\mf{A}\mf{A}^\dagger$ is the orthogonal projection matrix onto the column space of $\mf{A}$.
+\end{enumerate}
 
 \end{document}
