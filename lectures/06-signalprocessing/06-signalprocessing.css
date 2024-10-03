@@ -1,0 +1,15 @@
+.rise-content {
+    font-family: "Arial", sans-serif !important; /* Change the font family */
+    font-size: 18px !important; /* Change the base font size */
+    color:#b20000 !important; /* Change text color */
+}
+
+/* Customize the header font (for slide titles) */
+.rise-content h1 {
+    font-family: "Georgia", serif !important;
+    font-size: 36px !important;
+}
+.rise-content h2 {
+    font-family: "Helvetica", sans-serif !important;
+    font-size: 28px !important;
+}
