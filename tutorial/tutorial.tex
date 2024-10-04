@@ -20,7 +20,7 @@
 %----------------------------------------------------------------------------------------
 
 \documentclass[
-11pt, % Main document font size
+10pt, % Main document font size
 a4paper, % Paper type, use 'letterpaper' for US Letter paper
 oneside, % One page layout (no page indentation)
 %twoside, % Two page layout (page indentation for binding and different headers)
@@ -168,7 +168,7 @@ Is $f$ a norm? If not, what properties does it lack?
 \item For any given $\mf{x} \in \mb{R}^n$, show that,
 $$ \Vert \mf{x} \Vert_1 \geq \Vert \mf{x} \Vert_2 \geq \Vert \mf{x} \Vert_3 \cdots \geq \Vert \mf{x} \Vert_\infty $$
 
-\item Consider the linear function $f : \mb{R}^3 \to \mb{R}$. We know the output of the function for the following inputs,
+\item Consider the linear function $f : \mb{R}^3 \mapsto \mb{R}$. We know the output of the function for the following inputs,
 \[ f\pp{\bmx 1 & 1  & 1\emx^\top} = -2, \quad f\pp{\bmx -1 & 2  & -1\emx^\top} = 1, \quad f\pp{\bmx -1 & 1  & 2\emx^\top} = 0 \]
 Find an input input $\mf{x} \in \mb{R}^3$ such that $f\pp{\mf{x}} = 0$.
 
@@ -178,6 +178,13 @@ Find an input input $\mf{x} \in \mb{R}^3$ such that $f\pp{\mf{x}} = 0$.
 	\item $\frac{1}{\sqrt{2}}\lc \bmx 1 \\ 1\emx, \frac{1}{\sqrt{2}}\bmx 1 \\ -1 \emx \rc$
 	\item $\lc \bmx 2 \\ 1\emx, \bmx 1 \\ 1 \emx \rc$
 \end{enumerate}
+
+\item Consider the function $f_i : \mb{R}^n \mapsto \mb{R}$ that selects the $i^{th}$ element of a given vector $\mf{x} \in \mb{R}^n$.
+\[ f\pp{\mf{x}} = x_i, \text{where} \quad \mf{x} = \bmx x_1 & x_2 \cdots & x_n \emx^\top \]
+Is this function linear? If so, what is the vector $\mf{w}$ asssociated with this function, such that $f\pp{\mf{x}} = \mf{w}^\top\mf{x}$?
+
+\item Given a set of real numbers $x_1, x_2, \ldots x_n \in \mb{R}$ which are used to the $n$-vector $\mf{x}$. Can you express the mean $\overline{x}$ and variance $\sigma_x^2$ of this set of data using the the standard inner product in $\mb{R}^n$? Note the following,
+\[ \overline{x} = \frac{1}{n}\sum_{i=1}^n x_i \quad \quad \quad \sigma_x^2 = \frac{1}{n-1}\sum_{i=1}^n \pp{x_i - \overline{x}}^2 \]
 \end{enumerate}
 
 \newpage
