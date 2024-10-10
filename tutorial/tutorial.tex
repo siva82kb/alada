@@ -206,14 +206,16 @@ Is this function linear? If so, what is the vector $\mf{w}$ asssociated with thi
 	3 & 2 & 1 \\
 	1 & 2 & 1
 	\emx \]
-	Find the product of the two matrices $\mf{C} = \mf{A}\mf{B}$ using the four views of matrix muliplication.
+	\begin{enumerate}
+		\item Find the product of the two matrices $\mf{C} = \mf{A}\mf{B}$ using the four views of matrix muliplication.
 
-	If we change $b_{23} = 0$. Can you compute the new matrix $\mf{C}$ without performing the matrix muliplication?
-
-	If we increase the value of the elements of the 3$^{rd}$ column of $\mf{A}$ by $1$, how can we compute the new $\mf{C}$ without performing the matrix multiplication?
-
-	If we insert a new row $\mf{1}^\top$ in $\mf{A}$ after the 2$^{nd}$ row, how can we compute the new $\mf{C}$ without performing the matrix multiplication?
-
+		\item If we change $b_{23} = 0$. Can you compute the new matrix $\mf{C}$ without performing the entire matrix muliplication again?
+	
+		\item If we increase the value of the elements of the 3$^{rd}$ column of $\mf{A}$ by $1$, how can we compute the new $\mf{C}$ without performing the entire matrix multiplication again?
+	
+		\item If we insert a new row $\mf{1}^\top$ in $\mf{A}$ after the 2$^{nd}$ row of $\mf{A}$, how can we compute the new $\mf{C}$ without performing the entire matrix multiplication again?
+	\end{enumerate}
+	
 	\item Consider a matrix $\mf{A} \in \mb{R}^{10^6 \times 5}$, and we are interested in computing the product $\mf{A}^\top\mf{A}\mf{A}^\top$. Should you compute the product as $\lp \mf{A}^\top\mf{A} \rp\mf{A}^\top$ or $\mf{A}^\top\lp \mf{A}\mf{A}^\top \rp$? Why?
 	
 	\item Consider an orthogonal, square matrix $\mf{A} \in \mb{R}^{n \times n}$. We generate a new matrix $\mf{C} = \mf{A}\mf{B}$. What can we say about the following questions about this product?
@@ -223,35 +225,31 @@ Is this function linear? If so, what is the vector $\mf{w}$ asssociated with thi
 	\end{enumerate}
 
 	\item Show that the matrix product $\mf{A}\mf{B}\mf{C}$ can be written as a weighted sum  of the outer products of the columns of $\mf{A} \in \mb{R}^{n \times p}$ and rows of $\mf{C} \in \mb{R}^{q \times n}$, with the weights coming from the matrix $\mf{B} \in \mb{R}^{p \times q}$.
-	\[ \mf{A}\mf{B}\mf{C} = \sum_{i=1}^p \sum_{j=1}^q b_ij \mf{a}_i \tilde{\mf{b}}_j^\top \]
+	\[ \mf{A}\mf{B}\mf{C} = \sum_{i=1}^p \sum_{j=1}^q b_{ij} \mf{a}_i \tilde{\mf{c}}_j^\top \]
 
 	\item Prove the following for the matrices $\mf{A}_1, \mf{A}_2, \mf{A}_3, \ldots \mf{A}_n$.
 	\[ \lp \mf{A}_1, \mf{A}_2 \mf{A}_3 \ldots \mf{A}_n \rp^\top =  \mf{A}_n^\top \mf{A}_{n-1}^\top \ldots \mf{A}_2^\top \mf{A}_1^\top \]
 
-	\item \textbf{Nilpotent matrices}. Show that a strictly triangular matrix $\mf{A} \in \mb{R}^{n \times n}$, $\mf{A}^n = \mf{0}$.
+	% \item \textbf{Nilpotent matrices}. Show that a strictly triangular matrix $\mf{A} \in \mb{R}^{n \times n}$, $\mf{A}^n = \mf{0}$.
 
 	\item \textbf{Matrix Inversion Lemma}. Consider an invertible matrix $\mf{A}$. The matrix $\mf{A} + \mf{u}\mf{v}^\top$ is invertible if and only if the two vectors $\mf{u}, \mf{v} \neq \mf{0}$, and $\mf{v}^\top\mf{A}^{-1}\mf{u} \neq -1$. Then, the inverse is given by,
 	\[ \lp \mf{A} + \mf{u}\mf{v}^\top\rp^{-1} = \mf{A}^{-1} - \frac{\mf{A}^{-1}\mf{u}\mf{v}^\top\mf{A}^{-1}}{1 + \mf{v}^{\top}\mf{A}^{-1}\mf{u}} \]
 
 	\item Prove that $tr\lp \mf{A}\mf{B} \rp = tr\lp \mf{B}\mf{A} \rp$, where $\mf{A} \in \mb{R}^{n \times d}$ and $\mf{B} \in \mb{R}^{d \times n}$.
+	
+	\item Show that the diagonal elements of a square matrix $\mf{A}$, such that $\mf{A}^\top = -\mf{A}$ are zero. These are \textit{skew-symmetric} matrices.
+	
+	\item Show that the product of two skew-symmetric matrices is symmetric.
 
-	\item Effect of matrix operation on matrix rank. Let $\mf{A} \in \mb{R}^{n \times d}$ and $\mf{B} \in \mb{R}^{d \times n}$, with ranks $a$ and $b$ respectively. What is the rank of the following matrices?
-		\begin{enumerate}
-			\item $\mf{A} + \mf{B}$
-			\item $\mf{A}\mf{B}$
-		\end{enumerate}
+	% \item Show that the inverse of a triangular matrix is also triangular.
+	
+	\item Let $\mf{A} \in \mb{R}^{n \times d}$ and $\mf{B} \in \mb{R}^{d \times n}$, with ranks $a$ and $b$ respectively. What can we say about the rank of $\mf{A}\mf{B}$?
 
 	\item Show that the $rank\pp{\mf{A}\mf{B}} = rank\pp{\mf{A}}$, when $\mf{B}$ is square and full rank.
 
 	\item Let $\mf{A}, \mf{B} \in \mb{R}^{n \times n}$, $\mf{A}\mf{B}$ is non-singular if and only if both $\mf{A}$ and $\mf{B}$ are non-singular.
 
 	\item Let $\mf{A}$ is a full rank matrix. Show that the \textit{Gram matrix} of the column space, $\mf{A}^\top\mf{A}$ is invertible.
-	
-	\item Show that the diagnol elements of a square matrix $\mf{A}$, such that $\mf{A}^\top = -\mf{A}$ are zero. These are \textit{skew-symmetric} matrices.
-	
-	\item Show that the product of two skew-symmetric matrices is symmetric.
-	
-	\item Show that the inverse of a triangular matrix is also triangular.
 \end{enumerate}
 
 \newpage
