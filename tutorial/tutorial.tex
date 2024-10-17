@@ -240,16 +240,46 @@ Is this function linear? If so, what is the vector $\mf{w}$ asssociated with thi
 	\item Show that the diagonal elements of a square matrix $\mf{A}$, such that $\mf{A}^\top = -\mf{A}$ are zero. These are \textit{skew-symmetric} matrices.
 	
 	\item Show that $\mf{x}^\top\mf{A}\mf{x} = 0$ if $\mf{A} \in \mb{R}^{n \times n}$ is a skew-symmetric matrix.
+\end{enumerate}
 
-	% \item Show that the inverse of a triangular matrix is also triangular.
-	
-	% \item Let $\mf{A} \in \mb{R}^{n \times d}$ and $\mf{B} \in \mb{R}^{d \times n}$, with ranks $a$ and $b$ respectively. What can we say about the rank of $\mf{A}\mf{B}$?
+\newpage
+\noindent \textbf{Additional problems}
+\begin{enumerate}
+	\item Consider the following $5 \times 4$ matrix:
+	\[ \mf{A} = \bmx  1 & -1 &  0 &  2 &  2 \\
+	 1 & -2 &  1 &  3 &  9 \\
+	-2 &  0 &  2 & -1 & -2 \\
+	 3 &  1 &  1 & -5 &  0
+	\emx \]
+	Compute the following:
+	\begin{enumerate}
+		\item $\mf{a}_3$
+		\item $\mf{a}_1^\top$
+		\item $\tilde{\mf{a}}_2^\top$
+		\item $\tilde{\mf{a}}_4$
+		\item $\mf{a}_1\mf{a}_2^\top$
+		\item $\tilde{\mf{a}}_3\mf{a}_2^\top$
+		\item $\tilde{\mf{a}}_1\tilde{\mf{a}}_2^\top$
+		\item $\tilde{\mf{a}}_1^\top\tilde{\mf{a}}_2$
+		\item $\tilde{\mf{a}}_1\tilde{\mf{a}}_1^\top + \tilde{\mf{a}}_2\tilde{\mf{a}}_2^\top$
+		\item $\mf{a}_3^\top\mf{a}_1 + \mf{a}_2^\top\mf{a}_4$
+	\end{enumerate}
 
-	% \item Show that the $rank\pp{\mf{A}\mf{B}} = rank\pp{\mf{A}}$, when $\mf{B}$ is square and full rank.
-
-	% \item Let $\mf{A}, \mf{B} \in \mb{R}^{n \times n}$, $\mf{A}\mf{B}$ is non-singular if and only if both $\mf{A}$ and $\mf{B}$ are non-singular.
-
-	% \item Let $\mf{A}$ is a full rank matrix. Show that the \textit{Gram matrix} of the column space, $\mf{A}^\top\mf{A}$ is invertible.
+	\item Which of the following statements true about a matrix $\mf{A} \in \mb{R}^{n \times m}$?
+	\begin{enumerate}
+		\item $\sum_{i=1}^m \Vert \mf{a}_i \Vert_2^2 = \sum_{i=1}^n \Vert \tilde{\mf{a}}_i \Vert_2^2$
+		\item $\sum_{i=1}^m \Vert \mf{a}_i \Vert_2^2 = \text{tr}\pp{\mf{A}^\top\mf{A}}$
+		\item If the matrix $\mf{A} = \mf{V} \bmx d_1 &  0 \\ 0 & d_2\emx \mf{V}^{-1}$, Then
+		\[ \mf{A}^n = \mf{V} \bmx d_1^n & 0 \\ 0 & d_2^n \emx \mf{V}^{-1} \]
+	\end{enumerate}
+	\item Consider the matrix $\mf{P} = \bmx \mf{e}_1 & \mf{e}_3 & \mf{e}_2 \emx$. What does this P matrix do to a matrix $\mf{A} \in \mb{R}^{3 \times 3}$ in the following operations? Try to compute these without performing the matrix multiplication and by using you understaning of the row and column views of matrix multiplication.
+	\begin{enumerate}
+		\item $\mf{P}\mf{A}$
+		\item $\mf{A}\mf{P}$
+		\item $\mf{P}^2\mf{A}$
+		\item $\mf{A}\mf{P}^2$
+		\item $\mf{P}\mf{A}\mf{P}$
+	\end{enumerate}
 \end{enumerate}
 
 \newpage
@@ -257,15 +287,38 @@ Is this function linear? If so, what is the vector $\mf{w}$ asssociated with thi
 % -----
 % SOLUTION TO LINEAR EQUATIONS
 % -----
-% \section{Solution to Linear Equations}
-% \hrule
-% \vspace{0.5cm}
+\section{Solution to Linear Equations}
+\hrule
+\vspace{0.5cm}
 
-% % \begin{enumerate}
-% % 	\item 
-% % \end{enumerate}
+\begin{enumerate}	
+	\item Consider a matrix $\mf{A} \in \mb{}R^{n \times m}$ with $n > m$. Consider a linearly independent set of vectors $\mf{x}_1, \mf{x}_2$. Is the set of $\mf{A}\mf{x}_1, \mf{A}\mf{x}_2$ linearly independent?
+	
+	\item Find the bases for the four fundamental subspaces of the following matrices 
+	\begin{enumerate}
+		\item $\mf{A} = \bmx 1 & 1 & 1 \\ 2 & 2 & 2 \\ -1 & -1 & -1 \emx$.
+		\item $\mf{A} = \bmx 1 & 1 & 1\emx$.
+		\item $\mf{A} = \bmx 1 & 1 \\ 2 & 1\emx$.
+		\item $\mf{A} = \bmx 0 & 0 \\ 0 & 0\emx$.
+		\item $\mf{A} = \bmx 1 & 0 \\ 0 & 1\emx$.
+	\end{enumerate}
+	
+	\item Show that the $rank\pp{\mf{A}\mf{B}} = rank\pp{\mf{A}}$, when $\mf{B}$ is square and full rank.
 
-% \newpage
+	\item Let $\mf{A}$ is a full rank matrix. Show that the \textit{Gram matrix} of the column space, $\mf{A}^\top\mf{A}$ is invertible.
+	
+	\item Draw the four fundamental subspaces of the matrix $\mf{A} = \bmx 1 & 1 \\ 2 & 2 \emx$.
+	
+	\item Find the complete set of solutions for the following system of equations,
+	\[ \mf{A}\mf{x} = \bmx 4 \\ 3 \\ 7 \emx \]
+	where $\mf{A} = \bmx 1 & 1 & 2\\ 2 & 2 & -1\\ 3 & 3 & 1\emx$.
+	
+	\item Is the following set of equations solvable? If yes, then find the complete set of solutions.
+	\[ \mf{A}\mf{x} = \bmx 1 \\ 1 \\ 1 \emx \]
+	where $\mf{A} = \bmx 1 & 1 & 2\\ 2 & 2 & -1\\ 3 & 3 & 1\emx$.
+\end{enumerate}
+
+\newpage
 % -----
 % ORTHOGONALITY
 % -----
@@ -295,6 +348,15 @@ Is this function linear? If so, what is the vector $\mf{w}$ asssociated with thi
     \vspace{-0.1cm}
     \begin{color}{black!60}\small{\textbf{Note}: A linear map $\mf{A}$ with the aforementioned properties preserves lengths and angle between vectors. Such maps are encountered in rigid body mechanics.}
     \end{color}
+
+	\item Find the QR demcomposition of the following matrices.
+	\begin{enumerate}
+		\item $\mf{A} = \bmx 1 & 1 \\ 0 & 1 \\ 1 & 0 \emx$
+		\item $\mf{A} = \bmx 1 & 1 & 1 \\ 1 & 1 & 0 \\ 1 & 0 & 1 \emx$
+		\item $\mf{A} = \bmx 1 & 1 & 1 & 0 & -1 \\ 1 & 1 & 0 & 0 & -1\\ 1 & 0 & 1 & 0 & -1\emx$
+		\item $\mf{A} = \bmx 1 & 1 & 1 \\ 1 & 1 & 0 \\ 1 & 0 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \emx$
+		\item $\mf{A} = \bmx 3 & 0 & 0 \\ 0 & 4 & 0 \\ 0 & 0 & 5 \emx$
+	\end{enumerate}
 \end{enumerate}
 
 
