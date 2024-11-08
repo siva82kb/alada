@@ -371,15 +371,55 @@ Is this function linear? If so, what is the vector $\mf{w}$ asssociated with thi
 \begin{enumerate}
 	\item Find a left inverse for the matrix $\mf{A} = \bmx 1 & 1 \\ -1 & 1 \\ 0 & 1\emx$. Find the set of all possible left inverses. 
 	
-	\item Show that if the product of two square $d \times d$ matrices $\mf{A}$ and $\mf{B}$ is the identity matrix $\mf{I}$, then $\mf{B}\mf{A} = \mf{I}$.
+	% \item Show that if the product of two square $d \times d$ matrices $\mf{A}$ and $\mf{B}$ is the identity matrix $\mf{I}$, then $\mf{B}\mf{A} = \mf{I}$.
 	
 	\item Consider an upper triangular matrix $\mf{R} \in \mb{R}^{n \times n}$. We are interested in solving the following set of $n$ linear equations,
 	\[ \mf{R} \mf{x} = \mf{e}_i \]
 	$\mf{x} = \bmxc x_1 & x_2 & x_3 & \ldots & x_n \emx^\top$ is the solution to the above equation. Show that $x_{i+1} = x_{i+2} = \ldots = x_n = 0$.
 
-	Show that the solution to this equation is equal to the $i^{th}$ column of the inverse of $\mf{R}$.
+	% Show that the solution to this equation is equal to the $i^{th}$ column of the inverse of $\mf{R}$.
 
 	\item Find the pseudo-inverse of the matrix $\mf{A} = \bmx 1 & 1 \\ 1 & -1 \\ 1 & 1 \emx$. Show that the matrix $\mf{A}\mf{A}^\dagger$ is the orthogonal projection matrix onto the column space of $\mf{A}$.
+\end{enumerate}
+
+
+\newpage
+% -----
+% EIGENVALUES/VECTORS
+% -----
+\section{Eigenvalues and Eigenvectors}
+\hrule
+\vspace{0.5cm}
+
+\begin{enumerate}
+	\item Find the eigenvalues and eigenvectors of the following matrices.
+	\begin{enumerate}
+		\item $\mf{A} = \bmx 3 & 2 \\ 2 & 3 \emx$
+		\item $\mf{A} = \frac{1}{2}\bmx \sqrt{3} & -1\\ 1 & \sqrt{3}\emx$
+		\item $\mf{A} = \frac{1}{2}\bmx \sqrt{3} & -1\\ 1 & \sqrt{3}\emx$
+		\item $\mf{A} = \bmx 5 & 3\\ -3 & -1\emx$
+	\end{enumerate}
+	
+	\item Let $\mf{A} = \bmx 0.6 & 0.2\\ 0.4 & 0.8\emx$. What is the value of the following?
+	\begin{enumerate}
+		\item $A^2$
+		\item $A^{100}$
+		\item $A^\infty$
+	\end{enumerate}
+
+    \item For a matrix $\mf{A}$ with eigenvalues $\lc\lambda_i\rc_{i=1}^{n}$, verify for the following matrices that $\Pi_{i=1}^n\lambda_i = \det \lp\mf{A}\rp$ and $\sum_{i=1}^n \lambda_i = trace\lp\mf{A}\rp$.
+    \begin{enumerate}
+        \item $\bmx 1 & 1 \\ 2 & 1\emx$
+        \item $\frac{1}{5}\bmx 1 \\ 0 \\ 2 \emx \bmx 1 & 0 & 2\emx$
+    \end{enumerate}
+
+	\item Let $\lc \lambda_i, \mf{v}_i\rc_{i=1}^n$ are the eignepairs of a matrix $\mf{A}$. What are the eigenpairs of the folliowing?
+    \begin{enumerate}
+         \item $2\mf{A}$
+         \item $\mf{A} - 2\mf{I}$
+         \item $\mf{I} - \mf{A}$
+     \end{enumerate}
+
 \end{enumerate}
 
 \end{document}
